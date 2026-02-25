@@ -483,56 +483,81 @@ const App = () => {
       </nav>
 
       {/* 2. HERO SECTION */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-900">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#0A0D14]">
+        {/* Background Stripes Pattern */}
+        <div className="absolute inset-0 z-0 opacity-40"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 15px, rgba(255,255,255,0.02) 15px, rgba(255,255,255,0.02) 16px)'
+          }}>
         </div>
 
-        <div className="container mx-auto px-6 md:px-10 relative z-10">
-          <div className="max-w-5xl">
-            <div className="flex flex-wrap items-center gap-3 mb-8 animate-in fade-in slide-in-from-left-4 duration-1000">
+        {/* Glowing Background Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/10 rounded-full blur-[120px] animate-pulse"></div>
+        </div>
+
+        <div className="container mx-auto px-6 md:px-10 relative z-10 text-center">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-10 animate-in fade-in slide-in-from-top-4 duration-1000">
               {t.hero_tags.split(' · ').map((tag, i) => (
-                <span key={i} className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] font-bold tracking-widest uppercase backdrop-blur-sm">
-                  {tag}
+                <span key={i} className="text-white/40 text-[11px] font-bold tracking-[0.2em] uppercase">
+                  {tag} {i < t.hero_tags.split(' · ').length - 1 && <span className="mx-2 opacity-20">·</span>}
                 </span>
+                // Simplified tag display to match image style better
               ))}
             </div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black text-white leading-[0.85] tracking-tighter mb-10 italic animate-in fade-in slide-in-from-left-8 duration-1000 delay-200">
-              {t.hero_h1.split(' ').map((word, i) => (
-                <span key={i} className="block last:text-indigo-500 last:not-italic">{word}</span>
-              ))}
+            <h1 className="text-5xl md:text-[6.5rem] font-black text-white leading-tight tracking-tighter mb-12 italic animate-in fade-in zoom-in-95 duration-1000 delay-200">
+              <span className="relative inline-block">
+                느낌을 <span className="text-white">스펙으로.</span>
+                <div className="absolute -bottom-4 left-0 w-full h-8 bg-indigo-600/40 -z-10 blur-xl"></div>
+                <div className="absolute -bottom-2 left-0 w-full h-1.5 bg-indigo-500 rounded-full"></div>
+              </span>
             </h1>
 
-            <div className="flex flex-col md:flex-row md:items-end gap-10 md:gap-20 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
-              <div className="max-w-md">
-                <p className="text-indigo-400 font-mono text-sm mb-4 font-bold tracking-tight">{t.hero_p_line1}</p>
-                <p className="text-slate-400 text-lg md:text-xl font-medium leading-relaxed break-keep">
+            <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
+              <div className="max-w-xl mb-16 px-4">
+                <p className="text-white font-bold text-xl mb-4 tracking-tight drop-shadow-lg">&gt; {t.hero_p_line1}</p>
+                <p className="text-white/60 text-lg md:text-xl font-medium leading-relaxed break-keep">
                   {t.hero_p_line2}
                 </p>
               </div>
 
               <button
                 onClick={() => navigateTo('about')}
-                className="group relative px-10 py-6 bg-indigo-600 hover:bg-indigo-500 transition-all duration-500 overflow-hidden shadow-2xl shadow-indigo-500/20"
+                className="group relative px-16 py-8 bg-white hover:bg-slate-100 transition-all duration-500 rounded-lg shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center space-x-6"
               >
-                <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
-                <div className="relative z-10 flex items-center space-x-4">
-                  <span className="text-white text-xs font-black tracking-[0.2em] uppercase">{t.cta}</span>
-                  <ArrowRight className="text-white group-hover:translate-x-2 transition-transform" size={18} />
-                </div>
+                <span className="text-slate-950 text-base font-black tracking-[0.1em] uppercase">지금 샘플 분석 요청하기</span>
+                <ArrowRight className="text-slate-950 group-hover:translate-x-3 transition-transform" size={24} />
               </button>
             </div>
           </div>
         </div>
 
+        {/* Floating Action Buttons */}
+        <div className="fixed bottom-10 right-10 z-[150] flex flex-col space-y-4">
+          <a
+            href="https://talk.naver.com/ct/w4aqxg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-16 h-16 rounded-full bg-[#03C75A] flex items-center justify-center text-white shadow-2xl hover:scale-110 transition-transform group"
+          >
+            <span className="text-2xl font-black italic">N</span>
+          </a>
+          <a
+            href="https://pf.kakao.com/_xkhixjn/chat"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-16 h-16 rounded-full bg-[#FAE100] flex items-center justify-center text-[#3C1E1E] shadow-2xl hover:scale-110 transition-transform"
+          >
+            <MessageSquare size={28} fill="currentColor" />
+          </a>
+        </div>
+
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center space-y-4 opacity-30">
-          <span className="text-[8px] font-black text-white tracking-[0.4em] uppercase rotate-90 mb-4 origin-left translate-x-1">SCROLL</span>
-          <div className="w-[1px] h-20 bg-gradient-to-b from-white to-transparent"></div>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center opacity-20">
+          <div className="text-[8px] font-black text-white tracking-[0.4em] uppercase mb-4">SCROLL</div>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
         </div>
       </section>
 
