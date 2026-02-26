@@ -1,8 +1,4 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
-import { getOptimizedImage } from './cloudinary';
-import AdminPortal from './AdminPortal';
-import { db } from './firebase';
-import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import {
   Users,
   BarChart3,
@@ -223,9 +219,104 @@ const TRANSLATIONS = {
 };
 // --- 2. 제품 데이터 로더 ---
 const getProducts = (lang) => {
+  const isEN = lang === 'EN';
   return {
-    knitting: [],
-    processed: []
+    knitting: [
+      {
+        id: 'k1',
+        code: "HS-K-32G-HEAVY",
+        name: isEN ? "32G High-Density Single" : "32G 고밀도 항편 싱글",
+        engName: "32G_SINGLE_JERSEY",
+        material: "Cotton 100% (CM 40s/1)",
+        structure: "Single Jersey / 32G",
+        weight: "180 - 200g/y",
+        width: "68 / 70\"",
+        colors: "Solid Dyeing / Custom",
+        features: isEN ? [
+          "Ultra-fine 32G knitting density",
+          "Minimized shrinkage through stabilization",
+          "Premium touch with combed yarn",
+          "Ideal for high-end basic T-shirts"
+        ] : [
+          "32G 고밀도 환편을 통한 탄탄한 조직감",
+          "세탁 후 변형을 최소화하는 방축 가공",
+          "코마사(Combed Yarn) 사용으로 부드러운 터치",
+          "하이엔드 기본 티셔츠용 최적 스펙"
+        ],
+        desc: isEN ? "Signature high-density jersey with superior durability." : "화성섬유의 시그니처 고밀도 싱글 생지입니다."
+      },
+      {
+        id: 'k2',
+        code: "HS-K-CP-INTER",
+        name: isEN ? "CP Cotton/Poly Interlock" : "CP 코튼/폴리 양면",
+        engName: "CP_INTERLOCK",
+        material: "CP (Cotton 60% + Poly 40%)",
+        structure: "Interlock / Double Side",
+        weight: "280 - 300g/y",
+        width: "60 / 62\"",
+        colors: "Raw White / PFD",
+        features: isEN ? [
+          "Balanced blend for durability",
+          "Excellent recovery and shape retention",
+          "Smooth surface on both sides",
+          "Premium innerwear & casual wear"
+        ] : [
+          "내구성과 터치감의 밸런스를 맞춘 혼방소재",
+          "형태 안정성이 뛰어난 양면 조직",
+          "전면과 후면이 동일하게 매끄러운 마감",
+          "고급 이너웨어 및 캐주얼웨어용"
+        ],
+        desc: isEN ? "Versatile interlock fabric with excellent shape retention." : "복원력이 뛰어나 무릎 나옴이 적은 고급 양면 생지입니다."
+      }
+    ],
+    processed: [
+      {
+        id: 'p1',
+        code: "HS-P-BOUDRE-75",
+        name: isEN ? "Premium Boudre 75D" : "프리미엄 보드레 75D",
+        engName: "PREMIUM_BOUDRE",
+        material: "Poly 100% (75D/72F)",
+        structure: "Plain / Brushed",
+        weight: "110 - 130g/y",
+        width: "58 / 60\"",
+        colors: "80+ Stock Colors",
+        features: isEN ? [
+          "Super soft peached finish",
+          "Large capacity stock moving",
+          "Consistency in color lot",
+          "Lining & Light-weight casuals"
+        ] : [
+          "피치 가공을 통한 실크 같은 부드러움",
+          "대량 상시 재고 운영으로 즉시 출고",
+          "균일한 컬러 로트 유지",
+          "안감 및 가벼운 캐주얼 외의용"
+        ],
+        desc: isEN ? "Best-selling Boudre with silky touch and immediate availability." : "연간 100만 야드 이상 판매되는 화성의 NO.1 가공지입니다."
+      },
+      {
+        id: 'p2',
+        code: "HS-P-TECH-BOND",
+        name: isEN ? "Technical Fleece Bonding" : "테크니컬 플리스 본딩",
+        engName: "FLEECE_BONDING",
+        material: "Poly 100% + Fleece",
+        structure: "Bondolink Technology",
+        weight: "450 - 480g/y",
+        width: "56 / 58\"",
+        colors: "Custom Colors Available",
+        features: isEN ? [
+          "Superior thermal insulation",
+          "Anti-pilling treatment Applied",
+          "High bonding strength (No delamination)",
+          "Outdoor & Winter heavy-weight"
+        ] : [
+          "극강의 보온성을 자랑하는 이중 본딩",
+          "안티필링 가공으로 보풀 발생 억제",
+          "강력한 접착 강도로 박리 현상 제로",
+          "아웃도어 및 겨울 특수 방한복용"
+        ],
+        desc: isEN ? "Heavy-weight technical bonding for extreme weather protection." : "겨울철 방한 의류의 핵심 소재인 고기능성 본딩 원단입니다."
+      }
+    ]
   };
 };
 
@@ -267,46 +358,26 @@ const StatBoxItem = React.memo(({ icon: Icon, label, value, suffix, sub, subTop,
   </div>
 ));
 
-const VisualPlaceholder = React.memo(({ dark = false, imageSrc = null, cloudinaryId = null, text = "" }) => {
-  const finalSrc = cloudinaryId ? getOptimizedImage(cloudinaryId) : imageSrc;
+const VisualPlaceholder = React.memo(({ dark = false }) => (
+  <div className={`w-full h-full flex items-center justify-center relative overflow-hidden group ${dark ? 'bg-[#0a0c10]' : 'bg-slate-100'}`}>
+    {/* Professional Geometric Pattern */}
+    <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#6366f1 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
 
-  return (
-    <div className={`w-full h-full flex items-center justify-center relative overflow-hidden group ${dark ? 'bg-[#0a0c10]' : 'bg-slate-100'}`}>
-      {/* Optional Image Background */}
-      {finalSrc && (
-        <div className="absolute inset-0 z-0">
-          <img
-            src={finalSrc}
-            alt={text || "Textile Background"}
-            className="w-full h-full object-cover opacity-100 group-hover:scale-110 transition-all duration-1000"
-          />
-          {/* Subtle vignette instead of heavy overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-40"></div>
+    {/* Subtle Mesh Gradient / Light Effect */}
+    <div className="absolute -top-1/4 -right-1/4 w-full h-full bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div className="absolute -bottom-1/4 -left-1/4 w-full h-full bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    {/* Subtle central motif - very technical/minimal */}
+    <div className="relative z-10 flex flex-col items-center opacity-20 group-hover:opacity-40 transition-opacity duration-1000">
+      <div className="w-16 h-16 border border-white/10 rounded-full flex items-center justify-center">
+        <div className="w-8 h-8 border border-white/20 rounded-full flex items-center justify-center animate-pulse">
+          <div className="w-2 h-2 bg-indigo-500/40 rounded-full"></div>
         </div>
-      )}
-
-      {/* Professional Geometric Pattern */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-10" style={{ backgroundImage: 'radial-gradient(#6366f1 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
-
-      {/* Subtle Mesh Gradient / Light Effect */}
-      <div className="absolute -top-1/4 -right-1/4 w-full h-full bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-10"></div>
-      <div className="absolute -bottom-1/4 -left-1/4 w-full h-full bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-10"></div>
-
-      {!finalSrc && (
-        /* Subtle central motif - only if no image */
-        <div className="relative z-20 flex flex-col items-center opacity-20 group-hover:opacity-40 transition-opacity duration-1000">
-          <div className="w-16 h-16 border border-white/10 rounded-full flex items-center justify-center">
-            <div className="w-8 h-8 border border-white/20 rounded-full flex items-center justify-center animate-pulse">
-              <div className="w-2 h-2 bg-indigo-500/40 rounded-full"></div>
-            </div>
-          </div>
-          <div className="mt-4 w-px h-12 bg-gradient-to-b from-indigo-500/40 to-transparent"></div>
-          {text && <div className="mt-4 text-[8px] font-black text-white/40 uppercase tracking-widest leading-none text-center px-4">{text}</div>}
-        </div>
-      )}
+      </div>
+      <div className="mt-4 w-px h-12 bg-gradient-to-b from-indigo-500/40 to-transparent"></div>
     </div>
-  );
-});
+  </div>
+));
 
 const FloatingButtons = React.memo(() => {
   const buttons = [
@@ -387,19 +458,6 @@ const App = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isBusinessOpen, setIsBusinessOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [dbProducts, setDbProducts] = useState([]);
-
-  // Fetch Dynamic Products from Firestore
-  useEffect(() => {
-    const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const prods = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setDbProducts(prods);
-    }, (error) => {
-      console.error("App.jsx Firestore Listener Error:", error);
-    });
-    return unsubscribe;
-  }, []);
 
   // 네이버 지도 검색 URL
   const NAVER_MAP_URL = "https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%97%B0%EC%B2%9C%20%EC%B2%AD%EC%82%B0%EB%A9%B4%20%EC%A0%84%EC%98%81%EB%A1%9C%20441%20%ED%99%94%EC%84%B1%EC%84%AC%EC%9C%A0";
@@ -416,18 +474,7 @@ const App = () => {
 
   // Memoized Data
   const t = useMemo(() => TRANSLATIONS[lang], [lang]);
-
-  const productsObj = useMemo(() => {
-    const staticProds = getProducts(lang);
-    // Categorize dynamic products
-    const dynamicKnitting = dbProducts.filter(p => p.type === 'knitting');
-    const dynamicProcessed = dbProducts.filter(p => p.type === 'processed');
-
-    return {
-      knitting: [...dynamicKnitting, ...staticProds.knitting],
-      processed: [...dynamicProcessed, ...staticProds.processed]
-    };
-  }, [lang, dbProducts]);
+  const productsObj = useMemo(() => getProducts(lang), [lang]);
 
   const SIGNATURE_PRODUCTS = useMemo(() => [
     ...productsObj.knitting.slice(0, 2),
@@ -532,10 +579,6 @@ const App = () => {
     // 즉각적인 반응을 위해 smooth 제거
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
-
-  if (view === 'admin') {
-    return <AdminPortal onBack={() => setView('main')} />;
-  }
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 leading-relaxed overflow-x-hidden selection:bg-indigo-600 selection:text-white relative">
@@ -747,7 +790,7 @@ const App = () => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <div className="absolute inset-0 z-0 scale-100 group-hover:scale-110 transition-transform duration-1000">
-                      <VisualPlaceholder dark={true} imageSrc="https://images.unsplash.com/photo-1558444479-c8a5105232eb?auto=format&fit=crop&q=80&w=800" text="KNITTING FACTORY" />
+                      <VisualPlaceholder dark={true} />
                       <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/30 transition-colors duration-700"></div>
                     </div>
 
@@ -776,7 +819,7 @@ const App = () => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <div className="absolute inset-0 z-0 scale-100 group-hover:scale-110 transition-transform duration-1000">
-                      <VisualPlaceholder dark={true} imageSrc="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=800" text="FABRIC INVENTORY" />
+                      <VisualPlaceholder dark={true} />
                       <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/30 transition-colors duration-700"></div>
                     </div>
 
@@ -861,14 +904,14 @@ const App = () => {
                         className="bg-white group/card rounded-sm overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 h-full flex flex-col"
                       >
                         <div className="aspect-[4/5] bg-slate-100 relative overflow-hidden">
-                          <VisualPlaceholder text={p.engName} imageSrc={p.imageSrc} cloudinaryId={p.cloudinaryId} />
+                          <VisualPlaceholder text={p.engName} />
                           <div className="absolute inset-0 bg-indigo-600/0 group-hover/card:bg-indigo-600/10 transition-colors duration-500"></div>
                           <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-900 opacity-0 group-hover/card:opacity-100 transform translate-x-4 group-hover/card:translate-x-0 transition-all duration-500">
                             <Plus size={16} />
                           </div>
                           <div className="absolute bottom-6 left-6">
                             <div className="text-[10px] font-black text-white/60 uppercase tracking-[0.2em] mb-1">{p.code}</div>
-                            <div className="text-xl font-black text-white leading-none tracking-tight">{lang === 'KR' ? p.name : (p.engName || p.name)}</div>
+                            <div className="text-xl font-black text-white leading-none tracking-tight">{p.name}</div>
                           </div>
                         </div>
                         <div className="p-8">
@@ -1050,7 +1093,7 @@ const App = () => {
                     className="group bg-white border border-slate-100 rounded-sm overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col h-full"
                   >
                     <div className="aspect-[4/3] relative overflow-hidden bg-slate-100">
-                      <VisualPlaceholder text={p.engName} imageSrc={p.imageSrc} cloudinaryId={p.cloudinaryId} />
+                      <VisualPlaceholder text={p.engName} />
                       <div className="absolute inset-0 bg-indigo-600/0 group-hover:bg-indigo-600/10 transition-colors duration-500"></div>
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500 text-indigo-600">
                         <Plus size={16} />
@@ -1058,7 +1101,7 @@ const App = () => {
                     </div>
                     <div className="p-8 flex-1 flex flex-col">
                       <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-mono">{p.code}</div>
-                      <h3 className="text-xl font-black text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors uppercase">{lang === 'KR' ? p.name : (p.engName || p.name)}</h3>
+                      <h3 className="text-xl font-black text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors uppercase">{p.name}</h3>
                       <p className="text-slate-500 text-xs leading-relaxed line-clamp-2 h-10 mb-6">{p.desc}</p>
                       <div className="mt-auto flex flex-wrap gap-2">
                         <span className="px-2 py-1 bg-slate-50 text-slate-400 text-[9px] font-black uppercase tracking-widest">{p.material}</span>
@@ -1168,12 +1211,6 @@ const App = () => {
           <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-bold text-slate-600 uppercase tracking-widest">
               <span>COPYRIGHT © HWOASUNG TEXTILE. ALL RIGHTS RESERVED.</span>
-              <button
-                onClick={() => setView('admin')}
-                className="hover:text-white transition-colors uppercase tracking-[0.2em] opacity-0 hover:opacity-100"
-              >
-                Manage Site
-              </button>
             </div>
             <div className="flex items-center space-x-6 text-slate-600">
               <Globe size={16} />
@@ -1197,11 +1234,11 @@ const App = () => {
               </button>
 
               <div className="w-full md:w-1/2 bg-slate-100 relative">
-                <VisualPlaceholder text={selectedProduct.engName} cloudinaryId={selectedProduct.cloudinaryId} imageSrc={selectedProduct.imageSrc} />
+                <VisualPlaceholder text={selectedProduct.engName} />
                 <div className="absolute top-10 left-10">
                   <div className="w-16 h-1 bg-indigo-600 mb-6"></div>
                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-2 font-mono">{selectedProduct.code}</div>
-                  <h3 className="text-4xl font-black text-slate-900 tracking-tighter italic uppercase">{lang === 'KR' ? selectedProduct.name : (selectedProduct.engName || selectedProduct.name)}</h3>
+                  <h3 className="text-4xl font-black text-slate-900 tracking-tighter italic uppercase">{selectedProduct.name}</h3>
                 </div>
               </div>
 
