@@ -1023,50 +1023,134 @@ const App = () => {
         )
       }
 
-      {/* 7. BUSINESS UNITS (KNITTING / PROCESSING) */}
+      {/* 7. BUSINESS UNITS (ARCHIVE EXPLORER) */}
       {
         (view === 'knitting' || view === 'processing') && (
-          <section className="bg-white min-h-screen pt-40 pb-24">
-            <div className="container mx-auto px-6 md:px-10">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
-                <div>
-                  <div className="flex items-center space-x-3 mb-6">
-                    <span className="px-3 py-1 bg-indigo-600 text-white text-[10px] font-black tracking-widest uppercase rounded-sm">
-                      {view === 'knitting' ? 'UNIT_01' : 'UNIT_02'}
-                    </span>
-                    <div className="w-10 h-[1px] bg-indigo-600"></div>
-                  </div>
-                  <h2 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter leading-none italic uppercase">
-                    {view === 'knitting' ? t.knitting : t.processing}
-                  </h2>
-                </div>
-              </div>
+          <section className="bg-[#f8f9fa] min-h-screen pt-32 pb-24 overflow-hidden">
+            <div className="container mx-auto px-6 md:px-10 h-full">
+              <div className="flex flex-col lg:flex-row gap-12 items-start h-full">
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {(view === 'knitting' ? productsObj.knitting : productsObj.processed).map(p => (
-                  <div
-                    key={p.id}
-                    onClick={() => setSelectedProduct(p)}
-                    className="group bg-white border border-slate-100 rounded-sm overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col h-full"
-                  >
-                    <div className="aspect-[4/3] relative overflow-hidden bg-slate-100">
-                      <VisualPlaceholder text={p.engName} imageSrc={p.imageSrc} cloudinaryId={p.cloudinaryId} />
-                      <div className="absolute inset-0 bg-indigo-600/0 group-hover:bg-indigo-600/10 transition-colors duration-500"></div>
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500 text-indigo-600">
-                        <Plus size={16} />
+                {/* Fixed Sidebar for Category/Filter */}
+                <aside className="w-full lg:w-80 lg:sticky lg:top-40 space-y-12">
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-[2px] bg-indigo-600"></div>
+                      <span className="text-[10px] font-black text-indigo-600 tracking-[0.4em] uppercase">Archive Explorer</span>
+                    </div>
+                    <h2 className="text-4xl font-black text-slate-900 tracking-tighter italic uppercase leading-none">
+                      Technical<br />Archive
+                    </h2>
+                  </div>
+
+                  <nav className="space-y-2 border-l border-slate-200 pl-6">
+                    <button
+                      onClick={() => navigateTo('knitting')}
+                      className={`block w-full text-left py-2 text-sm font-black transition-all group ${view === 'knitting' ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
+                    >
+                      <span className={`inline-block w-2 h-2 rounded-full mr-3 transition-all ${view === 'knitting' ? 'bg-indigo-600 scale-125' : 'bg-transparent border border-slate-300'}`}></span>
+                      KNITTING UNIT
+                    </button>
+                    <button
+                      onClick={() => navigateTo('processing')}
+                      className={`block w-full text-left py-2 text-sm font-black transition-all group ${view === 'processing' ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
+                    >
+                      <span className={`inline-block w-2 h-2 rounded-full mr-3 transition-all ${view === 'processing' ? 'bg-indigo-600 scale-125' : 'bg-transparent border border-slate-300'}`}></span>
+                      PROCESSING UNIT
+                    </button>
+                  </nav>
+
+                  <div className="p-8 bg-white border border-slate-100 rounded-sm space-y-6 shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Category</div>
+                      <div className="text-[10px] font-bold text-slate-900 uppercase">{view === 'knitting' ? 'Knitted' : 'Processed'}</div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Status</div>
+                      <div className="flex items-center space-x-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span className="text-[10px] font-bold text-slate-900 uppercase">Live Archive</span>
                       </div>
                     </div>
-                    <div className="p-8 flex-1 flex flex-col">
-                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 font-mono">{p.code}</div>
-                      <h3 className="text-xl font-black text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors uppercase">{lang === 'KR' ? p.name : (p.engName || p.name)}</h3>
-                      <p className="text-slate-500 text-xs leading-relaxed line-clamp-2 h-10 mb-6">{p.desc}</p>
-                      <div className="mt-auto flex flex-wrap gap-2">
-                        <span className="px-2 py-1 bg-slate-50 text-slate-400 text-[9px] font-black uppercase tracking-widest">{p.material}</span>
-                        <span className="px-2 py-1 bg-slate-50 text-slate-400 text-[9px] font-black uppercase tracking-widest">{p.weight}</span>
+                    <div className="flex items-center justify-between">
+                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Total Entries</div>
+                      <div className="text-[10px] font-mono font-bold text-indigo-600">
+                        {String((view === 'knitting' ? productsObj.knitting : productsObj.processed).length).padStart(3, '0')}
                       </div>
                     </div>
                   </div>
-                ))}
+                </aside>
+
+                {/* Main Product Grid */}
+                <div className="flex-1 w-full h-full">
+                  <div className="mb-12 flex items-center bg-white p-6 border border-slate-100 rounded-sm shadow-sm justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="p-3 bg-slate-50 rounded-sm border border-slate-100 text-indigo-600">
+                        {view === 'knitting' ? <Monitor size={20} /> : <Factory size={20} />}
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Selected Unit</div>
+                        <div className="text-sm font-black uppercase text-slate-900 italic tracking-tight">{view === 'knitting' ? 'Unit 01: Circular Knitting' : 'Unit 02: Specialized Processing'}</div>
+                      </div>
+                    </div>
+                    <div className="hidden md:block text-[9px] font-black text-slate-300 uppercase tracking-[0.3em]">Hwoasung Textile R&D Center</div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                    {(view === 'knitting' ? productsObj.knitting : productsObj.processed).map(p => (
+                      <div
+                        key={p.id}
+                        onClick={() => setSelectedProduct(p)}
+                        className="group bg-white border border-slate-200 rounded-sm overflow-hidden hover:border-indigo-500 transition-all duration-500 cursor-pointer flex flex-col h-full shadow-sm hover:shadow-xl hover:-translate-y-1"
+                      >
+                        {/* Technical Aspect Header */}
+                        <div className="px-5 py-3 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                          <span className="text-[9px] font-black text-indigo-600/60 uppercase tracking-widest font-mono">SPEC://{p.code}</span>
+                          <div className="flex space-x-1">
+                            <div className="w-1 h-1 bg-slate-300 rounded-full"></div>
+                            <div className="w-1 h-1 bg-slate-300 rounded-full"></div>
+                            <div className="w-1 h-1 bg-slate-300 rounded-full"></div>
+                          </div>
+                        </div>
+
+                        {/* Image Presentation */}
+                        <div className="aspect-[4/5] relative overflow-hidden bg-white p-4">
+                          <div className="w-full h-full rounded-sm overflow-hidden relative shadow-inner">
+                            <VisualPlaceholder text={p.engName} imageSrc={p.imageSrc} cloudinaryId={p.cloudinaryId} />
+                            {/* Scanning Line Animation */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent w-full h-[2px] -top-full group-hover:top-full transition-all duration-[2000ms] ease-in-out pointer-events-none"></div>
+                          </div>
+                        </div>
+
+                        {/* Data Sheet Content */}
+                        <div className="p-6 pt-2 flex-1 flex flex-col space-y-4">
+                          <div>
+                            <h3 className="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors uppercase tracking-tight italic mb-1">{lang === 'KR' ? p.name : (p.engName || p.name)}</h3>
+                            <div className="w-8 h-1 bg-slate-200 group-hover:w-16 group-hover:bg-indigo-500 transition-all duration-500"></div>
+                          </div>
+
+                          <p className="text-slate-500 text-[11px] leading-relaxed line-clamp-2 h-8 font-medium italic break-keep">{p.desc}</p>
+
+                          <div className="pt-4 mt-auto border-t border-slate-100 grid grid-cols-2 gap-px bg-slate-100">
+                            <div className="bg-white py-3 px-1 text-center">
+                              <div className="text-[8px] font-black text-slate-400 uppercase mb-1 tracking-tighter">Material</div>
+                              <div className="text-[10px] font-bold text-slate-800 uppercase truncate px-2">{p.material || 'N/A'}</div>
+                            </div>
+                            <div className="bg-white py-3 px-1 text-center border-l border-slate-100">
+                              <div className="text-[8px] font-black text-slate-400 uppercase mb-1 tracking-tighter">Density</div>
+                              <div className="text-[10px] font-bold text-slate-800 uppercase truncate px-2">{p.weight || 'N/A'}</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Action Bar */}
+                        <div className="px-6 py-4 border-t border-slate-100 flex items-center justify-between group-hover:bg-indigo-600 transition-colors duration-500">
+                          <span className="text-[9px] font-black text-slate-400 group-hover:text-white/80 uppercase tracking-widest">Explore Details</span>
+                          <ArrowRight size={14} className="text-slate-400 group-hover:text-white transition-all transform group-hover:translate-x-1" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </section>
