@@ -568,7 +568,7 @@ const App = () => {
         <div className="container mx-auto px-6 md:px-10 flex justify-between items-center">
           <div className="flex items-center space-x-4 md:space-x-8">
             <div className="flex items-center space-x-4 cursor-pointer group" onClick={() => navigateTo('main')}>
-              <div className="w-10 h-10 flex items-center justify-center relative overflow-hidden rounded-sm group-hover:scale-105 transition-transform duration-300">
+              <div className="w-10 h-10 bg-white flex items-center justify-center relative overflow-hidden rounded-sm border border-slate-100 group-hover:scale-105 transition-transform duration-300">
                 <img src="/logo.png" alt="HS" className="w-full h-full object-contain" />
               </div>
               <div className={`flex flex-col transition-colors duration-500 ${!scrolled && view === 'main' ? 'text-white' : 'text-slate-900'}`}>
@@ -995,7 +995,7 @@ const App = () => {
               {/* Core Expertise Grid */}
               <div className="mb-40">
                 <div className="flex items-center space-x-6 mb-20 group">
-                  <div className="w-14 h-14 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                  <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-xl shadow-indigo-600/10 group-hover:scale-110 transition-transform overflow-hidden border border-white/10">
                     <img src="/logo.png" alt="HS" className="w-full h-full object-contain" />
                   </div>
                   <h3 className="text-3xl font-black tracking-tighter italic uppercase">{t.about_expertise_title}</h3>
@@ -1278,7 +1278,7 @@ const App = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center space-x-3 mb-8">
-                <div className="w-10 h-10 flex items-center justify-center rounded-sm overflow-hidden text-white">
+                <div className="w-10 h-10 bg-white flex items-center justify-center rounded-sm overflow-hidden border border-white/5">
                   <img src="/logo.png" alt="HS" className="w-full h-full object-contain" />
                 </div>
                 <span className="text-white font-bold tracking-widest text-lg uppercase">{t.brand}</span>
@@ -1402,7 +1402,7 @@ const App = () => {
             <div className="p-6 md:p-10 flex flex-col h-full">
               <div className="flex justify-between items-center mb-20">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-sm overflow-hidden border border-slate-100">
+                  <div className="w-12 h-12 bg-white flex items-center justify-center rounded-sm overflow-hidden border border-slate-100">
                     <img src="/logo.png" alt="HS" className="w-full h-full object-contain" />
                   </div>
                   <span className="font-bold text-xl tracking-[0.15em] leading-none uppercase">{t.brand}</span>
