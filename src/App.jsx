@@ -451,6 +451,34 @@ const App = () => {
     return unsubscribe;
   }, []);
 
+  // Content Protection (Disable Right-click, Copy, Save, etc.)
+  useEffect(() => {
+    const handleContextMenu = (e) => e.preventDefault();
+    const handleDragStart = (e) => e.preventDefault();
+    const handleKeyDown = (e) => {
+      // Disable Ctrl+C, Ctrl+S, Ctrl+U, F12
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        (e.key === 'c' || e.key === 's' || e.key === 'u' || e.key === 'C' || e.key === 'S' || e.key === 'U')
+      ) {
+        e.preventDefault();
+      }
+      if (e.key === 'F12') {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('dragstart', handleDragStart);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('dragstart', handleDragStart);
+    };
+  }, []);
+
   // 네이버 지도 검색 URL
   const NAVER_MAP_URL = "https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%97%B0%EC%B2%9C%20%EC%B2%AD%EC%82%B0%EB%A9%B4%20%EC%A0%84%EC%98%81%EB%A1%9C%20441%20%ED%99%94%EC%84%B1%EC%84%AC%EC%9C%A0";
 
