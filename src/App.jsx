@@ -228,7 +228,17 @@ const TRANSLATIONS = {
     step_03_t: "Integrated Finishing",
     step_03_d: "Dyeing, Bonding, Printing, etc.",
     step_04_t: "Final Inspection & Shipment",
-    step_04_d: "Quality Check by Process"
+    step_04_d: "Quality Check by Process",
+    archive_explorer: "Archive Explorer",
+    technical_archive: "Technical Archive",
+    nav_knitting: "KNITTING UNIT",
+    nav_processing: "PROCESSING UNIT",
+    label_category: "Category",
+    label_status: "Status",
+    label_live: "Live Archive",
+    label_total: "Total Entries",
+    label_selected_unit: "Unit Info",
+    label_explore: "Explore Details"
   }
 };
 // --- 2. 제품 데이터 로더 ---
@@ -1058,14 +1068,14 @@ const App = () => {
                       className={`block w-full text-left py-2 text-sm font-black transition-all group ${view === 'knitting' ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <span className={`inline-block w-2 h-2 rounded-full mr-3 transition-all ${view === 'knitting' ? 'bg-indigo-600 scale-125' : 'bg-transparent border border-slate-300'}`}></span>
-                      KNITTING UNIT
+                      {t.nav_knitting}
                     </button>
                     <button
                       onClick={() => navigateTo('processing')}
                       className={`block w-full text-left py-2 text-sm font-black transition-all group ${view === 'processing' ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <span className={`inline-block w-2 h-2 rounded-full mr-3 transition-all ${view === 'processing' ? 'bg-indigo-600 scale-125' : 'bg-transparent border border-slate-300'}`}></span>
-                      PROCESSING UNIT
+                      {t.nav_processing}
                     </button>
                   </nav>
 
