@@ -643,6 +643,21 @@ const App = () => {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
+  // Tally Embed Script loader for SPA
+  useEffect(() => {
+    if (view === 'inquiry') {
+      if (window.Tally) {
+        window.Tally.loadEmbeds();
+      } else {
+        // Fallback for script loading
+        const script = document.createElement('script');
+        script.src = "https://tally.so/widgets/embed.js";
+        script.onload = () => { if (window.Tally) window.Tally.loadEmbeds(); };
+        document.body.appendChild(script);
+      }
+    }
+  }, [view]);
+
   if (view === 'admin') {
     return <AdminPortal onBack={() => setView('main')} />;
   }
@@ -1311,14 +1326,14 @@ const App = () => {
                 <div className="w-full bg-white rounded-sm relative">
                   <iframe
                     data-tally-src="https://tally.so/embed/wovxA1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-                    src="https://tally.so/embed/wovxA1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
                     width="100%"
-                    height="100%"
+                    height="500"
                     frameBorder="0"
                     marginHeight="0"
                     marginWidth="0"
                     title="Hwoasung Textile Inquiry Form"
-                    className="w-full min-h-[600px]"
+                    className="w-full"
+                    scrolling="no"
                   ></iframe>
                 </div>
               </div>
