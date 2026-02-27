@@ -360,7 +360,7 @@ const FloatingButtons = React.memo(({ show }) => {
   ];
 
   return (
-    <div className={`fixed bottom-28 right-6 md:bottom-10 md:right-10 z-[100] flex flex-col items-end space-y-3 md:space-y-4 transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+    <div className={`fixed bottom-20 right-6 md:bottom-10 md:right-10 z-[100] flex flex-col items-end space-y-3 md:space-y-4 transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
       {buttons.map((btn, i) => (
         <a
           key={i}
