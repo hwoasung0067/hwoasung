@@ -763,7 +763,9 @@ const App = () => {
       setScrolled(window.scrollY > 50);
 
       // Show floating CTA if scrolled past hero on main, or always on subpages
-      if (view === 'main') {
+      if (view === 'inquiry') {
+        setShowFloatingCTA(false);
+      } else if (view === 'main') {
         setShowFloatingCTA(window.scrollY > 600);
       } else {
         setShowFloatingCTA(true);
