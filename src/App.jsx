@@ -380,6 +380,22 @@ const FloatingButtons = React.memo(() => {
   );
 });
 
+const PersistentCTA = React.memo(({ show, label, onClick }) => {
+  return (
+    <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-[110] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+      <button
+        onClick={onClick}
+        className="group flex items-center space-x-4 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_25px_50px_rgba(79,70,229,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 border border-white/10"
+      >
+        <span className="text-[11px] font-black tracking-[0.2em] uppercase whitespace-nowrap">{label}</span>
+        <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+          <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+        </div>
+      </button>
+    </div>
+  );
+});
+
 const InteractiveMap = ({ naverUrl }) => (
   <div className="relative w-full h-full group/map">
     <iframe
@@ -411,6 +427,15 @@ const App = () => {
   const [isBusinessOpen, setIsBusinessOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [dbProducts, setDbProducts] = useState([]);
+  const [showFloatingCTA, setShowFloatingCTA] = useState(false);
+
+  const contactRef = useRef(null);
+
+  const scrollToContact = () => {
+    if (contactRef.current) {
+      contactRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Fetch Dynamic Products from Firestore
   useEffect(() => {
@@ -535,10 +560,20 @@ const App = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Show floating CTA if scrolled past hero on main, or always on subpages
+      if (view === 'main') {
+        setShowFloatingCTA(window.scrollY > 600);
+      } else {
+        setShowFloatingCTA(true);
+      }
+    };
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [view]);
 
   const statsRef = useRef(null);
   const [statsVisible, setStatsVisible] = useState(false);
@@ -1207,7 +1242,7 @@ const App = () => {
       }
 
       {/* 8. CONTACT SECTION (COMMON) */}
-      <section className="bg-slate-50 py-24 md:py-40 border-t border-slate-100 relative overflow-hidden">
+      <section ref={contactRef} className="bg-slate-50 py-24 md:py-40 border-t border-slate-100 relative overflow-hidden">
         {/* Background Grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '100px 100px' }}></div>
 
@@ -1439,6 +1474,7 @@ const App = () => {
         )
       }
       <FloatingButtons />
+      <PersistentCTA show={showFloatingCTA} label={t.cta} onClick={scrollToContact} />
     </div>
   );
 };
