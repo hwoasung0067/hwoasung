@@ -615,20 +615,29 @@ const App = () => {
 
       {/* 2. HERO SECTION (MAIN VIEW ONLY) */}
       {view === 'main' && (
-        <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#0A0D14]">
-          {/* Background Stripes Pattern */}
-          <div className="absolute inset-0 z-0 opacity-40"
+        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#0A0D14]">
+          {/* Spline 3D Background */}
+          <div className="absolute inset-0 z-0">
+            <iframe
+              src='https://my.spline.design/particles-t0bekvsK9XIZHGVAfV2URGD7/'
+              frameBorder='0'
+              width='100%'
+              height='100%'
+              className="w-full h-full scale-110 md:scale-100"
+              style={{ pointerEvents: 'auto' }}
+            ></iframe>
+            {/* Dark Gradient Overlay for Legibility */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0D14]/80 via-[#0A0D14]/40 to-[#0A0D14] z-10"></div>
+          </div>
+
+          {/* Background Stripes Pattern (Subtle) */}
+          <div className="absolute inset-0 z-[1] opacity-20 pointer-events-none"
             style={{
               backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 15px, rgba(255,255,255,0.02) 15px, rgba(255,255,255,0.02) 16px)'
             }}>
           </div>
 
-          {/* Glowing Background Elements */}
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/10 rounded-full blur-[120px] animate-pulse"></div>
-          </div>
-
-          <div className="container mx-auto px-6 md:px-10 relative z-10 text-center">
+          <div className="container mx-auto px-6 md:px-10 relative z-20 text-center">
             <div className="max-w-5xl mx-auto">
               <div className="flex flex-wrap items-center justify-center gap-3 mb-10 animate-in fade-in slide-in-from-top-4 duration-1000">
                 {t.hero_tags.split(' · ').map((tag, i) => (
