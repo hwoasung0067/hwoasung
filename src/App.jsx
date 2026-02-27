@@ -1595,7 +1595,7 @@ const App = () => {
                 </div>
               </div>
 
-              <div className="w-full md:w-1/2 p-10 md:p-16 overflow-y-auto max-h-[80vh] md:max-h-none">
+              <div className="w-full md:w-1/2 px-10 pt-10 pb-24 md:p-16 overflow-y-auto max-h-[80vh] md:max-h-none">
                 <div className="mb-12">
                   <h4 className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.2em] mb-8 flex items-center">
                     <div className="w-4 h-4 rounded-full border border-indigo-200 flex items-center justify-center mr-3"><div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div></div>
