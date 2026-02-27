@@ -830,7 +830,7 @@ const App = () => {
 
       {/* 2. HERO SECTION (MAIN VIEW ONLY) */}
       {view === 'main' && (
-        <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center pt-28 md:pt-20 overflow-hidden bg-[#0A0D14]">
+        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-32 md:pt-20 overflow-hidden bg-[#0A0D14]">
           {/* Spline 3D Background */}
           <div className="absolute inset-0 z-0">
             <iframe
@@ -838,7 +838,7 @@ const App = () => {
               frameBorder='0'
               width='100%'
               height='100%'
-              className="w-full h-full scale-[1.8] opacity-60 md:scale-110 md:opacity-100 lg:scale-100"
+              className="w-full h-full scale-[1.8] opacity-60 md:scale-[1.2] md:opacity-100 lg:scale-[1.1]"
               style={{ pointerEvents: 'auto' }}
             ></iframe>
             {/* Dark Gradient Overlay for Legibility */}
@@ -862,7 +862,7 @@ const App = () => {
                 ))}
               </div>
 
-              <h1 className="text-5xl md:text-[6.5rem] font-black text-white leading-[1.1] md:leading-tight tracking-tighter mb-8 md:mb-12 italic animate-in fade-in zoom-in-95 duration-1000 delay-200">
+              <h1 className="text-5xl md:text-[6.5rem] font-black text-white leading-[1.1] md:leading-tight tracking-tighter mb-12 italic animate-in fade-in zoom-in-95 duration-1000 delay-200">
                 <span className="relative inline-block">
                   {lang === 'KR' ? (
                     <>느낌을 <br className="md:hidden" /> 스펙으로<span className="text-white">.</span></>
@@ -875,7 +875,7 @@ const App = () => {
               </h1>
 
               <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
-                <div className="max-w-2xl mb-10 md:mb-16 px-6 py-6 md:px-8 md:py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl relative group/card">
+                <div className="max-w-2xl mb-6 md:mb-16 px-6 py-6 md:px-8 md:py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl relative group/card">
                   {/* Brand Accent Line */}
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-3/4 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
 
@@ -893,7 +893,7 @@ const App = () => {
 
                 <button
                   onClick={() => navigateTo('inquiry')}
-                  className="group relative px-10 py-4 md:px-16 md:py-7 bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 transition-all duration-500 rounded-lg shadow-[0_10px_30px_-10px_rgba(79,70,229,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(79,70,229,0.6)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95 overflow-hidden border border-white/10"
+                  className="group relative px-10 py-5 md:px-16 md:py-7 bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 transition-all duration-500 rounded-lg shadow-[0_10px_30px_-10px_rgba(79,70,229,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(79,70,229,0.6)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95 overflow-hidden border border-white/10"
                 >
                   {/* Scanning Beam Effect */}
                   <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
