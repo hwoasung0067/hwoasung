@@ -880,7 +880,7 @@ const App = () => {
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-3/4 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
 
                   <div className="pl-6 text-left">
-                    <p className="text-white font-black text-xl md:text-3xl mb-4 md:mb-6 tracking-tight drop-shadow-2xl flex items-center">
+                    <p className="text-white font-black text-lg md:text-3xl mb-4 md:mb-6 tracking-tight drop-shadow-2xl flex items-center">
                       {t.hero_p_line1}
                     </p>
                     <p className="text-slate-100 text-base md:text-xl font-medium leading-relaxed break-keep">
