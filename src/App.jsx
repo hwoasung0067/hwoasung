@@ -360,7 +360,7 @@ const FloatingButtons = React.memo(({ show }) => {
   ];
 
   return (
-    <div className={`fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-3 md:space-y-4 md:bottom-10 md:right-10 max-sm:bottom-[100px] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+    <div className={`fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-3 md:space-y-4 md:bottom-10 md:right-10 max-sm:bottom-[70px] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
       {buttons.map((btn, i) => (
         <a
           key={i}
@@ -876,7 +876,7 @@ const App = () => {
               </h1>
 
               <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
-                <div className="max-w-2xl mb-6 md:mb-16 px-6 py-6 md:px-8 md:py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl relative group/card">
+                <div className="max-w-2xl mb-10 md:mb-16 px-6 py-6 md:px-8 md:py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl relative group/card">
                   {/* Brand Accent Line */}
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-3/4 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
 
@@ -894,7 +894,7 @@ const App = () => {
 
                 <button
                   onClick={() => navigateTo('inquiry')}
-                  className="group relative px-10 py-5 md:px-16 md:py-7 bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 transition-all duration-500 rounded-lg shadow-[0_10px_30px_-10px_rgba(79,70,229,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(79,70,229,0.6)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95 overflow-hidden border border-white/10"
+                  className="group relative px-10 py-4 md:px-16 md:py-7 bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 transition-all duration-500 rounded-lg shadow-[0_10px_30px_-10px_rgba(79,70,229,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(79,70,229,0.6)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95 overflow-hidden border border-white/10"
                 >
                   {/* Scanning Beam Effect */}
                   <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
