@@ -143,7 +143,8 @@ const TRANSLATIONS = {
     label_total: "총 항목",
     label_selected_unit: "선택된 비즈니스",
     label_explore: "상세 정보",
-    inquiry: "비즈니스 문의"
+    label_explore: "상세 정보",
+    inquiry: "문의"
   },
   EN: {
     brand: "Hwoasung Textile",
@@ -505,16 +506,24 @@ const InquiryForm = ({ lang, onSubmit }) => {
         <div className="space-y-6">
           <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">{lang === 'KR' ? '문의 카테고리' : 'Inquiry Category'}</label>
           <div className="flex flex-wrap gap-4">
-            {['Knitting', 'Processed', 'Development', 'Other'].map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setFormData(prev => ({ ...prev, materialType: cat }))}
-                className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${formData.materialType === cat ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'bg-white text-slate-400 border border-slate-100 hover:border-indigo-600 hover:text-indigo-600'}`}
-              >
-                {cat}
-              </button>
-            ))}
+            {['Knitting', 'Processed', 'Development', 'Other'].map((cat) => {
+              const catLabels = {
+                'Knitting': { KR: '편직 / 생지', EN: 'Knitting' },
+                'Processed': { KR: '가공지', EN: 'Processed' },
+                'Development': { KR: '신규 개발', EN: 'Development' },
+                'Other': { KR: '기타', EN: 'Other' }
+              };
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, materialType: cat }))}
+                  className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${formData.materialType === cat ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'bg-white text-slate-400 border border-slate-100 hover:border-indigo-600 hover:text-indigo-600'}`}
+                >
+                  {lang === 'KR' ? catLabels[cat].KR : catLabels[cat].EN}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -813,7 +822,23 @@ const App = () => {
           <div className="hidden md:flex space-x-10 text-[10px] font-black tracking-[0.2em] items-center">
             <button onClick={() => navigateTo('main')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'main' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.home}</button>
             <button onClick={() => navigateTo('about')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'about' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.about}</button>
-            <button onClick={() => navigateTo('processing')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${(view === 'knitting' || view === 'processing') ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.business}</button>
+            <div className="relative" onMouseEnter={() => setIsBusinessOpen(true)} onMouseLeave={() => setIsBusinessOpen(false)}>
+              <button className={`flex items-center transition-all duration-500 uppercase ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${(view === 'knitting' || view === 'processing') ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>
+                {t.business} <ChevronDown size={12} className={`ml-1 transition-transform ${isBusinessOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <div className={`absolute top-full left-0 w-64 pt-6 transition-all duration-300 transform ${isBusinessOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
+                <div className="bg-white border border-slate-100 shadow-2xl rounded-sm p-2">
+                  <button onClick={() => navigateTo('knitting')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors border-b border-slate-50">
+                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest">UNIT_01</span>
+                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">{t.knitting}</span>
+                  </button>
+                  <button onClick={() => navigateTo('processing')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors">
+                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest">UNIT_02</span>
+                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">{t.processing}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
             <button onClick={() => navigateTo('inquiry')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'inquiry' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.inquiry}</button>
             <div className={`flex items-center space-x-2 border-l pl-8 font-mono ${!scrolled && view === 'main' ? 'border-white/20' : 'border-slate-200'}`}>
               <button onClick={() => setLang('KR')} className={`transition-all ${lang === 'KR' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>KR</button>
