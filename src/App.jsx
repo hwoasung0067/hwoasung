@@ -1308,7 +1308,7 @@ const App = () => {
                   {t.inquiry}
                 </h2>
 
-                <div className="w-full bg-white rounded-sm overflow-hidden border border-slate-100 shadow-sm min-h-[800px] relative">
+                <div className="w-full bg-white rounded-sm relative">
                   <iframe
                     data-tally-src="https://tally.so/embed/wovxA1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
                     src="https://tally.so/embed/wovxA1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
@@ -1318,7 +1318,7 @@ const App = () => {
                     marginHeight="0"
                     marginWidth="0"
                     title="Hwoasung Textile Inquiry Form"
-                    className="w-full"
+                    className="w-full min-h-[600px]"
                   ></iframe>
                 </div>
               </div>
