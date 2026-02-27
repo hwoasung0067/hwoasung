@@ -44,6 +44,8 @@ import {
 } from 'lucide-react';
 
 // --- 1. 전역 상수 데이터 ---
+const TALLY_FORM_URL = "https://tally.so/r/wovxA1";
+
 const TRANSLATIONS = {
   KR: {
     brand: "화성섬유",
@@ -398,166 +400,6 @@ const PersistentCTA = React.memo(({ show, label, onClick }) => {
   );
 });
 
-const InquiryForm = ({ lang, onSubmit }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    phone: '',
-    email: '',
-    materialType: 'Knitting',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    const success = await onSubmit(formData);
-    setIsSubmitting(false);
-    if (success) {
-      setIsSuccess(true);
-      setFormData({ name: '', company: '', phone: '', email: '', materialType: 'Knitting', message: '' });
-    } else {
-      alert(lang === 'KR' ? '발송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' : 'An error occurred. Please try again later.');
-    }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  if (isSuccess) {
-    return (
-      <div className="bg-slate-50 border border-slate-100 p-12 md:p-20 text-center rounded-sm animate-in fade-in zoom-in-95 duration-700">
-        <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white mx-auto mb-8 shadow-2xl shadow-indigo-600/20">
-          <CheckCircle2 size={40} />
-        </div>
-        <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tight uppercase italic">
-          {lang === 'KR' ? '문의가 접수되었습니다' : 'Inquiry Received'}
-        </h3>
-        <p className="text-slate-500 mb-10 max-w-md mx-auto leading-relaxed">
-          {lang === 'KR'
-            ? '보내주신 소중한 문의 내용을 검토 후 빠른 시일 내에 답변드리겠습니다. 감사합니다.'
-            : 'We have received your inquiry. Our experts will review your details and get back to you shortly.'}
-        </p>
-        <button
-          onClick={() => setIsSuccess(false)}
-          className="text-xs font-black text-indigo-600 uppercase tracking-widest border-b-2 border-indigo-600/20 hover:border-indigo-600 transition-all"
-        >
-          {lang === 'KR' ? '추가 문의하기' : 'Send Another Inquiry'}
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-8 md:space-y-12 bg-slate-50 p-8 md:p-16 border border-slate-100 rounded-sm shadow-sm">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-        <div className="space-y-2">
-          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">{lang === 'KR' ? '이름' : 'Name'} *</label>
-          <input
-            required
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder={lang === 'KR' ? '실명을 입력해주세요' : 'Your full name'}
-            className="w-full bg-white border-b-2 border-slate-100 focus:border-indigo-600 py-4 px-0 outline-none transition-all text-sm font-bold text-slate-900 placeholder:text-slate-200"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">{lang === 'KR' ? '회사명 / 브랜드명' : 'Company / Brand'} *</label>
-          <input
-            required
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            placeholder={lang === 'KR' ? '회사명을 입력해주세요' : 'Company or Brand name'}
-            className="w-full bg-white border-b-2 border-slate-100 focus:border-indigo-600 py-4 px-0 outline-none transition-all text-sm font-bold text-slate-900 placeholder:text-slate-200"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">{lang === 'KR' ? '연락처' : 'Phone Number'} *</label>
-          <input
-            required
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder={lang === 'KR' ? '010-0000-0000' : 'Your phone number'}
-            className="w-full bg-white border-b-2 border-slate-100 focus:border-indigo-600 py-4 px-0 outline-none transition-all text-sm font-bold text-slate-900 placeholder:text-slate-200"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">{lang === 'KR' ? '이메일 주소' : 'Email Address'} *</label>
-          <input
-            required
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="example@email.com"
-            className="w-full bg-white border-b-2 border-slate-100 focus:border-indigo-600 py-4 px-0 outline-none transition-all text-sm font-bold text-slate-900 placeholder:text-slate-200"
-          />
-        </div>
-      </div>
-
-      <div className="space-y-10 pt-4">
-        <div className="space-y-6">
-          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">{lang === 'KR' ? '문의 카테고리' : 'Inquiry Category'}</label>
-          <div className="flex flex-wrap gap-4">
-            {['Knitting', 'Processed', 'Development', 'Other'].map((cat) => {
-              const catLabels = {
-                'Knitting': { KR: '편직 / 생지', EN: 'Knitting' },
-                'Processed': { KR: '가공지', EN: 'Processed' },
-                'Development': { KR: '신규 개발', EN: 'Development' },
-                'Other': { KR: '기타', EN: 'Other' }
-              };
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setFormData(prev => ({ ...prev, materialType: cat }))}
-                  className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${formData.materialType === cat ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'bg-white text-slate-400 border border-slate-100 hover:border-indigo-600 hover:text-indigo-600'}`}
-                >
-                  {lang === 'KR' ? catLabels[cat].KR : catLabels[cat].EN}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">{lang === 'KR' ? '상세 문의 내용' : 'Message'} *</label>
-          <textarea
-            required
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            rows={5}
-            placeholder={lang === 'KR' ? '필요하신 스펙이나 원단의 특징 등 상세한 내용을 적어주세요. 샘플 분석을 원하실 경우 분석 대상을 적어주시면 좋습니다.' : 'Please describe your request in detail. Mention specific fabric specs or if you want a sample analysis.'}
-            className="w-full bg-white border-b-2 border-slate-100 focus:border-indigo-600 py-4 px-0 outline-none transition-all text-sm font-bold text-slate-900 placeholder:text-slate-200 resize-none"
-          ></textarea>
-        </div>
-      </div>
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="group relative w-full py-8 bg-slate-900 hover:bg-indigo-600 text-white transition-all duration-500 rounded-sm flex items-center justify-center space-x-6 overflow-hidden disabled:opacity-50 disabled:cursor-wait shadow-2xl shadow-slate-900/10"
-      >
-        <div className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-        <span className="relative text-base font-black tracking-[0.2em] uppercase">
-          {isSubmitting
-            ? (lang === 'KR' ? '발송 중...' : 'Sending...')
-            : (lang === 'KR' ? '비즈니스 문의 보내기' : 'Submit Business Inquiry')}
-        </span>
-        {!isSubmitting && <ArrowRight size={24} className="relative group-hover:translate-x-3 transition-transform" />}
-      </button>
-    </form>
-  );
-};
-
 const InteractiveMap = ({ naverUrl }) => (
   <div className="relative w-full h-full group/map">
     <iframe
@@ -627,13 +469,23 @@ const App = () => {
   // EmailJS initialization
   useEffect(() => {
     if (window.emailjs) {
-      window.emailjs.init("YOUR_PUBLIC_KEY"); // Placeholder, user will need to update this
+      // NOTE: Replace "YOUR_PUBLIC_KEY" with your actual key from EmailJS Account
+      const publicKey = "YOUR_PUBLIC_KEY";
+      if (publicKey !== "YOUR_PUBLIC_KEY") {
+        window.emailjs.init(publicKey);
+      }
     }
   }, []);
 
   const handleInquirySubmit = async (formData) => {
     if (!window.emailjs) {
-      alert("Email service is not initialized. Please try again later.");
+      alert(lang === 'KR' ? "메일 서비스 초기화 실패. 나중에 다시 시도해주세요." : "Email service is not initialized. Please try again later.");
+      return;
+    }
+
+    const publicKey = "YOUR_PUBLIC_KEY";
+    if (publicKey === "YOUR_PUBLIC_KEY") {
+      alert(lang === 'KR' ? "이메일 설정(API Key)이 완료되지 않았습니다. 관리자에게 문의하세요." : "Email configuration (API Key) is missing. Please contact the administrator.");
       return;
     }
 
@@ -785,6 +637,10 @@ const App = () => {
   }, []);
 
   const navigateTo = useCallback((newView) => {
+    if (newView === 'inquiry') {
+      window.open(TALLY_FORM_URL, '_blank');
+      return;
+    }
     setView(newView);
     setSelectedProduct(null);
     setIsMobileMenuOpen(false);
