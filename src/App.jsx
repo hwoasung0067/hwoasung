@@ -144,7 +144,9 @@ const TRANSLATIONS = {
     label_total: "총 항목",
     label_selected_unit: "선택된 비즈니스",
     label_explore: "상세 정보",
-    inquiry: "비즈니스 문의"
+    inquiry: "비즈니스 문의",
+    btn_back: "돌아가기",
+    btn_more: "더 알아보기"
   },
   EN: {
     brand: "Hwoasung Textile",
@@ -243,7 +245,9 @@ const TRANSLATIONS = {
     label_live: "Live Archive",
     label_total: "Total Entries",
     label_selected_unit: "Unit Info",
-    label_explore: "Explore Details"
+    label_explore: "Explore Details",
+    btn_back: "Return",
+    btn_more: "Learn More"
   }
 };
 // --- 2. 제품 데이터 로더 ---
@@ -1573,12 +1577,12 @@ const App = () => {
         selectedProduct && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300">
             <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-xl" onClick={() => setSelectedProduct(null)}></div>
-            <div className="relative w-full max-w-5xl bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row animate-in zoom-in-95 duration-500 origin-center">
+            <div className="relative w-full max-w-5xl bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row animate-in zoom-in-95 duration-500 origin-center md:rounded-sm">
               <button
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-6 right-6 z-10 w-12 h-12 bg-white/10 hover:bg-white text-slate-900 border border-slate-100 flex items-center justify-center transition-all duration-300 group shadow-xl"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white text-slate-900 border border-slate-200/50 flex items-center justify-center transition-all duration-300 group shadow-xl backdrop-blur-md rounded-full md:rounded-sm"
               >
-                <X size={20} className="group-hover:rotate-90 transition-transform" />
+                <X size={18} className="group-hover:rotate-90 transition-transform" />
               </button>
 
               <div className="w-full md:w-1/2 bg-slate-100 relative aspect-[4/3] md:aspect-auto">
@@ -1595,7 +1599,7 @@ const App = () => {
                 </div>
               </div>
 
-              <div className="w-full md:w-1/2 px-10 pt-10 pb-24 md:p-16 overflow-y-auto max-h-[80vh] md:max-h-none">
+              <div className="w-full md:w-1/2 px-6 pt-6 pb-20 md:p-16 overflow-y-auto max-h-[75vh] md:max-h-none">
                 <div className="mb-12">
                   <h4 className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.2em] mb-8 flex items-center">
                     <div className="w-4 h-4 rounded-full border border-indigo-200 flex items-center justify-center mr-3"><div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div></div>
@@ -1640,13 +1644,38 @@ const App = () => {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => navigateTo('inquiry')}
-                  className="w-full py-5 bg-slate-950 hover:bg-indigo-600 text-white transition-all duration-500 flex items-center justify-center space-x-4 group rounded-sm border border-white/5 hover:border-white/20"
-                >
-                  <span className="text-[11px] font-black tracking-[0.2em] uppercase">{t.cta_quote}</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-                </button>
+                <div className="grid grid-cols-1 gap-3">
+                  <button
+                    onClick={() => navigateTo('inquiry')}
+                    className="w-full py-4 md:py-5 bg-indigo-600 hover:bg-indigo-700 text-white transition-all duration-500 flex items-center justify-center space-x-3 group rounded-sm shadow-lg shadow-indigo-200"
+                  >
+                    <span className="text-[10px] md:text-[11px] font-black tracking-[0.2em] uppercase">{t.cta_quote}</span>
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      onClick={() => setSelectedProduct(null)}
+                      className="py-4 bg-slate-100 hover:bg-slate-200 text-slate-900 transition-all duration-300 flex items-center justify-center space-x-2 group rounded-sm border border-slate-200"
+                    >
+                      <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                      <span className="text-[10px] font-black tracking-[0.1em] uppercase">{t.btn_back}</span>
+                    </button>
+
+                    {view === 'main' && (
+                      <button
+                        onClick={() => {
+                          navigateTo(selectedProduct.type === 'processed' ? 'processing' : 'knitting');
+                          setSelectedProduct(null);
+                        }}
+                        className="py-4 bg-white hover:bg-slate-50 text-indigo-600 transition-all duration-300 flex items-center justify-center space-x-2 group rounded-sm border border-indigo-100"
+                      >
+                        <span className="text-[10px] font-black tracking-[0.1em] uppercase">{t.btn_more}</span>
+                        <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
