@@ -145,8 +145,7 @@ const TRANSLATIONS = {
     label_total: "총 항목",
     label_selected_unit: "선택된 비즈니스",
     label_explore: "상세 정보",
-    label_explore: "상세 정보",
-    inquiry: "문의"
+    inquiry: "비즈니스 문의"
   },
   EN: {
     brand: "Hwoasung Textile",
@@ -1054,7 +1053,7 @@ const App = () => {
                   {t.about_hero_tag}
                 </div>
 
-                <h2 className="text-[12vw] md:text-[8rem] font-black leading-[0.8] tracking-tighter mb-16 italic uppercase animate-in fade-in zoom-in-95 duration-1000">
+                <h2 className="text-[12vw] md:text-[8rem] font-black leading-[0.8] tracking-tighter mb-16 italic uppercase">
                   <span className="text-white block">Hwoasung</span>
                   <span className="text-indigo-500 block">Roots.</span>
                 </h2>
@@ -1306,19 +1305,20 @@ const App = () => {
                   <span className="text-xs font-black text-indigo-600 tracking-[0.3em] uppercase">Inquiry</span>
                 </div>
                 <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-12 italic">
-                  {lang === 'KR' ? '문의' : 'Inquiry'}
+                  {t.inquiry}
                 </h2>
 
-                <div className="w-full bg-slate-50 rounded-sm overflow-hidden border border-slate-100 shadow-sm min-h-[800px] relative">
+                <div className="w-full bg-white rounded-sm overflow-hidden border border-slate-100 shadow-sm min-h-[800px] relative">
                   <iframe
-                    src={TALLY_FORM_URL}
+                    data-tally-src="https://tally.so/embed/wovxA1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                    src="https://tally.so/embed/wovxA1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
                     width="100%"
-                    height="800"
+                    height="100%"
                     frameBorder="0"
                     marginHeight="0"
                     marginWidth="0"
                     title="Hwoasung Textile Inquiry Form"
-                    className="w-full h-[800px] md:h-[1000px]"
+                    className="w-full"
                   ></iframe>
                 </div>
               </div>
