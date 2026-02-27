@@ -642,6 +642,77 @@ const App = () => {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
+  // Dynamic SEO Title & Meta Description Update
+  useEffect(() => {
+    const seoData = {
+      KR: {
+        main: {
+          title: "편직공장 및 원단생산 전문 | 화성섬유",
+          desc: "30년 이상 경력으로 균일한 품질, 빠른 납기로 안정적인 원단 공급을 보장합니다. 화성섬유의 정밀 샘플 분석과 원스톱 생산 시스템을 확인하세요."
+        },
+        about: {
+          title: "화성섬유의 뿌리와 전문성 | 원단 분석의 기준",
+          desc: "30년 제조 노하우로 원사부터 공정까지 정밀 분석하여 최적의 원단 솔루션을 제안하는 화성섬유입니다."
+        },
+        knitting: {
+          title: "고성능 편직 및 생지 제품 전문 생산 | 원단 제조 인프라",
+          desc: "최신 환편기 설비와 다양한 게이지 인프라를 통해 어떠한 원단 스펙에도 즉각 대응하는 화성섬유의 편직 서비스를 확인하세요."
+        },
+        processing: {
+          title: "프리미엄 가공지 인벤토리 | 보드레, 플리스, 기술 본딩 원단",
+          desc: "화성섬유가 엄선하고 데이터화한 고품질 가공 원단 아카이브입니다. 시그니처 가공지 라인업을 탐색해 보세요."
+        },
+        inquiry: {
+          title: "원단 제작 및 샘플 분석 문의 | 화성섬유 비즈니스 협업",
+          desc: "원단 분석 요청부터 견적 문의까지, 화성섬유의 전문가가 신속하게 연락드립니다. 비즈니스 파트너십을 시작하세요."
+        }
+      },
+      EN: {
+        main: {
+          title: "Knitting Factory & Textile Production | Hwoasung Textile",
+          desc: "Ensuring stable textile supply with over 30 years of experience, consistent quality, and fast delivery."
+        },
+        about: {
+          title: "Roots and Expertise of Hwoasung | The Standard for Textile Analysis",
+          desc: "Providing optimal textile solutions based on 30 years of manufacturing know-how, precise yarn and process analysis."
+        },
+        knitting: {
+          title: "High-Performance Knitting & Raw Fabric Production | Infrastructure",
+          desc: "Explore our knitting services with state-of-the-art circular knitting machines and multi-gauge infrastructure."
+        },
+        processing: {
+          title: "Premium Processed Inventory | Velvet, Fleece, Technical Bonding",
+          desc: "Discover our archive of high-quality processed fabrics carefully selected and documented by Hwoasung."
+        },
+        inquiry: {
+          title: "Textile Production & Sample Analysis | Business Collaboration",
+          desc: "From analysis requests to quotes, reach out for business partnerships with Hwoasung Textile experts."
+        }
+      }
+    };
+
+    const currentSeo = seoData[lang]?.[view] || seoData[lang]?.main;
+    if (currentSeo) {
+      document.title = currentSeo.title;
+
+      const updateMeta = (name, content, attr = 'name') => {
+        let element = document.querySelector(`meta[${attr}="${name}"]`);
+        if (!element) {
+          element = document.createElement('meta');
+          element.setAttribute(attr, name);
+          document.head.appendChild(element);
+        }
+        element.setAttribute('content', content);
+      };
+
+      updateMeta('description', currentSeo.desc);
+      updateMeta('og:title', currentSeo.title, 'property');
+      updateMeta('og:description', currentSeo.desc, 'property');
+      updateMeta('twitter:title', currentSeo.title);
+      updateMeta('twitter:description', currentSeo.desc);
+    }
+  }, [view, lang]);
+
   // Tally Embed Script loader for SPA
   useEffect(() => {
     if (view === 'inquiry') {
