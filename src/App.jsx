@@ -55,7 +55,6 @@ const TRANSLATIONS = {
     business: "비즈니스",
     knitting: "편직 / 생지",
     processing: "가공지 인벤토리",
-    inquiry: "문의하기",
     hero_tags: "편직공장 · 다이마루 · 폴리에스테르 전문",
     hero_h1: "느낌을 스펙으로.",
     hero_p_line1: "원단 이름을 몰라도 괜찮습니다.",
