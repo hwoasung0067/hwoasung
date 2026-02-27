@@ -694,6 +694,7 @@ const App = () => {
     const currentSeo = seoData[lang]?.[view] || seoData[lang]?.main;
     if (currentSeo) {
       document.title = currentSeo.title;
+      document.documentElement.lang = lang.toLowerCase() === 'kr' ? 'ko' : 'en';
 
       const updateMeta = (name, content, attr = 'name') => {
         let element = document.querySelector(`meta[${attr}="${name}"]`);
@@ -707,6 +708,7 @@ const App = () => {
 
       updateMeta('description', currentSeo.desc);
       updateMeta('og:title', currentSeo.title, 'property');
+      updateMeta('og:site_name', currentSeo.title, 'property');
       updateMeta('og:description', currentSeo.desc, 'property');
       updateMeta('twitter:title', currentSeo.title);
       updateMeta('twitter:description', currentSeo.desc);
