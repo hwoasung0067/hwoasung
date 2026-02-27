@@ -44,6 +44,8 @@ import {
 } from 'lucide-react';
 
 // --- 1. 전역 상수 데이터 ---
+const TALLY_FORM_URL = "https://tally.so/embed/wovxA1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
+
 const TRANSLATIONS = {
   KR: {
     brand: "화성섬유",
@@ -53,12 +55,11 @@ const TRANSLATIONS = {
     business: "비즈니스",
     knitting: "편직 / 생지",
     processing: "가공지 인벤토리",
-    inquiry: "문의하기",
     hero_tags: "편직공장 · 다이마루 · 폴리에스테르 전문",
     hero_h1: "느낌을 스펙으로.",
-    hero_p_line1: "> 원단 이름을 몰라도 괜찮습니다.",
+    hero_p_line1: "원단 이름을 몰라도 괜찮습니다.",
     hero_p_line2: "샘플 한 장이면 딱 맞는 스펙을 찾아냅니다.",
-    cta: "지금 샘플 분석 요청하기",
+    cta: "지금 문의하기",
     cta_tooltip: "30년 전문가와 연결됩니다",
     stats_history_val: "30",
     stats_history_label: "제조 연력",
@@ -142,7 +143,8 @@ const TRANSLATIONS = {
     label_live: "라이브 아카이브",
     label_total: "총 항목",
     label_selected_unit: "선택된 비즈니스",
-    label_explore: "상세 정보"
+    label_explore: "상세 정보",
+    inquiry: "비즈니스 문의"
   },
   EN: {
     brand: "Hwoasung Textile",
@@ -358,7 +360,7 @@ const FloatingButtons = React.memo(() => {
   ];
 
   return (
-    <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-4">
+    <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-4 md:bottom-10 md:right-10 max-sm:bottom-[100px]">
       {buttons.map((btn, i) => (
         <a
           key={i}
@@ -376,6 +378,22 @@ const FloatingButtons = React.memo(() => {
           </div>
         </a>
       ))}
+    </div>
+  );
+});
+
+const PersistentCTA = React.memo(({ show, label, onClick }) => {
+  return (
+    <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-[110] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+      <button
+        onClick={onClick}
+        className="group flex items-center space-x-4 bg-indigo-600/90 backdrop-blur-md hover:bg-indigo-600 text-white px-10 py-4 rounded-full shadow-[0_10px_30px_rgba(79,70,229,0.2)] hover:shadow-[0_15px_40px_rgba(79,70,229,0.3)] transition-all duration-500 hover:scale-105 active:scale-95 border border-white/20"
+      >
+        <span className="text-[10px] md:text-[11px] font-black tracking-[0.2em] uppercase whitespace-nowrap">{label}</span>
+        <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/40 transition-colors">
+          <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+        </div>
+      </button>
     </div>
   );
 });
@@ -411,6 +429,15 @@ const App = () => {
   const [isBusinessOpen, setIsBusinessOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [dbProducts, setDbProducts] = useState([]);
+  const [showFloatingCTA, setShowFloatingCTA] = useState(false);
+
+  const contactRef = useRef(null);
+
+  const scrollToContact = () => {
+    if (contactRef.current) {
+      contactRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Fetch Dynamic Products from Firestore
   useEffect(() => {
@@ -422,6 +449,34 @@ const App = () => {
       console.error("App.jsx Firestore Listener Error:", error);
     });
     return unsubscribe;
+  }, []);
+
+  // Content Protection (Disable Right-click, Copy, Save, etc.)
+  useEffect(() => {
+    const handleContextMenu = (e) => e.preventDefault();
+    const handleDragStart = (e) => e.preventDefault();
+    const handleKeyDown = (e) => {
+      // Disable Ctrl+C, Ctrl+S, Ctrl+U, F12
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        (e.key === 'c' || e.key === 's' || e.key === 'u' || e.key === 'C' || e.key === 'S' || e.key === 'U')
+      ) {
+        e.preventDefault();
+      }
+      if (e.key === 'F12') {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('dragstart', handleDragStart);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('dragstart', handleDragStart);
+    };
   }, []);
 
   // 네이버 지도 검색 URL
@@ -436,6 +491,53 @@ const App = () => {
     }, 1500);
     return () => clearInterval(timer);
   }, [view]);
+
+  // EmailJS initialization
+  useEffect(() => {
+    if (window.emailjs) {
+      // NOTE: Replace "YOUR_PUBLIC_KEY" with your actual key from EmailJS Account
+      const publicKey = "YOUR_PUBLIC_KEY";
+      if (publicKey !== "YOUR_PUBLIC_KEY") {
+        window.emailjs.init(publicKey);
+      }
+    }
+  }, []);
+
+  const handleInquirySubmit = async (formData) => {
+    if (!window.emailjs) {
+      alert(lang === 'KR' ? "메일 서비스 초기화 실패. 나중에 다시 시도해주세요." : "Email service is not initialized. Please try again later.");
+      return;
+    }
+
+    const publicKey = "YOUR_PUBLIC_KEY";
+    if (publicKey === "YOUR_PUBLIC_KEY") {
+      alert(lang === 'KR' ? "이메일 설정(API Key)이 완료되지 않았습니다. 관리자에게 문의하세요." : "Email configuration (API Key) is missing. Please contact the administrator.");
+      return;
+    }
+
+    try {
+      // NOTE: These are placeholders. The user will need to set up an EmailJS account
+      // to get a Service ID and Template ID.
+      // I will provide instructions on how to set this up.
+      await window.emailjs.send(
+        "service_hwoasung",
+        "template_inquiry",
+        {
+          from_name: formData.name,
+          company: formData.company,
+          phone: formData.phone,
+          email: formData.email,
+          material_type: formData.materialType,
+          message: formData.message,
+          to_email: "hwoasung0068@gmail.com"
+        }
+      );
+      return true;
+    } catch (error) {
+      console.error("Email submission error:", error);
+      return false;
+    }
+  };
 
   // Memoized Data
   const t = useMemo(() => TRANSLATIONS[lang], [lang]);
@@ -535,10 +637,22 @@ const App = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Show floating CTA if scrolled past hero on main, or always on subpages
+      if (view === 'inquiry') {
+        setShowFloatingCTA(false);
+      } else if (view === 'main') {
+        setShowFloatingCTA(window.scrollY > 600);
+      } else {
+        setShowFloatingCTA(true);
+      }
+    };
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [view]);
 
   const statsRef = useRef(null);
   const [statsVisible, setStatsVisible] = useState(false);
@@ -556,6 +670,94 @@ const App = () => {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
+  // Dynamic SEO Title & Meta Description Update
+  useEffect(() => {
+    const seoData = {
+      KR: {
+        main: {
+          title: "편직공장 및 원단생산 전문 | 화성섬유",
+          desc: "30년 이상 경력으로 균일한 품질, 빠른 납기로 안정적인 원단 공급을 보장합니다. 화성섬유의 정밀 샘플 분석과 원스톱 생산 시스템을 확인하세요."
+        },
+        about: {
+          title: "화성섬유의 뿌리와 전문성 | 원단 분석의 기준",
+          desc: "30년 제조 노하우로 원사부터 공정까지 정밀 분석하여 최적의 원단 솔루션을 제안하는 화성섬유입니다."
+        },
+        knitting: {
+          title: "고성능 편직 및 생지 제품 전문 생산 | 원단 제조 인프라",
+          desc: "최신 환편기 설비와 다양한 게이지 인프라를 통해 어떠한 원단 스펙에도 즉각 대응하는 화성섬유의 편직 서비스를 확인하세요."
+        },
+        processing: {
+          title: "프리미엄 가공지 인벤토리 | 보드레, 플리스, 기술 본딩 원단",
+          desc: "화성섬유가 엄선하고 데이터화한 고품질 가공 원단 아카이브입니다. 시그니처 가공지 라인업을 탐색해 보세요."
+        },
+        inquiry: {
+          title: "원단 제작 및 샘플 분석 문의 | 화성섬유 비즈니스 협업",
+          desc: "원단 분석 요청부터 견적 문의까지, 화성섬유의 전문가가 신속하게 연락드립니다. 비즈니스 파트너십을 시작하세요."
+        }
+      },
+      EN: {
+        main: {
+          title: "Knitting Factory & Textile Production | Hwoasung Textile",
+          desc: "Ensuring stable textile supply with over 30 years of experience, consistent quality, and fast delivery."
+        },
+        about: {
+          title: "Roots and Expertise of Hwoasung | The Standard for Textile Analysis",
+          desc: "Providing optimal textile solutions based on 30 years of manufacturing know-how, precise yarn and process analysis."
+        },
+        knitting: {
+          title: "High-Performance Knitting & Raw Fabric Production | Infrastructure",
+          desc: "Explore our knitting services with state-of-the-art circular knitting machines and multi-gauge infrastructure."
+        },
+        processing: {
+          title: "Premium Processed Inventory | Velvet, Fleece, Technical Bonding",
+          desc: "Discover our archive of high-quality processed fabrics carefully selected and documented by Hwoasung."
+        },
+        inquiry: {
+          title: "Textile Production & Sample Analysis | Business Collaboration",
+          desc: "From analysis requests to quotes, reach out for business partnerships with Hwoasung Textile experts."
+        }
+      }
+    };
+
+    const currentSeo = seoData[lang]?.[view] || seoData[lang]?.main;
+    if (currentSeo) {
+      document.title = currentSeo.title;
+      document.documentElement.lang = lang.toLowerCase() === 'kr' ? 'ko' : 'en';
+
+      const updateMeta = (name, content, attr = 'name') => {
+        let element = document.querySelector(`meta[${attr}="${name}"]`);
+        if (!element) {
+          element = document.createElement('meta');
+          element.setAttribute(attr, name);
+          document.head.appendChild(element);
+        }
+        element.setAttribute('content', content);
+      };
+
+      updateMeta('description', currentSeo.desc);
+      updateMeta('og:title', currentSeo.title, 'property');
+      updateMeta('og:site_name', currentSeo.title, 'property');
+      updateMeta('og:description', currentSeo.desc, 'property');
+      updateMeta('twitter:title', currentSeo.title);
+      updateMeta('twitter:description', currentSeo.desc);
+    }
+  }, [view, lang]);
+
+  // Tally Embed Script loader for SPA
+  useEffect(() => {
+    if (view === 'inquiry') {
+      if (window.Tally) {
+        window.Tally.loadEmbeds();
+      } else {
+        // Fallback for script loading
+        const script = document.createElement('script');
+        script.src = "https://tally.so/widgets/embed.js";
+        script.onload = () => { if (window.Tally) window.Tally.loadEmbeds(); };
+        document.body.appendChild(script);
+      }
+    }
+  }, [view]);
+
   if (view === 'admin') {
     return <AdminPortal onBack={() => setView('main')} />;
   }
@@ -568,9 +770,8 @@ const App = () => {
         <div className="container mx-auto px-6 md:px-10 flex justify-between items-center">
           <div className="flex items-center space-x-4 md:space-x-8">
             <div className="flex items-center space-x-4 cursor-pointer group" onClick={() => navigateTo('main')}>
-              <div className="w-10 h-10 bg-slate-900 flex items-center justify-center text-white font-black text-xs relative overflow-hidden rounded-sm">
-                <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                <span className="relative z-10">HS</span>
+              <div className="w-10 h-10 bg-white flex items-center justify-center relative overflow-hidden rounded-sm border border-slate-100 group-hover:scale-105 transition-transform duration-300">
+                <img src="/logo.png" alt="HS" className="w-full h-full object-contain" />
               </div>
               <div className={`flex flex-col transition-colors duration-500 ${!scrolled && view === 'main' ? 'text-white' : 'text-slate-900'}`}>
                 <span className="font-bold text-xl tracking-[0.15em] leading-none">{t.brand}</span>
@@ -587,29 +788,40 @@ const App = () => {
           </div>
 
           <div className="hidden md:flex space-x-10 text-[10px] font-black tracking-[0.2em] items-center">
-            <button onClick={() => navigateTo('main')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'main' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.home}</button>
-            <button onClick={() => navigateTo('about')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'about' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.about}</button>
+            <button onClick={() => navigateTo('main')} className={`relative group transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}>
+              {t.home}
+              <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full ${view === 'main' ? 'w-full' : ''}`}></span>
+            </button>
+            <button onClick={() => navigateTo('about')} className={`relative group transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}>
+              {t.about}
+              <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full ${view === 'about' ? 'w-full' : ''}`}></span>
+            </button>
             <div className="relative" onMouseEnter={() => setIsBusinessOpen(true)} onMouseLeave={() => setIsBusinessOpen(false)}>
-              <button className={`flex items-center transition-all duration-500 uppercase ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${(view === 'knitting' || view === 'processing') ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>
+              <button className={`relative group flex items-center transition-all duration-500 uppercase ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}>
                 {t.business} <ChevronDown size={12} className={`ml-1 transition-transform ${isBusinessOpen ? 'rotate-180' : ''}`} />
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full ${(view === 'knitting' || view === 'processing') ? 'w-full' : ''}`}></span>
               </button>
-              <div className={`absolute top-full left-0 w-64 pt-6 transition-all duration-300 transform ${isBusinessOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
-                <div className="bg-white border border-slate-100 shadow-2xl rounded-sm p-2">
-                  <button onClick={() => navigateTo('knitting')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors border-b border-slate-50">
-                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest">UNIT_01</span>
-                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">{t.knitting}</span>
+              <div className={`absolute top-full left-1/2 -translate-x-1/2 w-64 pt-6 transition-all duration-300 transform ${isBusinessOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
+                <div className="bg-white border border-slate-100 shadow-2xl rounded-sm p-2 overflow-hidden">
+                  <button onClick={() => navigateTo('knitting')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors border-b border-slate-50 group/item">
+                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest group-hover/item:opacity-100 transition-opacity">UNIT_01</span>
+                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight group-hover/item:text-indigo-600 transition-colors">{t.knitting}</span>
                   </button>
-                  <button onClick={() => navigateTo('processing')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors">
-                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest">UNIT_02</span>
-                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">{t.processing}</span>
+                  <button onClick={() => navigateTo('processing')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors group/item">
+                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest group-hover/item:opacity-100 transition-opacity">UNIT_02</span>
+                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight group-hover/item:text-indigo-600 transition-colors">{t.processing}</span>
                   </button>
                 </div>
               </div>
             </div>
+            <button onClick={() => navigateTo('inquiry')} className={`relative group transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}>
+              {t.inquiry}
+              <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full ${view === 'inquiry' ? 'w-full' : ''}`}></span>
+            </button>
             <div className={`flex items-center space-x-2 border-l pl-8 font-mono ${!scrolled && view === 'main' ? 'border-white/20' : 'border-slate-200'}`}>
-              <button onClick={() => setLang('KR')} className={`transition-all ${lang === 'KR' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>KR</button>
+              <button onClick={() => setLang('KR')} className={`transition-all hover:scale-110 ${lang === 'KR' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>KR</button>
               <span className={!scrolled && view === 'main' ? 'text-white/20' : 'text-slate-300'}>|</span>
-              <button onClick={() => setLang('EN')} className={`transition-all ${lang === 'EN' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>EN</button>
+              <button onClick={() => setLang('EN')} className={`transition-all hover:scale-110 ${lang === 'EN' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>EN</button>
             </div>
           </div>
           <button aria-label="Toggle Menu" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className={`md:hidden p-2 ${!scrolled && view === 'main' ? 'text-white' : 'text-slate-900'}`}><Menu size={24} /></button>
@@ -618,7 +830,7 @@ const App = () => {
 
       {/* 2. HERO SECTION (MAIN VIEW ONLY) */}
       {view === 'main' && (
-        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#0A0D14]">
+        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-32 md:pt-20 overflow-hidden bg-[#0A0D14]">
           {/* Spline 3D Background */}
           <div className="absolute inset-0 z-0">
             <iframe
@@ -642,7 +854,7 @@ const App = () => {
 
           <div className="container mx-auto px-6 md:px-10 relative z-20 text-center">
             <div className="max-w-5xl mx-auto">
-              <div className="flex flex-wrap items-center justify-center gap-3 mb-10 animate-in fade-in slide-in-from-top-4 duration-1000">
+              <div className="flex flex-wrap items-center justify-center gap-3 mb-6 md:mb-10 animate-in fade-in slide-in-from-top-4 duration-1000">
                 {t.hero_tags.split(' · ').map((tag, i) => (
                   <span key={i} className="px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-white/70 text-[10px] font-bold tracking-[0.15em] uppercase transition-colors hover:bg-white/10">
                     {tag}
@@ -650,9 +862,13 @@ const App = () => {
                 ))}
               </div>
 
-              <h1 className="text-5xl md:text-[6.5rem] font-black text-white leading-tight tracking-tighter mb-12 italic animate-in fade-in zoom-in-95 duration-1000 delay-200">
+              <h1 className="text-5xl md:text-[6.5rem] font-black text-white leading-[1.1] md:leading-tight tracking-tighter mb-12 italic animate-in fade-in zoom-in-95 duration-1000 delay-200">
                 <span className="relative inline-block">
-                  {t.hero_h1.split('.')[0]}<span className="text-white">.</span>
+                  {lang === 'KR' ? (
+                    <>느낌을 <br className="md:hidden" /> 스펙으로<span className="text-white">.</span></>
+                  ) : (
+                    <>{t.hero_h1.split('.')[0]}<span className="text-white">.</span></>
+                  )}
                   <div className="absolute -bottom-4 left-0 w-full h-8 bg-indigo-600/40 -z-10 blur-xl"></div>
                   <div className="absolute -bottom-2 left-0 w-full h-1.5 bg-indigo-500 rounded-full"></div>
                 </span>
@@ -665,7 +881,6 @@ const App = () => {
 
                   <div className="pl-6 text-left">
                     <p className="text-white font-black text-2xl md:text-3xl mb-6 tracking-tight drop-shadow-2xl flex items-center">
-                      <span className="text-indigo-500 mr-3 opacity-50 font-mono text-xl">&gt;</span>
                       {t.hero_p_line1}
                     </p>
                     <p className="text-slate-100 text-lg md:text-xl font-medium leading-relaxed break-keep">
@@ -677,11 +892,14 @@ const App = () => {
                 </div>
 
                 <button
-                  onClick={() => navigateTo('about')}
-                  className="group relative px-10 py-6 md:px-16 md:py-8 bg-white hover:bg-indigo-600 transition-all duration-500 rounded-lg shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95"
+                  onClick={() => navigateTo('inquiry')}
+                  className="group relative px-10 py-5 md:px-16 md:py-7 bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 transition-all duration-500 rounded-lg shadow-[0_10px_30px_-10px_rgba(79,70,229,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(79,70,229,0.6)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95 overflow-hidden border border-white/10"
                 >
-                  <span className="text-slate-950 group-hover:text-white text-sm md:text-base font-black tracking-[0.1em] uppercase">{t.cta}</span>
-                  <ArrowRight className="text-slate-950 group-hover:text-white group-hover:translate-x-3 transition-transform shrink-0" size={24} />
+                  {/* Scanning Beam Effect */}
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
+
+                  <span className="text-white text-sm md:text-base font-black tracking-[0.15em] uppercase transition-colors duration-500 relative z-10">{t.cta}</span>
+                  <ArrowRight size={24} className="text-white group-hover:translate-x-3 transition-all duration-500 shrink-0 relative z-10" />
                 </button>
               </div>
             </div>
@@ -963,7 +1181,7 @@ const App = () => {
                   {t.about_hero_tag}
                 </div>
 
-                <h2 className="text-[12vw] md:text-[8rem] font-black leading-[0.8] tracking-tighter mb-16 italic uppercase animate-in fade-in zoom-in-95 duration-1000">
+                <h2 className="text-[12vw] md:text-[8rem] font-black leading-[0.8] tracking-tighter mb-16 italic uppercase">
                   <span className="text-white block">Hwoasung</span>
                   <span className="text-indigo-500 block">Roots.</span>
                 </h2>
@@ -993,7 +1211,9 @@ const App = () => {
               {/* Core Expertise Grid */}
               <div className="mb-40">
                 <div className="flex items-center space-x-6 mb-20 group">
-                  <div className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center text-white font-black italic shadow-xl shadow-indigo-600/20 group-hover:scale-110 transition-transform">HS</div>
+                  <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-xl shadow-indigo-600/10 group-hover:scale-110 transition-transform overflow-hidden border border-white/10">
+                    <img src="/logo.png" alt="HS" className="w-full h-full object-contain" />
+                  </div>
                   <h3 className="text-3xl font-black tracking-tighter italic uppercase">{t.about_expertise_title}</h3>
                   <div className="flex-1 h-[1px] bg-white/10"></div>
                 </div>
@@ -1202,8 +1422,41 @@ const App = () => {
         )
       }
 
+      {/* 12. INQUIRY PAGE VIEW (EMBEDDED TALLY FORM) */}
+      {
+        view === 'inquiry' && (
+          <section className="pt-32 pb-24 bg-white min-h-screen">
+            <div className="container mx-auto px-6 md:px-10">
+              <div className="max-w-5xl mx-auto">
+                <div className="inline-flex items-center space-x-3 mb-6">
+                  <div className="w-10 h-[1px] bg-indigo-600"></div>
+                  <span className="text-xs font-black text-indigo-600 tracking-[0.3em] uppercase">Inquiry</span>
+                </div>
+                <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-12 italic">
+                  {t.inquiry}
+                </h2>
+
+                <div className="w-full bg-white rounded-sm relative">
+                  <iframe
+                    data-tally-src="https://tally.so/embed/wovxA1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                    width="100%"
+                    height="500"
+                    frameBorder="0"
+                    marginHeight="0"
+                    marginWidth="0"
+                    title="Hwoasung Textile Inquiry Form"
+                    className="w-full"
+                    scrolling="no"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </section>
+        )
+      }
+
       {/* 8. CONTACT SECTION (COMMON) */}
-      <section className="bg-slate-50 py-24 md:py-40 border-t border-slate-100 relative overflow-hidden">
+      <section ref={contactRef} className="bg-slate-50 py-24 md:py-40 border-t border-slate-100 relative overflow-hidden">
         {/* Background Grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '100px 100px' }}></div>
 
@@ -1274,7 +1527,9 @@ const App = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center space-x-3 mb-8">
-                <div className="w-8 h-8 bg-indigo-600 flex items-center justify-center text-white font-black text-[10px]">HS</div>
+                <div className="w-10 h-10 bg-white flex items-center justify-center rounded-sm overflow-hidden border border-white/5">
+                  <img src="/logo.png" alt="HS" className="w-full h-full object-contain" />
+                </div>
                 <span className="text-white font-bold tracking-widest text-lg uppercase">{t.brand}</span>
               </div>
               <p className="text-slate-500 text-xs leading-relaxed max-w-xs">{t.about_hero_sub}</p>
@@ -1379,8 +1634,11 @@ const App = () => {
                   </div>
                 </div>
 
-                <button className="w-full py-6 bg-slate-900 hover:bg-indigo-600 text-white transition-all duration-500 flex items-center justify-center space-x-4 group shadow-xl shadow-slate-900/10">
-                  <span className="text-xs font-black tracking-widest uppercase">{t.cta_quote}</span>
+                <button
+                  onClick={() => navigateTo('inquiry')}
+                  className="w-full py-5 bg-slate-950 hover:bg-indigo-600 text-white transition-all duration-500 flex items-center justify-center space-x-4 group rounded-sm border border-white/5 hover:border-white/20"
+                >
+                  <span className="text-[11px] font-black tracking-[0.2em] uppercase">{t.cta_quote}</span>
                   <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                 </button>
               </div>
@@ -1396,7 +1654,9 @@ const App = () => {
             <div className="p-6 md:p-10 flex flex-col h-full">
               <div className="flex justify-between items-center mb-20">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-slate-900 flex items-center justify-center text-white font-black text-[10px]">HS</div>
+                  <div className="w-12 h-12 bg-white flex items-center justify-center rounded-sm overflow-hidden border border-slate-100">
+                    <img src="/logo.png" alt="HS" className="w-full h-full object-contain" />
+                  </div>
                   <span className="font-bold text-xl tracking-[0.15em] leading-none uppercase">{t.brand}</span>
                 </div>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="w-12 h-12 flex items-center justify-center text-slate-900 border border-slate-100"><X size={24} /></button>
@@ -1419,6 +1679,10 @@ const App = () => {
                   <span className="text-[10px] font-mono text-indigo-600 block mb-1">04</span>
                   <span className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic group-hover:pl-4 transition-all duration-500">{t.processing}</span>
                 </button>
+                <button onClick={() => navigateTo('inquiry')} className="text-left group">
+                  <span className="text-[10px] font-mono text-indigo-600 block mb-1">05</span>
+                  <span className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic group-hover:pl-4 transition-all duration-500">{t.inquiry}</span>
+                </button>
               </div>
 
               <div className="mt-auto py-10 border-t border-slate-100">
@@ -1430,7 +1694,9 @@ const App = () => {
           </div>
         )
       }
+
       <FloatingButtons />
+      <PersistentCTA show={showFloatingCTA} label={t.cta} onClick={() => navigateTo('inquiry')} />
     </div>
   );
 };

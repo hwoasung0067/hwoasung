@@ -59,7 +59,7 @@ const TRANSLATIONS = {
     hero_h1: "느낌을 스펙으로.",
     hero_p_line1: "원단 이름을 몰라도 괜찮습니다.",
     hero_p_line2: "샘플 한 장이면 딱 맞는 스펙을 찾아냅니다.",
-    cta: "지금 샘플 분석 요청하기",
+    cta: "지금 문의하기",
     cta_tooltip: "30년 전문가와 연결됩니다",
     stats_history_val: "30",
     stats_history_label: "제조 연력",
@@ -360,7 +360,7 @@ const FloatingButtons = React.memo(() => {
   ];
 
   return (
-    <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-4">
+    <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-4 md:bottom-10 md:right-10 max-sm:bottom-[100px]">
       {buttons.map((btn, i) => (
         <a
           key={i}
@@ -387,10 +387,10 @@ const PersistentCTA = React.memo(({ show, label, onClick }) => {
     <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-[110] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
       <button
         onClick={onClick}
-        className="group flex items-center space-x-4 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_25px_50px_rgba(79,70,229,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 border border-white/10"
+        className="group flex items-center space-x-4 bg-indigo-600/90 backdrop-blur-md hover:bg-indigo-600 text-white px-10 py-4 rounded-full shadow-[0_10px_30px_rgba(79,70,229,0.2)] hover:shadow-[0_15px_40px_rgba(79,70,229,0.3)] transition-all duration-500 hover:scale-105 active:scale-95 border border-white/20"
       >
-        <span className="text-[11px] font-black tracking-[0.2em] uppercase whitespace-nowrap">{label}</span>
-        <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+        <span className="text-[10px] md:text-[11px] font-black tracking-[0.2em] uppercase whitespace-nowrap">{label}</span>
+        <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/40 transition-colors">
           <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
         </div>
       </button>
@@ -788,30 +788,40 @@ const App = () => {
           </div>
 
           <div className="hidden md:flex space-x-10 text-[10px] font-black tracking-[0.2em] items-center">
-            <button onClick={() => navigateTo('main')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'main' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.home}</button>
-            <button onClick={() => navigateTo('about')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'about' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.about}</button>
+            <button onClick={() => navigateTo('main')} className={`relative group transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}>
+              {t.home}
+              <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full ${view === 'main' ? 'w-full' : ''}`}></span>
+            </button>
+            <button onClick={() => navigateTo('about')} className={`relative group transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}>
+              {t.about}
+              <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full ${view === 'about' ? 'w-full' : ''}`}></span>
+            </button>
             <div className="relative" onMouseEnter={() => setIsBusinessOpen(true)} onMouseLeave={() => setIsBusinessOpen(false)}>
-              <button className={`flex items-center transition-all duration-500 uppercase ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${(view === 'knitting' || view === 'processing') ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>
+              <button className={`relative group flex items-center transition-all duration-500 uppercase ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}>
                 {t.business} <ChevronDown size={12} className={`ml-1 transition-transform ${isBusinessOpen ? 'rotate-180' : ''}`} />
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full ${(view === 'knitting' || view === 'processing') ? 'w-full' : ''}`}></span>
               </button>
-              <div className={`absolute top-full left-0 w-64 pt-6 transition-all duration-300 transform ${isBusinessOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
-                <div className="bg-white border border-slate-100 shadow-2xl rounded-sm p-2">
-                  <button onClick={() => navigateTo('knitting')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors border-b border-slate-50">
-                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest">UNIT_01</span>
-                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">{t.knitting}</span>
+              <div className={`absolute top-full left-1/2 -translate-x-1/2 w-64 pt-6 transition-all duration-300 transform ${isBusinessOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
+                <div className="bg-white border border-slate-100 shadow-2xl rounded-sm p-2 overflow-hidden">
+                  <button onClick={() => navigateTo('knitting')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors border-b border-slate-50 group/item">
+                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest group-hover/item:opacity-100 transition-opacity">UNIT_01</span>
+                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight group-hover/item:text-indigo-600 transition-colors">{t.knitting}</span>
                   </button>
-                  <button onClick={() => navigateTo('processing')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors">
-                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest">UNIT_02</span>
-                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">{t.processing}</span>
+                  <button onClick={() => navigateTo('processing')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors group/item">
+                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest group-hover/item:opacity-100 transition-opacity">UNIT_02</span>
+                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight group-hover/item:text-indigo-600 transition-colors">{t.processing}</span>
                   </button>
                 </div>
               </div>
             </div>
-            <button onClick={() => navigateTo('inquiry')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'inquiry' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.inquiry}</button>
+            <button onClick={() => navigateTo('inquiry')} className={`relative group transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}>
+              {t.inquiry}
+              <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-indigo-500 transition-all duration-300 group-hover:w-full ${view === 'inquiry' ? 'w-full' : ''}`}></span>
+            </button>
             <div className={`flex items-center space-x-2 border-l pl-8 font-mono ${!scrolled && view === 'main' ? 'border-white/20' : 'border-slate-200'}`}>
-              <button onClick={() => setLang('KR')} className={`transition-all ${lang === 'KR' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>KR</button>
+              <button onClick={() => setLang('KR')} className={`transition-all hover:scale-110 ${lang === 'KR' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>KR</button>
               <span className={!scrolled && view === 'main' ? 'text-white/20' : 'text-slate-300'}>|</span>
-              <button onClick={() => setLang('EN')} className={`transition-all ${lang === 'EN' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>EN</button>
+              <button onClick={() => setLang('EN')} className={`transition-all hover:scale-110 ${lang === 'EN' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>EN</button>
             </div>
           </div>
           <button aria-label="Toggle Menu" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className={`md:hidden p-2 ${!scrolled && view === 'main' ? 'text-white' : 'text-slate-900'}`}><Menu size={24} /></button>
@@ -820,7 +830,7 @@ const App = () => {
 
       {/* 2. HERO SECTION (MAIN VIEW ONLY) */}
       {view === 'main' && (
-        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#0A0D14]">
+        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-32 md:pt-20 overflow-hidden bg-[#0A0D14]">
           {/* Spline 3D Background */}
           <div className="absolute inset-0 z-0">
             <iframe
@@ -844,7 +854,7 @@ const App = () => {
 
           <div className="container mx-auto px-6 md:px-10 relative z-20 text-center">
             <div className="max-w-5xl mx-auto">
-              <div className="flex flex-wrap items-center justify-center gap-3 mb-10 animate-in fade-in slide-in-from-top-4 duration-1000">
+              <div className="flex flex-wrap items-center justify-center gap-3 mb-6 md:mb-10 animate-in fade-in slide-in-from-top-4 duration-1000">
                 {t.hero_tags.split(' · ').map((tag, i) => (
                   <span key={i} className="px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-white/70 text-[10px] font-bold tracking-[0.15em] uppercase transition-colors hover:bg-white/10">
                     {tag}
@@ -883,10 +893,13 @@ const App = () => {
 
                 <button
                   onClick={() => navigateTo('inquiry')}
-                  className="group relative px-10 py-6 md:px-16 md:py-8 bg-white hover:bg-indigo-600 transition-all duration-500 rounded-lg shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95"
+                  className="group relative px-10 py-5 md:px-16 md:py-7 bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 transition-all duration-500 rounded-lg shadow-[0_10px_30px_-10px_rgba(79,70,229,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(79,70,229,0.6)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95 overflow-hidden border border-white/10"
                 >
-                  <span className="text-slate-950 group-hover:text-white text-sm md:text-base font-black tracking-[0.1em] uppercase">{t.cta}</span>
-                  <ArrowRight className="text-slate-950 group-hover:text-white group-hover:translate-x-3 transition-transform shrink-0" size={24} />
+                  {/* Scanning Beam Effect */}
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
+
+                  <span className="text-white text-sm md:text-base font-black tracking-[0.15em] uppercase transition-colors duration-500 relative z-10">{t.cta}</span>
+                  <ArrowRight size={24} className="text-white group-hover:translate-x-3 transition-all duration-500 shrink-0 relative z-10" />
                 </button>
               </div>
             </div>
@@ -1623,9 +1636,9 @@ const App = () => {
 
                 <button
                   onClick={() => navigateTo('inquiry')}
-                  className="w-full py-6 bg-slate-900 hover:bg-indigo-600 text-white transition-all duration-500 flex items-center justify-center space-x-4 group shadow-xl shadow-slate-900/10"
+                  className="w-full py-5 bg-slate-950 hover:bg-indigo-600 text-white transition-all duration-500 flex items-center justify-center space-x-4 group rounded-sm border border-white/5 hover:border-white/20"
                 >
-                  <span className="text-xs font-black tracking-widest uppercase">{t.cta_quote}</span>
+                  <span className="text-[11px] font-black tracking-[0.2em] uppercase">{t.cta_quote}</span>
                   <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                 </button>
               </div>
