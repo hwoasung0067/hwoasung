@@ -1295,32 +1295,6 @@ const App = () => {
         )
       }
 
-      {/* 12. INQUIRY PAGE VIEW */}
-      {
-        view === 'inquiry' && (
-          <section className="pt-40 pb-24 md:pb-40 bg-white min-h-[60vh]">
-            <div className="container mx-auto px-6 md:px-10">
-              <div className="max-w-4xl mx-auto">
-                <div className="inline-flex items-center space-x-3 mb-6">
-                  <div className="w-10 h-[1px] bg-indigo-600"></div>
-                  <span className="text-xs font-black text-indigo-600 tracking-[0.3em] uppercase">Inquiry</span>
-                </div>
-                <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-12 italic">
-                  {lang === 'KR' ? '비즈니스 문의' : 'Business Inquiry'}
-                </h2>
-                <p className="text-slate-500 text-lg md:text-xl font-medium mb-16 leading-relaxed break-keep">
-                  {lang === 'KR'
-                    ? '협업 제안, 샘플 분석 요청 등 화성섬유에 궁금한 점을 남겨주시면 담당자가 신속하게 연락드리겠습니다.'
-                    : 'Please leave any inquiries regarding collaboration or sample analysis. Our team will contact you shortly.'}
-                </p>
-
-                <InquiryForm lang={lang} onSubmit={handleInquirySubmit} />
-              </div>
-            </div>
-          </section>
-        )
-      }
-
       {/* 12. INQUIRY PAGE VIEW (EMBEDDED TALLY FORM) */}
       {
         view === 'inquiry' && (
