@@ -1581,12 +1581,17 @@ const App = () => {
                 <X size={20} className="group-hover:rotate-90 transition-transform" />
               </button>
 
-              <div className="w-full md:w-1/2 bg-slate-100 relative">
+              <div className="w-full md:w-1/2 bg-slate-100 relative aspect-[4/3] md:aspect-auto">
                 <VisualPlaceholder text={selectedProduct.engName} cloudinaryId={selectedProduct.cloudinaryId} imageSrc={selectedProduct.imageSrc} />
-                <div className="absolute top-10 left-10">
-                  <div className="w-16 h-1 bg-indigo-600 mb-6"></div>
-                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-2 font-mono">{selectedProduct.code}</div>
-                  <h3 className="text-4xl font-black text-slate-900 tracking-tighter italic uppercase">{lang === 'KR' ? selectedProduct.name : (selectedProduct.engName || selectedProduct.name)}</h3>
+                <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 bg-gradient-to-t from-white via-white/20 to-transparent md:from-transparent md:via-transparent">
+                  <div className="w-12 h-1 bg-indigo-600 mb-4 md:mb-6"></div>
+                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1 font-mono">{selectedProduct.code}</div>
+                  <h3 className="text-2xl md:text-4xl font-black text-slate-900 tracking-tighter italic uppercase leading-none mb-1">
+                    {lang === 'KR' ? selectedProduct.name : (selectedProduct.engName || selectedProduct.name)}
+                  </h3>
+                  {lang === 'KR' && selectedProduct.engName && (
+                    <div className="text-xs md:text-sm font-bold text-slate-400 uppercase tracking-tight">{selectedProduct.engName}</div>
+                  )}
                 </div>
               </div>
 
