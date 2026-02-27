@@ -360,7 +360,7 @@ const FloatingButtons = React.memo(({ show }) => {
   ];
 
   return (
-    <div className={`fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-4 md:bottom-10 md:right-10 max-sm:bottom-[100px] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+    <div className={`fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-3 md:space-y-4 md:bottom-10 md:right-10 max-sm:bottom-[100px] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
       {buttons.map((btn, i) => (
         <a
           key={i}
@@ -373,8 +373,9 @@ const FloatingButtons = React.memo(({ show }) => {
             {btn.name}
             <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 border-8 border-transparent border-left-slate-900 border-l-slate-900"></div>
           </div>
-          <div className={`${btn.color} ${btn.textColor} w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300`}>
-            {btn.icon(28)}
+          <div className={`${btn.color} ${btn.textColor} w-11 h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300`}>
+            <div className="hidden md:block">{btn.icon(28)}</div>
+            <div className="md:hidden">{btn.icon(22)}</div>
           </div>
         </a>
       ))}
