@@ -1654,6 +1654,10 @@ const App = () => {
                   <span className="text-[10px] font-mono text-indigo-600 block mb-1">04</span>
                   <span className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic group-hover:pl-4 transition-all duration-500">{t.processing}</span>
                 </button>
+                <button onClick={() => navigateTo('inquiry')} className="text-left group">
+                  <span className="text-[10px] font-mono text-indigo-600 block mb-1">05</span>
+                  <span className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic group-hover:pl-4 transition-all duration-500">{t.inquiry}</span>
+                </button>
               </div>
 
               <div className="mt-auto py-10 border-t border-slate-100">
