@@ -903,7 +903,7 @@ const App = () => {
                 </div>
 
                 <button
-                  onClick={() => navigateTo('about')}
+                  onClick={() => navigateTo('inquiry')}
                   className="group relative px-10 py-6 md:px-16 md:py-8 bg-white hover:bg-indigo-600 transition-all duration-500 rounded-lg shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95"
                 >
                   <span className="text-slate-950 group-hover:text-white text-sm md:text-base font-black tracking-[0.1em] uppercase">{t.cta}</span>
@@ -1609,7 +1609,10 @@ const App = () => {
                   </div>
                 </div>
 
-                <button className="w-full py-6 bg-slate-900 hover:bg-indigo-600 text-white transition-all duration-500 flex items-center justify-center space-x-4 group shadow-xl shadow-slate-900/10">
+                <button
+                  onClick={() => navigateTo('inquiry')}
+                  className="w-full py-6 bg-slate-900 hover:bg-indigo-600 text-white transition-all duration-500 flex items-center justify-center space-x-4 group shadow-xl shadow-slate-900/10"
+                >
                   <span className="text-xs font-black tracking-widest uppercase">{t.cta_quote}</span>
                   <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                 </button>
