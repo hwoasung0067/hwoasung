@@ -44,7 +44,7 @@ import {
 } from 'lucide-react';
 
 // --- 1. 전역 상수 데이터 ---
-const TALLY_FORM_URL = "https://tally.so/r/wovxA1";
+const TALLY_FORM_URL = "https://tally.so/embed/wovxA1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
 
 const TRANSLATIONS = {
   KR: {
@@ -637,10 +637,6 @@ const App = () => {
   }, []);
 
   const navigateTo = useCallback((newView) => {
-    if (newView === 'inquiry') {
-      window.open(TALLY_FORM_URL, '_blank');
-      return;
-    }
     setView(newView);
     setSelectedProduct(null);
     setIsMobileMenuOpen(false);
@@ -1319,6 +1315,38 @@ const App = () => {
                 </p>
 
                 <InquiryForm lang={lang} onSubmit={handleInquirySubmit} />
+              </div>
+            </div>
+          </section>
+        )
+      }
+
+      {/* 12. INQUIRY PAGE VIEW (EMBEDDED TALLY FORM) */}
+      {
+        view === 'inquiry' && (
+          <section className="pt-32 pb-24 bg-white min-h-screen">
+            <div className="container mx-auto px-6 md:px-10">
+              <div className="max-w-5xl mx-auto">
+                <div className="inline-flex items-center space-x-3 mb-6">
+                  <div className="w-10 h-[1px] bg-indigo-600"></div>
+                  <span className="text-xs font-black text-indigo-600 tracking-[0.3em] uppercase">Inquiry</span>
+                </div>
+                <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-12 italic">
+                  {lang === 'KR' ? '문의' : 'Inquiry'}
+                </h2>
+
+                <div className="w-full bg-slate-50 rounded-sm overflow-hidden border border-slate-100 shadow-sm min-h-[800px] relative">
+                  <iframe
+                    src={TALLY_FORM_URL}
+                    width="100%"
+                    height="800"
+                    frameBorder="0"
+                    marginHeight="0"
+                    marginWidth="0"
+                    title="Hwoasung Textile Inquiry Form"
+                    className="w-full h-[800px] md:h-[1000px]"
+                  ></iframe>
+                </div>
               </div>
             </div>
           </section>
