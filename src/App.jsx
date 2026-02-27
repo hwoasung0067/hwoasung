@@ -333,7 +333,7 @@ const VisualPlaceholder = React.memo(({ dark = false, imageSrc = null, cloudinar
   );
 });
 
-const FloatingButtons = React.memo(() => {
+const FloatingButtons = React.memo(({ show }) => {
   const buttons = [
     {
       name: "네이버 톡톡",
@@ -360,7 +360,7 @@ const FloatingButtons = React.memo(() => {
   ];
 
   return (
-    <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-4 md:bottom-10 md:right-10 max-sm:bottom-[100px]">
+    <div className={`fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-4 md:bottom-10 md:right-10 max-sm:bottom-[100px] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
       {buttons.map((btn, i) => (
         <a
           key={i}
@@ -875,15 +875,15 @@ const App = () => {
               </h1>
 
               <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
-                <div className="max-w-2xl mb-16 px-8 py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl relative group/card">
+                <div className="max-w-2xl mb-16 px-6 py-8 md:px-8 md:py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl relative group/card">
                   {/* Brand Accent Line */}
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-3/4 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
 
                   <div className="pl-6 text-left">
-                    <p className="text-white font-black text-2xl md:text-3xl mb-6 tracking-tight drop-shadow-2xl flex items-center">
+                    <p className="text-white font-black text-xl md:text-3xl mb-4 md:mb-6 tracking-tight drop-shadow-2xl flex items-center">
                       {t.hero_p_line1}
                     </p>
-                    <p className="text-slate-100 text-lg md:text-xl font-medium leading-relaxed break-keep">
+                    <p className="text-slate-100 text-base md:text-xl font-medium leading-relaxed break-keep">
                       {lang === 'KR' ? (
                         <>샘플 한 장이면 <span className="relative inline-block"><span className="absolute inset-x-0 bottom-1 h-3 bg-indigo-500/20 -z-10"></span><span className="text-indigo-400 font-bold decoration-indigo-400 underline underline-offset-8">딱 맞는 스펙</span></span>을 찾아냅니다.</>
                       ) : t.hero_p_line2}
@@ -1695,7 +1695,7 @@ const App = () => {
         )
       }
 
-      <FloatingButtons />
+      <FloatingButtons show={scrolled} />
       <PersistentCTA show={showFloatingCTA} label={t.cta} onClick={() => navigateTo('inquiry')} />
     </div>
   );
