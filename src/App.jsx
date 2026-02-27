@@ -1082,7 +1082,7 @@ const App = () => {
                   <div className="p-8 bg-white border border-slate-100 rounded-sm space-y-6 shadow-sm">
                     <div className="flex items-center justify-between">
                       <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_category}</div>
-                      <div className="text-[10px] font-bold text-slate-900 uppercase">{view === 'knitting' ? (lang === 'KR' ? '편축' : 'Knitted') : (lang === 'KR' ? '가공' : 'Processed')}</div>
+                      <div className="text-[10px] font-bold text-slate-900 uppercase">{view === 'knitting' ? (lang === 'KR' ? '편직 / 생지' : 'Knitted') : (lang === 'KR' ? '가공' : 'Processed')}</div>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_status}</div>
