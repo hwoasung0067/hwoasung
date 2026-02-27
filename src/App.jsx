@@ -56,7 +56,7 @@ const TRANSLATIONS = {
     inquiry: "문의하기",
     hero_tags: "편직공장 · 다이마루 · 폴리에스테르 전문",
     hero_h1: "느낌을 스펙으로.",
-    hero_p_line1: "> 원단 이름을 몰라도 괜찮습니다.",
+    hero_p_line1: "원단 이름을 몰라도 괜찮습니다.",
     hero_p_line2: "샘플 한 장이면 딱 맞는 스펙을 찾아냅니다.",
     cta: "지금 샘플 분석 요청하기",
     cta_tooltip: "30년 전문가와 연결됩니다",
@@ -568,9 +568,8 @@ const App = () => {
         <div className="container mx-auto px-6 md:px-10 flex justify-between items-center">
           <div className="flex items-center space-x-4 md:space-x-8">
             <div className="flex items-center space-x-4 cursor-pointer group" onClick={() => navigateTo('main')}>
-              <div className="w-10 h-10 bg-slate-900 flex items-center justify-center text-white font-black text-xs relative overflow-hidden rounded-sm">
-                <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                <span className="relative z-10">HS</span>
+              <div className="w-10 h-10 bg-white flex items-center justify-center relative overflow-hidden rounded-sm border border-slate-100 group-hover:scale-105 transition-transform duration-300">
+                <img src="/logo.png" alt="HS" className="w-full h-full object-contain p-1" />
               </div>
               <div className={`flex flex-col transition-colors duration-500 ${!scrolled && view === 'main' ? 'text-white' : 'text-slate-900'}`}>
                 <span className="font-bold text-xl tracking-[0.15em] leading-none">{t.brand}</span>
@@ -650,9 +649,13 @@ const App = () => {
                 ))}
               </div>
 
-              <h1 className="text-5xl md:text-[6.5rem] font-black text-white leading-tight tracking-tighter mb-12 italic animate-in fade-in zoom-in-95 duration-1000 delay-200">
+              <h1 className="text-5xl md:text-[6.5rem] font-black text-white leading-[1.1] md:leading-tight tracking-tighter mb-12 italic animate-in fade-in zoom-in-95 duration-1000 delay-200">
                 <span className="relative inline-block">
-                  {t.hero_h1.split('.')[0]}<span className="text-white">.</span>
+                  {lang === 'KR' ? (
+                    <>느낌을 <br className="md:hidden" /> 스펙으로<span className="text-white">.</span></>
+                  ) : (
+                    <>{t.hero_h1.split('.')[0]}<span className="text-white">.</span></>
+                  )}
                   <div className="absolute -bottom-4 left-0 w-full h-8 bg-indigo-600/40 -z-10 blur-xl"></div>
                   <div className="absolute -bottom-2 left-0 w-full h-1.5 bg-indigo-500 rounded-full"></div>
                 </span>
@@ -665,7 +668,6 @@ const App = () => {
 
                   <div className="pl-6 text-left">
                     <p className="text-white font-black text-2xl md:text-3xl mb-6 tracking-tight drop-shadow-2xl flex items-center">
-                      <span className="text-indigo-500 mr-3 opacity-50 font-mono text-xl">&gt;</span>
                       {t.hero_p_line1}
                     </p>
                     <p className="text-slate-100 text-lg md:text-xl font-medium leading-relaxed break-keep">
@@ -993,7 +995,9 @@ const App = () => {
               {/* Core Expertise Grid */}
               <div className="mb-40">
                 <div className="flex items-center space-x-6 mb-20 group">
-                  <div className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center text-white font-black italic shadow-xl shadow-indigo-600/20 group-hover:scale-110 transition-transform">HS</div>
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-xl shadow-indigo-600/10 group-hover:scale-110 transition-transform overflow-hidden border border-white/10">
+                    <img src="/logo.png" alt="HS" className="w-full h-full object-contain p-1.5" />
+                  </div>
                   <h3 className="text-3xl font-black tracking-tighter italic uppercase">{t.about_expertise_title}</h3>
                   <div className="flex-1 h-[1px] bg-white/10"></div>
                 </div>
@@ -1274,7 +1278,9 @@ const App = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center space-x-3 mb-8">
-                <div className="w-8 h-8 bg-indigo-600 flex items-center justify-center text-white font-black text-[10px]">HS</div>
+                <div className="w-8 h-8 bg-white flex items-center justify-center rounded-sm overflow-hidden border border-white/5">
+                  <img src="/logo.png" alt="HS" className="w-full h-full object-contain p-0.5" />
+                </div>
                 <span className="text-white font-bold tracking-widest text-lg uppercase">{t.brand}</span>
               </div>
               <p className="text-slate-500 text-xs leading-relaxed max-w-xs">{t.about_hero_sub}</p>
@@ -1396,7 +1402,9 @@ const App = () => {
             <div className="p-6 md:p-10 flex flex-col h-full">
               <div className="flex justify-between items-center mb-20">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-slate-900 flex items-center justify-center text-white font-black text-[10px]">HS</div>
+                  <div className="w-10 h-10 bg-white flex items-center justify-center rounded-sm overflow-hidden border border-slate-100">
+                    <img src="/logo.png" alt="HS" className="w-full h-full object-contain p-1" />
+                  </div>
                   <span className="font-bold text-xl tracking-[0.15em] leading-none uppercase">{t.brand}</span>
                 </div>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="w-12 h-12 flex items-center justify-center text-slate-900 border border-slate-100"><X size={24} /></button>
