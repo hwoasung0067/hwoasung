@@ -830,7 +830,7 @@ const App = () => {
 
       {/* 2. HERO SECTION (MAIN VIEW ONLY) */}
       {view === 'main' && (
-        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-32 md:pt-20 overflow-hidden bg-[#0A0D14]">
+        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-32 pb-20 md:pb-0 md:pt-20 overflow-hidden bg-[#0A0D14]">
           {/* Spline 3D Background */}
           <div className="absolute inset-0 z-0">
             <iframe
@@ -838,7 +838,7 @@ const App = () => {
               frameBorder='0'
               width='100%'
               height='100%'
-              className="w-full h-full scale-[1.8] opacity-60 md:scale-[1.2] md:opacity-100 lg:scale-[1.1]"
+              className="w-full h-full scale-[1.8] opacity-60 md:scale-[1.3] md:opacity-100 lg:scale-[1.15]"
               style={{ pointerEvents: 'auto' }}
             ></iframe>
             {/* Dark Gradient Overlay for Legibility */}
