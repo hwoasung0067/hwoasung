@@ -3,6 +3,9 @@ import { getOptimizedImage } from './cloudinary';
 import AdminPortal from './AdminPortal';
 import { db } from './firebase';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
+import processedInventoryImg from './assets/processed_inventory.jpg';
+import knittingUnitImg from './assets/knitting_unit.jpg';
+import companyIntroGif from './assets/company_intro.gif';
 import {
   Users,
   BarChart3,
@@ -619,15 +622,15 @@ const App = () => {
           {/* Spline 3D Background */}
           <div className="absolute inset-0 z-0">
             <iframe
-              src='https://my.spline.design/particles-t0bekvsK9XIZHGVAfV2URGD7/'
+              src='https://my.spline.design/animatedshapeblend-L0xmFw01nnmV911WGPSAJZfS/'
               frameBorder='0'
               width='100%'
               height='100%'
-              className="w-full h-full scale-110 md:scale-100"
+              className="w-full h-full scale-[1.8] opacity-60 md:scale-110 md:opacity-100 lg:scale-100"
               style={{ pointerEvents: 'auto' }}
             ></iframe>
             {/* Dark Gradient Overlay for Legibility */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0D14]/80 via-[#0A0D14]/40 to-[#0A0D14] z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0D14]/80 via-[#0A0D14]/40 to-[#0A0D14] z-10 pointer-events-none"></div>
           </div>
 
           {/* Background Stripes Pattern (Subtle) */}
@@ -641,10 +644,9 @@ const App = () => {
             <div className="max-w-5xl mx-auto">
               <div className="flex flex-wrap items-center justify-center gap-3 mb-10 animate-in fade-in slide-in-from-top-4 duration-1000">
                 {t.hero_tags.split(' · ').map((tag, i) => (
-                  <span key={i} className="text-white/40 text-[11px] font-bold tracking-[0.2em] uppercase">
-                    {tag} {i < t.hero_tags.split(' · ').length - 1 && <span className="mx-2 opacity-20">·</span>}
+                  <span key={i} className="px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-white/70 text-[10px] font-bold tracking-[0.15em] uppercase transition-colors hover:bg-white/10">
+                    {tag}
                   </span>
-                  // Simplified tag display to match image style better
                 ))}
               </div>
 
@@ -657,19 +659,29 @@ const App = () => {
               </h1>
 
               <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
-                <div className="max-w-xl mb-16 px-4">
-                  <p className="text-white font-bold text-xl mb-4 tracking-tight drop-shadow-lg">&gt; {t.hero_p_line1}</p>
-                  <p className="text-white/60 text-lg md:text-xl font-medium leading-relaxed break-keep">
-                    {t.hero_p_line2}
-                  </p>
+                <div className="max-w-2xl mb-16 px-8 py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl relative group/card">
+                  {/* Brand Accent Line */}
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-3/4 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+
+                  <div className="pl-6 text-left">
+                    <p className="text-white font-black text-2xl md:text-3xl mb-6 tracking-tight drop-shadow-2xl flex items-center">
+                      <span className="text-indigo-500 mr-3 opacity-50 font-mono text-xl">&gt;</span>
+                      {t.hero_p_line1}
+                    </p>
+                    <p className="text-slate-100 text-lg md:text-xl font-medium leading-relaxed break-keep">
+                      {lang === 'KR' ? (
+                        <>샘플 한 장이면 <span className="relative inline-block"><span className="absolute inset-x-0 bottom-1 h-3 bg-indigo-500/20 -z-10"></span><span className="text-indigo-400 font-bold decoration-indigo-400 underline underline-offset-8">딱 맞는 스펙</span></span>을 찾아냅니다.</>
+                      ) : t.hero_p_line2}
+                    </p>
+                  </div>
                 </div>
 
                 <button
                   onClick={() => navigateTo('about')}
-                  className="group relative px-16 py-8 bg-white hover:bg-slate-100 transition-all duration-500 rounded-lg shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center space-x-6 hover:scale-105 active:scale-95"
+                  className="group relative px-10 py-6 md:px-16 md:py-8 bg-white hover:bg-indigo-600 transition-all duration-500 rounded-lg shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center space-x-4 md:space-x-6 hover:scale-105 active:scale-95"
                 >
-                  <span className="text-slate-950 text-base font-black tracking-[0.1em] uppercase">{t.cta}</span>
-                  <ArrowRight className="text-slate-950 group-hover:translate-x-3 transition-transform" size={24} />
+                  <span className="text-slate-950 group-hover:text-white text-sm md:text-base font-black tracking-[0.1em] uppercase">{t.cta}</span>
+                  <ArrowRight className="text-slate-950 group-hover:text-white group-hover:translate-x-3 transition-transform shrink-0" size={24} />
                 </button>
               </div>
             </div>
@@ -736,7 +748,7 @@ const App = () => {
               <div className="w-full lg:w-1/2 relative">
                 <div className="absolute -top-10 -left-10 w-40 h-40 bg-indigo-50 rounded-full mix-blend-multiply opacity-70"></div>
                 <div className="relative aspect-square bg-slate-100 rounded-sm overflow-hidden group shadow-2xl">
-                  <VisualPlaceholder text="KNITTING INFRASTRUCTURE" />
+                  <img src={companyIntroGif} alt="Knitting Infrastructure" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-center justify-center backdrop-blur-sm">
                     <button onClick={() => navigateTo('about')} className="bg-white text-slate-900 px-8 py-4 text-[10px] font-black tracking-widest uppercase hover:bg-indigo-600 hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-500">
                       View Infrastructure
@@ -776,8 +788,10 @@ const App = () => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <div className="absolute inset-0 z-0 scale-100 group-hover:scale-110 transition-transform duration-1000">
-                      <VisualPlaceholder dark={true} imageSrc="https://images.unsplash.com/photo-1558444479-c8a5105232eb?auto=format&fit=crop&q=80&w=800" text="KNITTING FACTORY" />
-                      <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/30 transition-colors duration-700"></div>
+                      <img src={knittingUnitImg} alt="Knitting Factory" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                      {/* Dark Overlays for Legibility */}
+                      <div className="absolute inset-0 bg-slate-950/70 group-hover:bg-slate-950/40 transition-colors duration-700"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90"></div>
                     </div>
 
                     <div className="relative z-10 h-full p-10 flex flex-col justify-end">
@@ -788,7 +802,7 @@ const App = () => {
                       <h3 className="text-3xl font-black text-white mb-5 italic tracking-tighter uppercase leading-none md:text-3xl">
                         {t.sector_a_title}
                       </h3>
-                      <p className="text-slate-400 text-xs leading-relaxed max-w-sm mb-6 opacity-100 transform translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-700 break-keep">
+                      <p className="text-slate-100 text-xs font-medium leading-relaxed max-w-sm mb-6 opacity-100 transform translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-700 break-keep">
                         {t.sector_a_p}
                       </p>
                       <div className="flex items-center space-x-3 text-white text-[10px] font-black tracking-widest uppercase opacity-100 md:opacity-60 md:group-hover:opacity-100 transition-opacity">
@@ -805,8 +819,10 @@ const App = () => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <div className="absolute inset-0 z-0 scale-100 group-hover:scale-110 transition-transform duration-1000">
-                      <VisualPlaceholder dark={true} imageSrc="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=800" text="FABRIC INVENTORY" />
-                      <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/30 transition-colors duration-700"></div>
+                      <img src={processedInventoryImg} alt="Processed Inventory" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                      {/* Dark Overlays for Legibility */}
+                      <div className="absolute inset-0 bg-slate-950/70 group-hover:bg-slate-950/40 transition-colors duration-700"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90"></div>
                     </div>
 
                     <div className="relative z-10 h-full p-10 flex flex-col justify-end">
@@ -817,7 +833,7 @@ const App = () => {
                       <h3 className="text-3xl font-black text-white mb-5 italic tracking-tighter uppercase leading-none md:text-3xl">
                         {t.sector_b_title}
                       </h3>
-                      <p className="text-slate-400 text-xs leading-relaxed max-w-sm mb-6 opacity-100 transform translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-700 break-keep">
+                      <p className="text-slate-100 text-xs font-medium leading-relaxed max-w-sm mb-6 opacity-100 transform translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-700 break-keep">
                         {t.sector_b_p}
                       </p>
                       <div className="flex items-center space-x-3 text-white text-[10px] font-black tracking-widest uppercase opacity-100 md:opacity-60 md:group-hover:opacity-100 transition-opacity">
@@ -963,7 +979,7 @@ const App = () => {
 
               {/* Centered Image Placeholder */}
               <div className="w-full max-w-6xl mx-auto relative aspect-video bg-slate-800 rounded-sm overflow-hidden group shadow-[0_0_100px_rgba(79,70,229,0.15)] mb-40 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
-                <VisualPlaceholder text="HWOASUNG_ARCHIVE_FOOTAGE" dark={true} />
+                <img src={companyIntroGif} alt="Hwoasung Archive" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
 
                 {/* Indicator Dots */}
