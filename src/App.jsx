@@ -129,7 +129,17 @@ const TRANSLATIONS = {
     step_03_t: "통합 후가공",
     step_03_d: "염색, 본딩, 나염 등",
     step_04_t: "최종 검수 및 출고",
-    step_04_d: "공정별 퀄리티 체크"
+    step_04_d: "공정별 퀄리티 체크",
+    archive_explorer: "아카이브 익스플로러",
+    technical_archive: "기술 아카이브",
+    nav_knitting: "편직 / 생지 제품",
+    nav_processing: "가공지 제품",
+    label_category: "분류",
+    label_status: "상태",
+    label_live: "라이브 아카이브",
+    label_total: "총 항목",
+    label_selected_unit: "선택된 유닛",
+    label_explore: "상세 정보"
   },
   EN: {
     brand: "Hwoasung Textile",
@@ -1035,10 +1045,10 @@ const App = () => {
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-[2px] bg-indigo-600"></div>
-                      <span className="text-[10px] font-black text-indigo-600 tracking-[0.4em] uppercase">Archive Explorer</span>
+                      <span className="text-[10px] font-black text-indigo-600 tracking-[0.4em] uppercase">{t.archive_explorer}</span>
                     </div>
                     <h2 className="text-4xl font-black text-slate-900 tracking-tighter italic uppercase leading-none">
-                      Technical<br />Archive
+                      {lang === 'KR' ? '기술 아카이브' : <>Technical<br />Archive</>}
                     </h2>
                   </div>
 
@@ -1061,18 +1071,18 @@ const App = () => {
 
                   <div className="p-8 bg-white border border-slate-100 rounded-sm space-y-6 shadow-sm">
                     <div className="flex items-center justify-between">
-                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Category</div>
-                      <div className="text-[10px] font-bold text-slate-900 uppercase">{view === 'knitting' ? 'Knitted' : 'Processed'}</div>
+                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_category}</div>
+                      <div className="text-[10px] font-bold text-slate-900 uppercase">{view === 'knitting' ? (lang === 'KR' ? '편축' : 'Knitted') : (lang === 'KR' ? '가공' : 'Processed')}</div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Status</div>
+                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_status}</div>
                       <div className="flex items-center space-x-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span className="text-[10px] font-bold text-slate-900 uppercase">Live Archive</span>
+                        <span className="text-[10px] font-bold text-slate-900 uppercase">{t.label_live}</span>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Total Entries</div>
+                      <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_total}</div>
                       <div className="text-[10px] font-mono font-bold text-indigo-600">
                         {String((view === 'knitting' ? productsObj.knitting : productsObj.processed).length).padStart(3, '0')}
                       </div>
@@ -1088,8 +1098,8 @@ const App = () => {
                         {view === 'knitting' ? <Monitor size={20} /> : <Factory size={20} />}
                       </div>
                       <div>
-                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Selected Unit</div>
-                        <div className="text-sm font-black uppercase text-slate-900 italic tracking-tight">{view === 'knitting' ? 'Unit 01: Circular Knitting' : 'Unit 02: Specialized Processing'}</div>
+                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">{t.label_selected_unit}</div>
+                        <div className="text-sm font-black uppercase text-slate-900 italic tracking-tight">{view === 'knitting' ? (lang === 'KR' ? '유닛 01: 환편 니트 생산' : 'Unit 01: Circular Knitting') : (lang === 'KR' ? '유닛 02: 특수 공정 가공' : 'Unit 02: Specialized Processing')}</div>
                       </div>
                     </div>
                     <div className="hidden md:block text-[9px] font-black text-slate-300 uppercase tracking-[0.3em]">Hwoasung Textile R&D Center</div>
@@ -1144,7 +1154,7 @@ const App = () => {
 
                         {/* Action Bar */}
                         <div className="px-6 py-4 border-t border-slate-100 flex items-center justify-between group-hover:bg-indigo-600 transition-colors duration-500">
-                          <span className="text-[9px] font-black text-slate-400 group-hover:text-white/80 uppercase tracking-widest">Explore Details</span>
+                          <span className="text-[9px] font-black text-slate-400 group-hover:text-white/80 uppercase tracking-widest">{t.label_explore}</span>
                           <ArrowRight size={14} className="text-slate-400 group-hover:text-white transition-all transform group-hover:translate-x-1" />
                         </div>
                       </div>
