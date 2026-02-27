@@ -142,7 +142,8 @@ const TRANSLATIONS = {
     label_live: "라이브 아카이브",
     label_total: "총 항목",
     label_selected_unit: "선택된 비즈니스",
-    label_explore: "상세 정보"
+    label_explore: "상세 정보",
+    inquiry: "비즈니스 문의"
   },
   EN: {
     brand: "Hwoasung Textile",
@@ -812,23 +813,8 @@ const App = () => {
           <div className="hidden md:flex space-x-10 text-[10px] font-black tracking-[0.2em] items-center">
             <button onClick={() => navigateTo('main')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'main' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.home}</button>
             <button onClick={() => navigateTo('about')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'about' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.about}</button>
-            <div className="relative" onMouseEnter={() => setIsBusinessOpen(true)} onMouseLeave={() => setIsBusinessOpen(false)}>
-              <button className={`flex items-center transition-all duration-500 uppercase ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${(view === 'knitting' || view === 'processing') ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>
-                {t.business} <ChevronDown size={12} className={`ml-1 transition-transform ${isBusinessOpen ? 'rotate-180' : ''}`} />
-              </button>
-              <div className={`absolute top-full left-0 w-64 pt-6 transition-all duration-300 transform ${isBusinessOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
-                <div className="bg-white border border-slate-100 shadow-2xl rounded-sm p-2">
-                  <button onClick={() => navigateTo('knitting')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors border-b border-slate-50">
-                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest">UNIT_01</span>
-                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">{t.knitting}</span>
-                  </button>
-                  <button onClick={() => navigateTo('processing')} className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-colors">
-                    <span className="text-[9px] block text-indigo-600 font-bold mb-1 opacity-60 uppercase font-mono tracking-widest">UNIT_02</span>
-                    <span className="text-[11px] font-black text-slate-700 uppercase tracking-tight">{t.processing}</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <button onClick={() => navigateTo('processing')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${(view === 'knitting' || view === 'processing') ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.business}</button>
+            <button onClick={() => navigateTo('inquiry')} className={`transition-all duration-500 ${!scrolled && view === 'main' ? 'text-white/80 hover:text-white' : 'text-slate-400 hover:text-slate-900'} ${view === 'inquiry' ? 'border-b-2 border-indigo-500 pb-1' : ''}`}>{t.inquiry}</button>
             <div className={`flex items-center space-x-2 border-l pl-8 font-mono ${!scrolled && view === 'main' ? 'border-white/20' : 'border-slate-200'}`}>
               <button onClick={() => setLang('KR')} className={`transition-all ${lang === 'KR' ? (!scrolled && view === 'main' ? 'text-white font-black underline underline-offset-4' : 'text-slate-900 font-black underline underline-offset-4') : (!scrolled && view === 'main' ? 'text-white/40 hover:text-white' : 'text-slate-400 hover:text-slate-900')}`}>KR</button>
               <span className={!scrolled && view === 'main' ? 'text-white/20' : 'text-slate-300'}>|</span>
@@ -1430,6 +1416,32 @@ const App = () => {
         )
       }
 
+      {/* 12. INQUIRY PAGE VIEW */}
+      {
+        view === 'inquiry' && (
+          <section className="pt-40 pb-24 md:pb-40 bg-white min-h-[60vh]">
+            <div className="container mx-auto px-6 md:px-10">
+              <div className="max-w-4xl mx-auto">
+                <div className="inline-flex items-center space-x-3 mb-6">
+                  <div className="w-10 h-[1px] bg-indigo-600"></div>
+                  <span className="text-xs font-black text-indigo-600 tracking-[0.3em] uppercase">Inquiry</span>
+                </div>
+                <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-12 italic">
+                  {lang === 'KR' ? '비즈니스 문의' : 'Business Inquiry'}
+                </h2>
+                <p className="text-slate-500 text-lg md:text-xl font-medium mb-16 leading-relaxed break-keep">
+                  {lang === 'KR'
+                    ? '협업 제안, 샘플 분석 요청 등 화성섬유에 궁금한 점을 남겨주시면 담당자가 신속하게 연락드리겠습니다.'
+                    : 'Please leave any inquiries regarding collaboration or sample analysis. Our team will contact you shortly.'}
+                </p>
+
+                <InquiryForm lang={lang} onSubmit={handleInquirySubmit} />
+              </div>
+            </div>
+          </section>
+        )
+      }
+
       {/* 8. CONTACT SECTION (COMMON) */}
       <section ref={contactRef} className="bg-slate-50 py-24 md:py-40 border-t border-slate-100 relative overflow-hidden">
         {/* Background Grid */}
@@ -1667,32 +1679,6 @@ const App = () => {
               </div>
             </div>
           </div>
-        )
-      }
-
-      {/* 12. INQUIRY PAGE VIEW */}
-      {
-        view === 'inquiry' && (
-          <section className="pt-40 pb-24 md:pb-40 bg-white">
-            <div className="container mx-auto px-6 md:px-10">
-              <div className="max-w-4xl mx-auto">
-                <div className="inline-flex items-center space-x-3 mb-6">
-                  <div className="w-10 h-[1px] bg-indigo-600"></div>
-                  <span className="text-xs font-black text-indigo-600 tracking-[0.3em] uppercase">Inquiry</span>
-                </div>
-                <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-12 italic">
-                  {lang === 'KR' ? '비즈니스 문의' : 'Business Inquiry'}
-                </h2>
-                <p className="text-slate-500 text-lg md:text-xl font-medium mb-16 leading-relaxed break-keep">
-                  {lang === 'KR'
-                    ? '협업 제안, 샘플 분석 요청 등 화성섬유에 궁금한 점을 남겨주시면 담당자가 신속하게 연락드리겠습니다.'
-                    : 'Please leave any inquiries regarding collaboration or sample analysis. Our team will contact you shortly.'}
-                </p>
-
-                <InquiryForm lang={lang} onSubmit={handleInquirySubmit} />
-              </div>
-            </div>
-          </section>
         )
       }
 
