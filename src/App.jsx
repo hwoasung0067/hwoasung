@@ -435,6 +435,7 @@ const App = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [dbProducts, setDbProducts] = useState([]);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
+  const [bizFilter, setBizFilter] = useState('all');
 
   const contactRef = useRef(null);
 
@@ -1314,25 +1315,22 @@ const App = () => {
 
                   <nav className="space-y-2 border-l border-slate-200 pl-6">
                     <button
-                      onClick={() => navigateTo('knitting')}
-                      className={`block w-full text-left py-2 text-sm font-black transition-all group ${view === 'knitting' ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
+                      onClick={() => { navigateTo('knitting'); setBizFilter('all'); }}
+                      className={`block w-full text-left py-2 text-sm font-black transition-all group ${(view === 'knitting' || view === 'processing') ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
                     >
-                      <span className={`inline-block w-2 h-2 rounded-full mr-3 transition-all ${view === 'knitting' ? 'bg-indigo-600 scale-125' : 'bg-transparent border border-slate-300'}`}></span>
-                      {t.nav_knitting}
-                    </button>
-                    <button
-                      onClick={() => navigateTo('processing')}
-                      className={`block w-full text-left py-2 text-sm font-black transition-all group ${view === 'processing' ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
-                    >
-                      <span className={`inline-block w-2 h-2 rounded-full mr-3 transition-all ${view === 'processing' ? 'bg-indigo-600 scale-125' : 'bg-transparent border border-slate-300'}`}></span>
-                      {t.nav_processing}
+                      <span className={`inline-block w-2 h-2 rounded-full mr-3 transition-all ${(view === 'knitting' || view === 'processing') ? 'bg-indigo-600 scale-125' : 'bg-transparent border border-slate-300'}`}></span>
+                      {lang === 'KR' ? '비즈니스 아카이브' : 'Business Archive'}
                     </button>
                   </nav>
 
                   <div className="p-8 bg-white border border-slate-100 rounded-sm space-y-6 shadow-sm">
                     <div className="flex items-center justify-between">
                       <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_category}</div>
-                      <div className="text-[10px] font-bold text-slate-900 uppercase">{view === 'knitting' ? (lang === 'KR' ? '편직 / 생지' : 'Knitted') : (lang === 'KR' ? '가공' : 'Processed')}</div>
+                      <div className="text-[10px] font-bold text-slate-900 uppercase">
+                        {bizFilter === 'all' ? (lang === 'KR' ? '전체' : 'All') :
+                          bizFilter === 'knitting' ? (lang === 'KR' ? '편직 / 생지' : 'Knitted') :
+                            (lang === 'KR' ? '가공' : 'Processed')}
+                      </div>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_status}</div>
@@ -1344,7 +1342,12 @@ const App = () => {
                     <div className="flex items-center justify-between">
                       <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_total}</div>
                       <div className="text-[10px] font-mono font-bold text-indigo-600">
-                        {String((view === 'knitting' ? productsObj.knitting : productsObj.processed).length).padStart(3, '0')}
+                        {String(
+                          (bizFilter === 'all'
+                            ? [...productsObj.knitting, ...productsObj.processed]
+                            : (bizFilter === 'knitting' ? productsObj.knitting : productsObj.processed)
+                          ).length
+                        ).padStart(3, '0')}
                       </div>
                     </div>
                   </div>
@@ -1352,21 +1355,40 @@ const App = () => {
 
                 {/* Main Product Grid */}
                 <div className="flex-1 w-full h-full">
-                  <div className="mb-12 flex items-center bg-white p-6 border border-slate-100 rounded-sm shadow-sm justify-between">
+                  <div className="mb-12 flex flex-col md:flex-row gap-6 items-center justify-between bg-white p-6 border border-slate-100 rounded-sm shadow-sm">
                     <div className="flex items-center space-x-4">
                       <div className="p-3 bg-slate-50 rounded-sm border border-slate-100 text-indigo-600">
-                        {view === 'knitting' ? <Monitor size={20} /> : <Factory size={20} />}
+                        <Monitor size={20} />
                       </div>
-                      <div>
-                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">{t.label_selected_unit}</div>
-                        <div className="text-sm font-black uppercase text-slate-900 italic tracking-tight">{view === 'knitting' ? (lang === 'KR' ? '유닛 01: 환편 니트 생산' : 'Unit 01: Circular Knitting') : (lang === 'KR' ? '유닛 02: 특수 공정 가공' : 'Unit 02: Specialized Processing')}</div>
+                      <div className="flex items-center bg-slate-100 p-1 rounded-sm border border-slate-200">
+                        <button
+                          onClick={() => setBizFilter('all')}
+                          className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'all' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                        >
+                          {lang === 'KR' ? '전체' : 'All'}
+                        </button>
+                        <button
+                          onClick={() => setBizFilter('knitting')}
+                          className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'knitting' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                        >
+                          {lang === 'KR' ? '편직' : 'Knitting'}
+                        </button>
+                        <button
+                          onClick={() => setBizFilter('processed')}
+                          className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'processed' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                        >
+                          {lang === 'KR' ? '생지' : 'Processed'}
+                        </button>
                       </div>
                     </div>
                     <div className="hidden md:block text-[9px] font-black text-slate-300 uppercase tracking-[0.3em]">Hwoasung Textile R&D Center</div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    {(view === 'knitting' ? productsObj.knitting : productsObj.processed).map(p => (
+                    {(bizFilter === 'all'
+                      ? [...productsObj.knitting, ...productsObj.processed]
+                      : (bizFilter === 'knitting' ? productsObj.knitting : productsObj.processed)
+                    ).map(p => (
                       <div
                         key={p.id}
                         onClick={() => setSelectedProduct(p)}
