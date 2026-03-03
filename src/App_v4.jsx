@@ -106,7 +106,7 @@ const TRANSLATIONS = {
     label_code: "관리 코드",
     cta_quote: "샘플 분석 및 견적 요청하기",
     dashboard_about_cta: "화성섬유 뿌리 알아보기",
-    dashboard_inventory_cta: "화성섬유 아카이브 둘러보기",
+    dashboard_inventory_cta: "가공지 인벤토리 전체보기",
     modal_inventory_cta: "가공지 인벤토리 탐색",
     about_hero_tag: "ABOUT US",
     about_hero_h1: "원단 분석의 기준.",
@@ -144,9 +144,7 @@ const TRANSLATIONS = {
     label_total: "총 항목",
     label_selected_unit: "선택된 비즈니스",
     label_explore: "상세 정보",
-    inquiry: "비즈니스 문의",
-    btn_back: "돌아가기",
-    btn_more: "더 알아보기"
+    inquiry: "비즈니스 문의"
   },
   EN: {
     brand: "Hwoasung Textile",
@@ -208,7 +206,7 @@ const TRANSLATIONS = {
     label_code: "Admin Code",
     cta_quote: "Request Sample Analysis & Quotation",
     dashboard_about_cta: "Learn about Hwoasung Roots",
-    dashboard_inventory_cta: "Explore Hwoasung Archive",
+    dashboard_inventory_cta: "View All Processed Inventory",
     modal_inventory_cta: "Explore Processed Inventory",
     about_hero_tag: "ABOUT US",
     about_hero_h1: "Standard of Textile Analysis.",
@@ -245,9 +243,7 @@ const TRANSLATIONS = {
     label_live: "Live Archive",
     label_total: "Total Entries",
     label_selected_unit: "Unit Info",
-    label_explore: "Explore Details",
-    btn_back: "Return",
-    btn_more: "Learn More"
+    label_explore: "Explore Details"
   }
 };
 // --- 2. 제품 데이터 로더 ---
@@ -337,7 +333,7 @@ const VisualPlaceholder = React.memo(({ dark = false, imageSrc = null, cloudinar
   );
 });
 
-const FloatingButtons = React.memo(({ show }) => {
+const FloatingButtons = React.memo(() => {
   const buttons = [
     {
       name: "네이버 톡톡",
@@ -364,7 +360,7 @@ const FloatingButtons = React.memo(({ show }) => {
   ];
 
   return (
-    <div className={`fixed bottom-20 right-6 md:bottom-10 md:right-10 z-[100] flex flex-col items-end space-y-3 md:space-y-4 transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+    <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-4 md:bottom-10 md:right-10 max-sm:bottom-[100px]">
       {buttons.map((btn, i) => (
         <a
           key={i}
@@ -377,9 +373,8 @@ const FloatingButtons = React.memo(({ show }) => {
             {btn.name}
             <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 border-8 border-transparent border-left-slate-900 border-l-slate-900"></div>
           </div>
-          <div className={`${btn.color} ${btn.textColor} w-11 h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300`}>
-            <div className="hidden md:block">{btn.icon(28)}</div>
-            <div className="md:hidden">{btn.icon(22)}</div>
+          <div className={`${btn.color} ${btn.textColor} w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300`}>
+            {btn.icon(28)}
           </div>
         </a>
       ))}
@@ -389,10 +384,10 @@ const FloatingButtons = React.memo(({ show }) => {
 
 const PersistentCTA = React.memo(({ show, label, onClick }) => {
   return (
-    <div className={`fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-[110] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+    <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-[110] transition-all duration-700 ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
       <button
         onClick={onClick}
-        className="group flex items-center space-x-4 bg-indigo-600/90 backdrop-blur-md hover:bg-indigo-600 text-white px-10 py-3 md:py-4 rounded-full shadow-[0_10px_30px_rgba(79,70,229,0.2)] hover:shadow-[0_15px_40px_rgba(79,70,229,0.3)] transition-all duration-500 hover:scale-105 active:scale-95 border border-white/20"
+        className="group flex items-center space-x-4 bg-indigo-600/90 backdrop-blur-md hover:bg-indigo-600 text-white px-10 py-4 rounded-full shadow-[0_10px_30px_rgba(79,70,229,0.2)] hover:shadow-[0_15px_40px_rgba(79,70,229,0.3)] transition-all duration-500 hover:scale-105 active:scale-95 border border-white/20"
       >
         <span className="text-[10px] md:text-[11px] font-black tracking-[0.2em] uppercase whitespace-nowrap">{label}</span>
         <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/40 transition-colors">
@@ -553,10 +548,14 @@ const App = () => {
   const productsObj = useMemo(() => {
     const staticProds = getProducts(lang);
     // Categorize dynamic products
+    const dynamicKnitting = dbProducts.filter(p => p.type === 'knitting');
+    const dynamicProcessed = dbProducts.filter(p => p.type === 'processed');
+    const dynamicRaw = dbProducts.filter(p => p.type === 'raw');
+
     return {
       knitting: [...dynamicKnitting, ...(staticProds.knitting || [])],
       processed: [...dynamicProcessed, ...(staticProds.processed || [])],
-      raw: [...dynamicRaw]
+      raw: dynamicRaw
     };
   }, [lang, dbProducts]);
 
@@ -836,7 +835,7 @@ const App = () => {
 
       {/* 2. HERO SECTION (MAIN VIEW ONLY) */}
       {view === 'main' && (
-        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-32 pb-20 md:pb-0 md:pt-20 overflow-hidden bg-[#0A0D14]">
+        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-32 md:pt-20 overflow-hidden bg-[#0A0D14]">
           {/* Spline 3D Background */}
           <div className="absolute inset-0 z-0">
             <iframe
@@ -844,7 +843,7 @@ const App = () => {
               frameBorder='0'
               width='100%'
               height='100%'
-              className="w-full h-full scale-[1.8] opacity-60 md:scale-[1.3] md:opacity-100 lg:scale-[1.15]"
+              className="w-full h-full scale-[1.8] opacity-60 md:scale-110 md:opacity-100 lg:scale-100"
               style={{ pointerEvents: 'auto' }}
             ></iframe>
             {/* Dark Gradient Overlay for Legibility */}
@@ -881,15 +880,15 @@ const App = () => {
               </h1>
 
               <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
-                <div className="max-w-2xl mb-6 md:mb-16 px-6 py-6 md:px-8 md:py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl relative group/card">
+                <div className="max-w-2xl mb-16 px-8 py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl relative group/card">
                   {/* Brand Accent Line */}
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-3/4 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
 
                   <div className="pl-6 text-left">
-                    <p className="text-white font-black text-lg md:text-3xl mb-4 md:mb-6 tracking-tight drop-shadow-2xl flex items-center">
+                    <p className="text-white font-black text-2xl md:text-3xl mb-6 tracking-tight drop-shadow-2xl flex items-center">
                       {t.hero_p_line1}
                     </p>
-                    <p className="text-slate-100 text-base md:text-xl font-medium leading-relaxed break-keep">
+                    <p className="text-slate-100 text-lg md:text-xl font-medium leading-relaxed break-keep">
                       {lang === 'KR' ? (
                         <>샘플 한 장이면 <span className="relative inline-block"><span className="absolute inset-x-0 bottom-1 h-3 bg-indigo-500/20 -z-10"></span><span className="text-indigo-400 font-bold decoration-indigo-400 underline underline-offset-8">딱 맞는 스펙</span></span>을 찾아냅니다.</>
                       ) : t.hero_p_line2}
@@ -1316,8 +1315,6 @@ const App = () => {
                   <nav className="space-y-2 border-l border-slate-200 pl-6">
                     <button
                       onClick={() => { navigateTo('knitting'); setBizFilter('all'); }}
-                    <button
-                      onClick={() => { navigateTo('knitting'); setBizFilter('all'); }}
                       className={`block w-full text-left py-2 text-sm font-black transition-all group ${view === 'knitting' ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <span className={`inline-block w-2 h-2 rounded-full mr-3 transition-all ${view === 'knitting' ? 'bg-indigo-600 scale-125' : 'bg-transparent border border-slate-300'}`}></span>
@@ -1335,12 +1332,7 @@ const App = () => {
                   <div className="p-8 bg-white border border-slate-100 rounded-sm space-y-6 shadow-sm">
                     <div className="flex items-center justify-between">
                       <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_category}</div>
-                      <div className="text-[10px] font-bold text-slate-900 uppercase">
-                        {bizFilter === 'all' ? (lang === 'KR' ? '전체' : 'All') :
-                          bizFilter === 'knitting' ? (lang === 'KR' ? '편직' : 'Knitted') :
-                            bizFilter === 'raw' ? (lang === 'KR' ? '생지' : 'Raw') :
-                              (lang === 'KR' ? '가공' : 'Processed')}
-                      </div>
+                      <div className="text-[10px] font-bold text-slate-900 uppercase">{view === 'knitting' ? (lang === 'KR' ? '편직 / 생지' : 'Knitted') : (lang === 'KR' ? '가공' : 'Processed')}</div>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_status}</div>
@@ -1367,42 +1359,29 @@ const App = () => {
 
                 {/* Main Product Grid */}
                 <div className="flex-1 w-full h-full">
-                  <div className="mb-12 flex flex-col md:flex-row gap-6 items-center justify-between bg-white p-6 border border-slate-100 rounded-sm shadow-sm">
-                    <div className="flex items-center space-x-4">
-                      <div className="p-3 bg-slate-50 rounded-sm border border-slate-100 text-indigo-600">
-                        <Monitor size={20} />
+                  <div className="mb-12 flex items-center bg-white p-6 border border-slate-100 rounded-sm shadow-sm justify-between">
+                    {view === 'knitting' && (
+                      <div className="flex items-center bg-slate-100 p-1 rounded-sm border border-slate-200">
+                        <button
+                          onClick={() => setBizFilter('all')}
+                          className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'all' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                        >
+                          {lang === 'KR' ? '전체' : 'All'}
+                        </button>
+                        <button
+                          onClick={() => setBizFilter('knitting')}
+                          className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'knitting' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                        >
+                          {lang === 'KR' ? '편직' : 'Knitting'}
+                        </button>
+                        <button
+                          onClick={() => setBizFilter('raw')}
+                          className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'raw' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                        >
+                          {lang === 'KR' ? '생지' : 'Raw'}
+                        </button>
                       </div>
-                      {view === 'knitting' && (
-                        <div className="flex items-center bg-slate-100 p-1 rounded-sm border border-slate-200">
-                          <button
-                            onClick={() => setBizFilter('all')}
-                            className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'all' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                          >
-                            {lang === 'KR' ? '전체' : 'All'}
-                          </button>
-                          <button
-                            onClick={() => setBizFilter('knitting')}
-                            className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'knitting' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                          >
-                            {lang === 'KR' ? '편직' : 'Knitting'}
-                          </button>
-                          <button
-                            onClick={() => setBizFilter('raw')}
-                            className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'raw' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                          >
-                            {lang === 'KR' ? '생지' : 'Raw'}
-                          </button>
-                        </div>
-                      )}
-                      {view === 'processing' && (
-                        <div className="flex items-center bg-slate-100 p-3 rounded-sm border border-slate-200">
-                          <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600">
-                            {lang === 'KR' ? '가공지 아카이브' : 'Processed Architecture'}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="hidden md:block text-[9px] font-black text-slate-300 uppercase tracking-[0.3em]">Hwoasung Textile R&D Center</div>
+                    )}
                   </div>
 
                   {/* Force full re-render on filter change using a key */}
@@ -1468,9 +1447,9 @@ const App = () => {
                   </div>
                   <div className="mt-12 hidden md:block text-[9px] font-black text-slate-300 uppercase tracking-[0.3em]">Hwoasung Textile R&D Center</div>
                 </div>
-              </div >
-            </div >
-          </section >
+              </div>
+            </div>
+          </section>
         )
       }
 
@@ -1624,29 +1603,24 @@ const App = () => {
         selectedProduct && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300">
             <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-xl" onClick={() => setSelectedProduct(null)}></div>
-            <div className="relative w-full max-w-5xl bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row animate-in zoom-in-95 duration-500 origin-center md:rounded-sm">
+            <div className="relative w-full max-w-5xl bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row animate-in zoom-in-95 duration-500 origin-center">
               <button
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white text-slate-900 border border-slate-200/50 flex items-center justify-center transition-all duration-300 group shadow-xl backdrop-blur-md rounded-full md:rounded-sm"
+                className="absolute top-6 right-6 z-10 w-12 h-12 bg-white/10 hover:bg-white text-slate-900 border border-slate-100 flex items-center justify-center transition-all duration-300 group shadow-xl"
               >
-                <X size={18} className="group-hover:rotate-90 transition-transform" />
+                <X size={20} className="group-hover:rotate-90 transition-transform" />
               </button>
 
-              <div className="w-full md:w-1/2 bg-slate-100 relative aspect-[4/3] md:aspect-auto">
+              <div className="w-full md:w-1/2 bg-slate-100 relative">
                 <VisualPlaceholder text={selectedProduct.engName} cloudinaryId={selectedProduct.cloudinaryId} imageSrc={selectedProduct.imageSrc} />
-                <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 bg-gradient-to-t from-white via-white/20 to-transparent md:from-transparent md:via-transparent">
-                  <div className="w-12 h-1 bg-indigo-600 mb-4 md:mb-6"></div>
-                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1 font-mono">{selectedProduct.code}</div>
-                  <h3 className="text-2xl md:text-4xl font-black text-slate-900 tracking-tighter italic uppercase leading-none mb-1">
-                    {lang === 'KR' ? selectedProduct.name : (selectedProduct.engName || selectedProduct.name)}
-                  </h3>
-                  {lang === 'KR' && selectedProduct.engName && (
-                    <div className="text-xs md:text-sm font-bold text-slate-400 uppercase tracking-tight">{selectedProduct.engName}</div>
-                  )}
+                <div className="absolute top-10 left-10">
+                  <div className="w-16 h-1 bg-indigo-600 mb-6"></div>
+                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-2 font-mono">{selectedProduct.code}</div>
+                  <h3 className="text-4xl font-black text-slate-900 tracking-tighter italic uppercase">{lang === 'KR' ? selectedProduct.name : (selectedProduct.engName || selectedProduct.name)}</h3>
                 </div>
               </div>
 
-              <div className="w-full md:w-1/2 px-6 pt-6 pb-20 md:p-16 overflow-y-auto max-h-[75vh] md:max-h-none">
+              <div className="w-full md:w-1/2 p-10 md:p-16 overflow-y-auto max-h-[80vh] md:max-h-none">
                 <div className="mb-12">
                   <h4 className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.2em] mb-8 flex items-center">
                     <div className="w-4 h-4 rounded-full border border-indigo-200 flex items-center justify-center mr-3"><div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div></div>
@@ -1691,38 +1665,13 @@ const App = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-3">
-                  <button
-                    onClick={() => navigateTo('inquiry')}
-                    className="w-full py-4 md:py-5 bg-indigo-600 hover:bg-indigo-700 text-white transition-all duration-500 flex items-center justify-center space-x-3 group rounded-sm shadow-lg shadow-indigo-200"
-                  >
-                    <span className="text-[10px] md:text-[11px] font-black tracking-[0.2em] uppercase">{t.cta_quote}</span>
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      onClick={() => setSelectedProduct(null)}
-                      className="py-4 bg-slate-100 hover:bg-slate-200 text-slate-900 transition-all duration-300 flex items-center justify-center space-x-2 group rounded-sm border border-slate-200"
-                    >
-                      <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                      <span className="text-[10px] font-black tracking-[0.1em] uppercase">{t.btn_back}</span>
-                    </button>
-
-                    {view === 'main' && (
-                      <button
-                        onClick={() => {
-                          navigateTo(selectedProduct.type === 'processed' ? 'processing' : 'knitting');
-                          setSelectedProduct(null);
-                        }}
-                        className="py-4 bg-white hover:bg-slate-50 text-indigo-600 transition-all duration-300 flex items-center justify-center space-x-2 group rounded-sm border border-indigo-100"
-                      >
-                        <span className="text-[10px] font-black tracking-[0.1em] uppercase">{t.btn_more}</span>
-                        <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                      </button>
-                    )}
-                  </div>
-                </div>
+                <button
+                  onClick={() => navigateTo('inquiry')}
+                  className="w-full py-5 bg-slate-950 hover:bg-indigo-600 text-white transition-all duration-500 flex items-center justify-center space-x-4 group rounded-sm border border-white/5 hover:border-white/20"
+                >
+                  <span className="text-[11px] font-black tracking-[0.2em] uppercase">{t.cta_quote}</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+                </button>
               </div>
             </div>
           </div>
@@ -1777,7 +1726,7 @@ const App = () => {
         )
       }
 
-      <FloatingButtons show={scrolled} />
+      <FloatingButtons />
       <PersistentCTA show={showFloatingCTA} label={t.cta} onClick={() => navigateTo('inquiry')} />
     </div >
   );
