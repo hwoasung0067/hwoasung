@@ -567,13 +567,12 @@ const App = () => {
   }, [lang, dbProducts]);
 
   const SIGNATURE_PRODUCTS = useMemo(() => [
-    ...productsObj.knitting,
-    ...productsObj.processed,
-    ...productsObj.raw
-  ], [productsObj]);
+    ...productsObj.processed
+  ], [productsObj.processed]);
 
   const slideCount = SIGNATURE_PRODUCTS.length;
   const CLONED_PRODUCTS = useMemo(() => [
+    ...SIGNATURE_PRODUCTS,
     ...SIGNATURE_PRODUCTS,
     ...SIGNATURE_PRODUCTS
   ], [SIGNATURE_PRODUCTS]);
@@ -607,7 +606,7 @@ const App = () => {
 
   useEffect(() => {
     if (isHovered || dragStartX !== null) return;
-    const interval = setInterval(nextSlide, 3500);
+    const interval = setInterval(nextSlide, 2000);
     return () => clearInterval(interval);
   }, [nextSlide, isHovered, dragStartX]);
 
@@ -615,9 +614,9 @@ const App = () => {
     if (currentSlide >= slideCount * 2) {
       setIsTransitioning(false);
       setCurrentSlide(slideCount);
-    } else if (currentSlide <= slideCount - 1) {
+    } else if (currentSlide <= 0) {
       setIsTransitioning(false);
-      setCurrentSlide(slideCount * 2 - 1);
+      setCurrentSlide(slideCount);
     }
   };
 
