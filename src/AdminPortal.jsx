@@ -221,7 +221,6 @@ const AdminPortal = ({ onBack }) => {
             name: `${product.name} (복사본)`,
             features: Array.isArray(product.features) ? product.features.join(', ') : product.features
         });
-        alert('상품 내용이 복사되었습니다. 내용을 수정 후 [Commit To Inventory] 버튼을 눌러 등록해 주세요.');
     };
 
     const handleDelete = async (id) => {
