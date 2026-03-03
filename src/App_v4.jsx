@@ -553,6 +553,10 @@ const App = () => {
   const productsObj = useMemo(() => {
     const staticProds = getProducts(lang);
     // Categorize dynamic products
+    const dynamicKnitting = dbProducts.filter(p => p.type === 'knitting');
+    const dynamicRaw = dbProducts.filter(p => p.type === 'raw');
+    const dynamicProcessed = dbProducts.filter(p => p.type === 'processed');
+
     return {
       knitting: [...dynamicKnitting, ...(staticProds.knitting || [])],
       processed: [...dynamicProcessed, ...(staticProds.processed || [])],
