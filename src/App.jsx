@@ -552,10 +552,12 @@ const App = () => {
     const staticProds = getProducts(lang);
     // Categorize dynamic products
     const dynamicKnitting = dbProducts.filter(p => p.type === 'knitting');
+    const dynamicRaw = dbProducts.filter(p => p.type === 'raw');
     const dynamicProcessed = dbProducts.filter(p => p.type === 'processed');
 
     return {
       knitting: [...dynamicKnitting, ...staticProds.knitting],
+      raw: [...dynamicRaw],
       processed: [...dynamicProcessed, ...staticProds.processed]
     };
   }, [lang, dbProducts]);
@@ -1328,8 +1330,9 @@ const App = () => {
                       <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_category}</div>
                       <div className="text-[10px] font-bold text-slate-900 uppercase">
                         {bizFilter === 'all' ? (lang === 'KR' ? '전체' : 'All') :
-                          bizFilter === 'knitting' ? (lang === 'KR' ? '편직 / 생지' : 'Knitted') :
-                            (lang === 'KR' ? '가공' : 'Processed')}
+                          bizFilter === 'knitting' ? (lang === 'KR' ? '편직' : 'Knitted') :
+                            bizFilter === 'raw' ? (lang === 'KR' ? '생지' : 'Raw') :
+                              (lang === 'KR' ? '가공' : 'Processed')}
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
@@ -1343,10 +1346,11 @@ const App = () => {
                       <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.label_total}</div>
                       <div className="text-[10px] font-mono font-bold text-indigo-600">
                         {String(
-                          (bizFilter === 'all'
-                            ? [...productsObj.knitting, ...productsObj.processed]
-                            : (bizFilter === 'knitting' ? productsObj.knitting : productsObj.processed)
-                          ).length
+                          (view === 'processing') ? productsObj.processed.length :
+                            (bizFilter === 'all'
+                              ? [...productsObj.knitting, ...productsObj.raw]
+                              : (bizFilter === 'knitting' ? productsObj.knitting : productsObj.raw)
+                            ).length
                         ).padStart(3, '0')}
                       </div>
                     </div>
@@ -1360,34 +1364,45 @@ const App = () => {
                       <div className="p-3 bg-slate-50 rounded-sm border border-slate-100 text-indigo-600">
                         <Monitor size={20} />
                       </div>
-                      <div className="flex items-center bg-slate-100 p-1 rounded-sm border border-slate-200">
-                        <button
-                          onClick={() => setBizFilter('all')}
-                          className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'all' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                        >
-                          {lang === 'KR' ? '전체' : 'All'}
-                        </button>
-                        <button
-                          onClick={() => setBizFilter('knitting')}
-                          className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'knitting' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                        >
-                          {lang === 'KR' ? '편직' : 'Knitting'}
-                        </button>
-                        <button
-                          onClick={() => setBizFilter('processed')}
-                          className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'processed' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                        >
-                          {lang === 'KR' ? '생지' : 'Processed'}
-                        </button>
-                      </div>
+                      {view === 'knitting' && (
+                        <div className="flex items-center bg-slate-100 p-1 rounded-sm border border-slate-200">
+                          <button
+                            onClick={() => setBizFilter('all')}
+                            className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'all' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                          >
+                            {lang === 'KR' ? '전체' : 'All'}
+                          </button>
+                          <button
+                            onClick={() => setBizFilter('knitting')}
+                            className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'knitting' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                          >
+                            {lang === 'KR' ? '편직' : 'Knitting'}
+                          </button>
+                          <button
+                            onClick={() => setBizFilter('raw')}
+                            className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest transition-all rounded-sm ${bizFilter === 'raw' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                          >
+                            {lang === 'KR' ? '생지' : 'Raw'}
+                          </button>
+                        </div>
+                      )}
+                      {view === 'processing' && (
+                        <div className="flex items-center bg-slate-100 p-3 rounded-sm border border-slate-200">
+                          <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600">
+                            {lang === 'KR' ? '가공지 아카이브' : 'Processed Architecture'}
+                          </span>
+                        </div>
+                      )}
                     </div>
                     <div className="hidden md:block text-[9px] font-black text-slate-300 uppercase tracking-[0.3em]">Hwoasung Textile R&D Center</div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    {(bizFilter === 'all'
-                      ? [...productsObj.knitting, ...productsObj.processed]
-                      : (bizFilter === 'knitting' ? productsObj.knitting : productsObj.processed)
+                    {(view === 'processing'
+                      ? productsObj.processed
+                      : (bizFilter === 'all'
+                        ? [...productsObj.knitting, ...productsObj.raw]
+                        : (bizFilter === 'knitting' ? productsObj.knitting : productsObj.raw))
                     ).map(p => (
                       <div
                         key={p.id}

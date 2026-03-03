@@ -360,20 +360,27 @@ const AdminPortal = ({ onBack }) => {
                         <div className="space-y-6">
                             <div className="space-y-2">
                                 <label className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Classification</label>
-                                <div className="grid grid-cols-2 gap-2">
+                                <div className="grid grid-cols-3 gap-2">
                                     <button
                                         type="button"
                                         onClick={() => setFormData({ ...formData, type: 'knitting' })}
-                                        className={`py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all border ${formData.type === 'knitting' ? 'bg-indigo-600 border-indigo-500' : 'bg-[#161b22] border-white/5 text-slate-500 hover:text-white'}`}
+                                        className={`py-3 rounded-sm text-[8px] font-black uppercase tracking-widest transition-all border ${formData.type === 'knitting' ? 'bg-indigo-600 border-indigo-500' : 'bg-[#161b22] border-white/5 text-slate-400 hover:text-white'}`}
                                     >
-                                        Unit 01: knitting
+                                        편직 (KNT)
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => setFormData({ ...formData, type: 'raw' })}
+                                        className={`py-3 rounded-sm text-[8px] font-black uppercase tracking-widest transition-all border ${formData.type === 'raw' ? 'bg-indigo-600 border-indigo-500' : 'bg-[#161b22] border-white/5 text-slate-400 hover:text-white'}`}
+                                    >
+                                        생지 (RAW)
                                     </button>
                                     <button
                                         type="button"
                                         onClick={() => setFormData({ ...formData, type: 'processed' })}
-                                        className={`py-3 rounded-sm text-[10px] font-black uppercase tracking-widest transition-all border ${formData.type === 'processed' ? 'bg-indigo-600 border-indigo-500' : 'bg-[#161b22] border-white/5 text-slate-500 hover:text-white'}`}
+                                        className={`py-3 rounded-sm text-[8px] font-black uppercase tracking-widest transition-all border ${formData.type === 'processed' ? 'bg-indigo-600 border-indigo-500' : 'bg-[#161b22] border-white/5 text-slate-400 hover:text-white'}`}
                                     >
-                                        Unit 02: processed
+                                        가공 (PRC)
                                     </button>
                                 </div>
                             </div>
