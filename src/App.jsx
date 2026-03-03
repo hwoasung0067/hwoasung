@@ -448,10 +448,12 @@ const App = () => {
   // Fetch Dynamic Products from Firestore
   useEffect(() => {
     console.log("App: Initializing global Firestore listener for 'products'");
-    const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+    const q = query(collection(db, 'products'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       console.log(`App: Received global snapshot with ${snapshot.size} docs. FromCache: ${snapshot.metadata.fromCache}`);
-      const prods = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const prods = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      // In-memory sort to avoid implicit filtering by orderBy field existence
+      prods.sort((a, b) => (b.createdAt?.toDate?.() || 0) - (a.createdAt?.toDate?.() || 0));
       setDbProducts(prods);
     }, (error) => {
       console.error("App: Global Firestore Listener Error:", error);
@@ -565,8 +567,9 @@ const App = () => {
   }, [lang, dbProducts]);
 
   const SIGNATURE_PRODUCTS = useMemo(() => [
-    ...productsObj.knitting.slice(0, 2),
-    ...productsObj.processed.slice(0, 2)
+    ...productsObj.knitting,
+    ...productsObj.processed,
+    ...productsObj.raw
   ], [productsObj]);
 
   const slideCount = SIGNATURE_PRODUCTS.length;

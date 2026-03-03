@@ -83,7 +83,7 @@ const AdminPortal = ({ onBack }) => {
     useEffect(() => {
         if (!user) return;
         console.log("AdminPortal: Initializing Firestore listener for 'products' collection");
-        const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+        const q = query(collection(db, 'products'));
         const unsubscribe = onSnapshot(q, (snapshot) => {
             console.log(`AdminPortal: Received snapshot with ${snapshot.size} documents. FromCache: ${snapshot.metadata.fromCache}`);
             const prods = snapshot.docs.map(doc => {
@@ -92,8 +92,10 @@ const AdminPortal = ({ onBack }) => {
                 if (data.name?.includes("폴라폴리스") || data.name?.includes("18게이지")) {
                     console.warn("AdminPortal: GHOST PRODUCT DETECTED in Firestore snapshot!", data);
                 }
-                return { id: doc.id, ...data };
+                return { ...data, id: doc.id };
             });
+            // In-memory sort
+            prods.sort((a, b) => (b.createdAt?.toDate?.() || 0) - (a.createdAt?.toDate?.() || 0));
             console.log("AdminPortal: Setting products state with array of length:", prods.length);
             setProducts(prods);
         }, (err) => {
@@ -205,12 +207,13 @@ const AdminPortal = ({ onBack }) => {
                 updatedAt: new Date()
             };
 
+            const { id: _, ...sanitizedPayload } = payload;
             if (editingId) {
-                await updateDoc(doc(db, 'products', editingId), payload);
+                await updateDoc(doc(db, 'products', editingId), sanitizedPayload);
                 alert('제품 정보가 성공적으로 수정되었습니다. (Firestore)');
             } else {
                 await addDoc(collection(db, 'products'), {
-                    ...payload,
+                    ...sanitizedPayload,
                     createdAt: new Date()
                 });
                 alert('새 제품이 성공적으로 등록되었습니다. (Firestore)');
@@ -226,8 +229,9 @@ const AdminPortal = ({ onBack }) => {
 
     const handleCopy = (product) => {
         setEditingId(null);
+        const { id, ...sanitizedProduct } = product;
         setFormData({
-            ...product,
+            ...sanitizedProduct,
             code: `${product.code}_copy`,
             name: `${product.name} (복사본)`,
             features: Array.isArray(product.features) ? product.features.join(', ') : product.features
