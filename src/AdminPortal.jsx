@@ -134,6 +134,15 @@ const AdminPortal = ({ onBack }) => {
         setEditingId(null);
     };
 
+    const handleEdit = (product) => {
+        setEditingId(product.id);
+        const { id, ...sanitizedProduct } = product;
+        setFormData({
+            ...sanitizedProduct,
+            features: Array.isArray(product.features) ? product.features.join(', ') : product.features
+        });
+    };
+
     const handleOpenWidget = () => {
         if (!window.cloudinary) {
             alert("이미지 위젯을 불러오는 중입니다. 잠시 후 다시 시도해 주세요. (인터넷 연결 확인)");
