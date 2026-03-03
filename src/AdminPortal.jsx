@@ -17,7 +17,8 @@ import {
     Settings,
     ChevronRight,
     Monitor,
-    Library
+    Library,
+    Copy
 } from 'lucide-react';
 import { auth, db } from './firebase';
 import {
@@ -210,6 +211,17 @@ const AdminPortal = ({ onBack }) => {
             ...product,
             features: Array.isArray(product.features) ? product.features.join(', ') : product.features
         });
+    };
+
+    const handleCopy = (product) => {
+        setEditingId(null);
+        setFormData({
+            ...product,
+            code: `${product.code}_copy`,
+            name: `${product.name} (복사본)`,
+            features: Array.isArray(product.features) ? product.features.join(', ') : product.features
+        });
+        alert('상품 내용이 복사되었습니다. 내용을 수정 후 [Commit To Inventory] 버튼을 눌러 등록해 주세요.');
     };
 
     const handleDelete = async (id) => {
@@ -564,6 +576,13 @@ const AdminPortal = ({ onBack }) => {
                                         className={`group relative bg-[#0d1117] border ${editingId === p.id ? 'border-indigo-500' : 'border-white/5'} p-6 rounded-sm transition-all hover:border-indigo-500/50 hover:shadow-2xl hover:shadow-indigo-600/5`}
                                     >
                                         <div className="absolute top-4 right-4 flex space-x-1 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                                            <button
+                                                onClick={() => handleCopy(p)}
+                                                className="p-2 bg-slate-800 text-slate-400 hover:text-indigo-400 rounded-sm border border-white/5"
+                                                title="Copy Content"
+                                            >
+                                                <Copy size={14} />
+                                            </button>
                                             <button
                                                 onClick={() => handleEdit(p)}
                                                 className="p-2 bg-slate-800 text-slate-400 hover:text-white rounded-sm border border-white/5"
