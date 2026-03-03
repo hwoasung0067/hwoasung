@@ -51,7 +51,7 @@ const TRANSLATIONS = {
     brand: "화성섬유",
     sub: "브랜드 성공을 위한 견고한 기초",
     home: "홈",
-    about: "뿌리 (ABOUT)",
+    about: "소개",
     business: "비즈니스",
     knitting: "편직 / 생지",
     processing: "가공지 인벤토리",
@@ -105,7 +105,7 @@ const TRANSLATIONS = {
     label_color: "색상",
     label_code: "관리 코드",
     cta_quote: "샘플 분석 및 견적 요청하기",
-    dashboard_about_cta: "화성섬유 뿌리 알아보기",
+    dashboard_about_cta: "화성섬유 소개 알아보기",
     dashboard_inventory_cta: "화성섬유 아카이브 둘러보기",
     modal_inventory_cta: "가공지 인벤토리 탐색",
     about_hero_tag: "ABOUT US",
@@ -691,7 +691,7 @@ const App = () => {
           desc: "30년 이상 경력으로 균일한 품질, 빠른 납기로 안정적인 원단 공급을 보장합니다. 화성섬유의 정밀 샘플 분석과 원스톱 생산 시스템을 확인하세요."
         },
         about: {
-          title: "화성섬유의 뿌리와 전문성 | 원단 분석의 기준",
+          title: "화성섬유의 소개와 전문성 | 원단 분석의 기준",
           desc: "30년 제조 노하우로 원사부터 공정까지 정밀 분석하여 최적의 원단 솔루션을 제안하는 화성섬유입니다."
         },
         knitting: {
@@ -1608,14 +1608,14 @@ const App = () => {
           <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-bold text-slate-600 uppercase tracking-widest">
               <span>COPYRIGHT © HWOASUNG TEXTILE. ALL RIGHTS RESERVED.</span>
+            </div>
+            <div className="flex items-center space-x-6 text-slate-600">
               <button
                 onClick={() => setView('admin')}
-                className="hover:text-white transition-colors uppercase tracking-[0.2em] opacity-0 hover:opacity-100"
+                className="opacity-0 text-[10px] font-bold cursor-default"
               >
                 Manage Site
               </button>
-            </div>
-            <div className="flex items-center space-x-6 text-slate-600">
               <Globe size={16} />
               <div className="text-[10px] font-black uppercase tracking-widest">South Korea / Yeoncheon</div>
             </div>
