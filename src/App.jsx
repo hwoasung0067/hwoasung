@@ -1316,8 +1316,6 @@ const App = () => {
                   <nav className="space-y-2 border-l border-slate-200 pl-6">
                     <button
                       onClick={() => { navigateTo('knitting'); setBizFilter('all'); }}
-                    <button
-                      onClick={() => { navigateTo('knitting'); setBizFilter('all'); }}
                       className={`block w-full text-left py-2 text-sm font-black transition-all group ${view === 'knitting' ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <span className={`inline-block w-2 h-2 rounded-full mr-3 transition-all ${view === 'knitting' ? 'bg-indigo-600 scale-125' : 'bg-transparent border border-slate-300'}`}></span>
