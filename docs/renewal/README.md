@@ -14,13 +14,14 @@
 2. 00-project-charter.md — 목표와 금지할 가정
 3. 01-current-state-and-evidence.md — 홈페이지·분석·코드 근거
 4. 02-inquiry-patterns.md — 고객 문의에서 배운 점(익명화)
-5. 03-business-strategy-workbook.md — 다음 세션에서 논의할 사업 의사결정
-6. 04-ux-design-brief.md — 고객 경험과 디자인 연구 계획
-7. 05-seo-content-analytics.md — 검색/AI 검색/광고/분석 설계
-8. 06-technical-baseline.md — 기존 코드 및 배포 안전 요구
-9. 07-roadmap-acceptance.md — 단계·검증·Codex 범위
-10. decisions.md — 결정·변경 기록
-11. NEXT-SESSION.md — 새 채팅 시작 프롬프트
+5. 03-business-strategy-workbook.md — 다음 세션의 사업 의사결정
+6. 04-ux-and-information-architecture.md — UX·정보 구조 연구
+7. 05-visual-brand-design-brief.md — 디자인 조사와 시안·승인 과정
+8. 06-seo-content-analytics.md — 검색·AI 검색·광고·분석 설계
+9. 07-technical-baseline.md — 기존 코드·기술·배포 안전 검증
+10. 08-roadmap-and-acceptance.md — 단계·검증·Codex 범위
+11. decisions.md — 결정·변경 기록
+12. NEXT-SESSION.md — 새 채팅 시작 프롬프트
 
 ## 개인정보·영업정보 규칙
 **주의: hwoasung 저장소는 PUBLIC이다. 이 브랜치 역시 비공개 공간이 아니다.**
