@@ -1,9 +1,9 @@
 # 화성섬유 홈페이지 리뉴얼 — 설계 허브
-- 기록일: 2026-10-13 (KST)
+- 최초 기록일: 2026-10-13 (KST) / 상태 점검: 2026-10-16 (KST)
 - 프로젝트: https://github.com/hwoasung0067/hwoasung
 - 설계 전용 브랜치: planning/website-renewal
 - 실제 운영 사이트: https://www.hwoasung.com/
-- 프로젝트 상태: Phase 0 — 조사·정리 완료, 사업 전략 상세 설계 대기
+- 프로젝트 상태: **Phase 1 — 사업·마케팅 전략 진행 중.** 주력 제품·샘플/MOQ·고객·A/B 성과·대량/반복 가치 확인. 문의 후속 실발주 추적 방식과 상세 KPI는 다음 인터뷰 과제.
 - **현재 문서는 승인된 구현 명세가 아니다. 소스코드 수정·배포 금지.**
 
 ## 이 폴더의 역할
@@ -14,7 +14,7 @@
 2. 00-project-charter.md — 목표와 금지할 가정
 3. 01-current-state-and-evidence.md — 홈페이지·분석·코드 근거
 4. 02-inquiry-patterns.md — 고객 문의에서 배운 점(익명화)
-5. 03-business-strategy-workbook.md — 다음 세션의 사업 의사결정
+5. 03-business-strategy-workbook.md — 확정한 사업 운영 기준·유효 문의·미결 과제
 6. 04-ux-and-information-architecture.md — UX·정보 구조 연구
 7. 05-visual-brand-design-brief.md — 디자인 조사와 시안·승인 과정
 8. 06-seo-content-analytics.md — 검색·AI 검색·광고·분석 설계
@@ -22,6 +22,13 @@
 10. 08-roadmap-and-acceptance.md — 단계·검증·Codex 범위
 11. decisions.md — 결정·변경 기록
 12. NEXT-SESSION.md — 새 채팅 시작 프롬프트
+
+## 결정 사항 확인 기준
+- 세션이 바뀌면 가장 먼저 **project-state.md → decisions.md → 03-business-strategy-workbook.md → NEXT-SESSION.md**를 최신 브랜치에서 읽는다.
+- 사용자 확인 결정은 D-001~D-024 중 해당 항목을 찾아 반영. D-023은 **A형 직접 공급 문의 1차 성과/B형 조건부 개발 별도 지표**, D-024는 **대량 신규 거래와 반복 구매 모두 가치**라는 판단이다.
+- 잘못된 해석인 '신규 생산 500yd부터 가능'은 **D-019에 따라 폐기**. 구버전 문구는 최신 승인 사실보다 우선하지 않는다.
+- 나머지 UX/디자인/SEO·AI 검색/기술 문서는 아직 분야별 브리프·제안이며 승인된 제작 명세가 아니다.
+- 전략을 확정할 때 관련 문서·결정 기록·상태·다음 세션 안내 간 충돌을 함께 점검한다.
 
 ## 개인정보·영업정보 규칙
 **주의: hwoasung 저장소는 PUBLIC이다. 이 브랜치 역시 비공개 공간이 아니다.**
