@@ -12,6 +12,10 @@
 연결 문서: [17 설득/해자 재설계](17-buyer-persuasion-and-moat-reframe-v1.md) / [18 blog-agent 브랜드 자산 근거](18-blog-agent-brand-evidence-audit-v1.md) / [15 Arville·Tintex 레퍼런스](15-verified-website-design-references-v1.md).
 **참고:** 체크리스트 확정은 새로운 카피/해자 우월성/웹 시안·코드 구현 승인과 다르다.
 
+## 최신 브랜드 히어로 방식 결정 (D-046)
+- [27. 상징적 한 문장 히어로·첫 스크롤 아트디렉션](27-hero-brand-declaration-and-first-scroll-directors-brief-v1.md) — 사용자가 **A형 짧은 브랜드 선언 + 실제 편직·원단 공급 정체성을 명확히 하는 보조 설명** 방식 승인. 정확한 히어로 문구 `제조의 깊이를, 더 가깝게.`는 아직 미승인. R1 몰입 실사형/R2 밝은 분할형, Hero→원단 실물 갤러리, 사진/모션/성능/PC·모바일 검토 원칙을 기획함.
+- D-041 화면 설계 전 섹션·콘텐츠 합의, D-036 신규 히어로 영상 제작 보류 유지. 디자인 시안/운영 코드 변경 없음.
+
 ## 현재 진행한 세부 기획 (D-044~045)
 - [25. 브랜드 메시지·히어로 카피 체계](25-brand-message-and-hero-copy-system-v1.md) — 브랜드 기본 철학은 확정, **3개 헤드라인 후보는 미승인**, 검토 기준과 메시지 위계.
 - [26. 6개 메인 장면 콘텐츠·사진·모션 기획](26-homepage-section-content-motion-and-media-plan-v1.md) — 실제 자사 제품·편직 컷·사용처·블로그 콘텐츠, 상호작용의 필요성과 모바일 대체, 기존 자산과 부족 자료. **시안/개발 명세 최종 승인 전**.
