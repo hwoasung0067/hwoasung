@@ -1,4 +1,5 @@
 # 현재 프로젝트 상태 (START HERE)
+- 2026-10-23 Figma 제작 재개 요청: 기존 D-051 프레임 9개를 보존하고 REV-002 PC/모바일 2차 시안으로 진전할 실행 브리프를 [32](32-figma-rev002-resume-brief-v1.md)에 저장. **Figma MCP Starter 호출 한도 소진**으로 이번 재개 시도에서 읽기/편집 모두 차단됨. **실제 Figma 시안 추가/수정 없음**. Figma 접근 복구 후 32의 프레임 현황 재검증→신규 DRAFT 2차 시안 제작→사용자 비교 검토 순으로 진행. 운영 코드/배포 미변경.
 최종 갱신: 2026-10-23 KST
 작업 기준 브랜치: planning/website-renewal
 프로젝트 단계: **D-051 Figma 첫 편집 가능 시안 작업 시작**. [31](31-figma-initial-hero-and-fabric-drafts-v1.md) R2 PC Hero `16:2`/R1 PC Hero `16:28`/실물 원단 갤러리 첫 스크롤 `16:54` 디자인 초안. https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP. 같은 페이지에 R1/R2 PC/모바일 기존 프레임 별도 발견·보존. **사진은 검증 대기 플레이스홀더이며 완성 디자인·문구 확정·코드/배포 아님**.
