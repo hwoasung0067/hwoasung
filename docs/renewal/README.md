@@ -1,4 +1,7 @@
 # 화성섬유 홈페이지 리뉴얼 — 설계 허브
+
+> 2026-10-23 D-054: 사용자 요청에 따라 시맨틱 구조로 정리. 최신 시작점은 [START-HERE.md](START-HERE.md). 승인 방향은 [context/current-direction.md](context/current-direction.md), 원문 피드백/분석/검토는 분리 보존. Figma는 필수 경로에서 제외한 브라우저 제작 기준을 유지. 과거 본문은 아래에 보존.
+
 - 최초 기록일: 2026-10-13 (KST) / 상태 점검: 2026-10-16 (KST)
 - 프로젝트: https://github.com/hwoasung0067/hwoasung
 - 설계 전용 브랜치: planning/website-renewal

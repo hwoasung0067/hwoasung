@@ -1,0 +1,172 @@
+{
+  "source_repository": "hwoasung0067/hwoasung",
+  "branch": "planning/website-renewal",
+  "commit": "b963f3f255c9b5e060ef8604f6ee66c570ebbb40",
+  "captured_date_kst": "2026-10-23",
+  "files": [
+    {
+      "path": "00-CURRENT-HANDOFF.md",
+      "sha256": "6a7935891f346e27d20e897b7b05a59cb0a7ce37f7ad52ad60e1abbfeaf943d8"
+    },
+    {
+      "path": "00-project-charter.md",
+      "sha256": "dfb593958acc66816af0bf2b1ed9c3facc5045e599c1798194bdc0d37a63c1a0"
+    },
+    {
+      "path": "01-current-state-and-evidence.md",
+      "sha256": "50d35afbd2428e6469c36dd94eed16fcf76c1e88d9dd17e81ddf719c92cd9429"
+    },
+    {
+      "path": "02-inquiry-patterns.md",
+      "sha256": "44caa346f5efcbaad44fe17e0d500e042ce64f536338ee10dd706bb980f7fc24"
+    },
+    {
+      "path": "03-business-strategy-workbook.md",
+      "sha256": "039e4c7dd8e00dd1a49f2f5fb5cadcfc8482dc41b13fed8d5eb785384ebc5fc7"
+    },
+    {
+      "path": "04-ux-and-information-architecture.md",
+      "sha256": "f0ead82c459b197c7bd976240e506590978f648edd2eeddd18ed9f74f3d56a62"
+    },
+    {
+      "path": "05-visual-brand-design-brief.md",
+      "sha256": "3cd9c225930872e0a0118b66ca6264a42816ff542f27bc0d1809993adcbe14d3"
+    },
+    {
+      "path": "06-seo-content-analytics.md",
+      "sha256": "b745f27fe860ca1d83e6c88b71cb0c7dde7d0d32ffe3a296c05db952b5cd432c"
+    },
+    {
+      "path": "07-technical-baseline.md",
+      "sha256": "f97f4f2fd5e99113e25e6ba95c9c90194155f4868547657a3af4569b8d2a9309"
+    },
+    {
+      "path": "08-roadmap-and-acceptance.md",
+      "sha256": "eb8741b992bb5188f10697b5dbbf29b2603f05f0563d5a5f4d91e7b02c9e96c7"
+    },
+    {
+      "path": "09-integrated-recommendation-v1.md",
+      "sha256": "60f6292019c0b8366c95dd1406c1187dd02c80d207dde4849d67f4304aff4722"
+    },
+    {
+      "path": "10-design-reference-boards-v1.md",
+      "sha256": "bee8e8af34fbc3b1ff28ae43e9e9bc7a89324251ec817444080bc6ba9018e7c6"
+    },
+    {
+      "path": "11-selected-reference-design-direction-v1.md",
+      "sha256": "4439c99d13dd862a7de10d23a95644f7a31efaa805079dbc9057732dcaef6fc4"
+    },
+    {
+      "path": "12-existing-media-asset-audit-v1.md",
+      "sha256": "f9cdf795884ad246346f7c12db689e6d2023c76ce74199df31ee2a968887ae90"
+    },
+    {
+      "path": "13-hero-video-ai-storyboard-v1.md",
+      "sha256": "4903e3ed6b901d7d5e8bc90e6bf698c06621020e885c1ca48c23804b5103b7c1"
+    },
+    {
+      "path": "14-homepage-content-architecture-v1.md",
+      "sha256": "bc5fae0a49b052aa021d1f3a56511e3d4635566cbb0ccb4ff1a0768c50d6bbc5"
+    },
+    {
+      "path": "15-verified-website-design-references-v1.md",
+      "sha256": "abb7463d417603824c38ce0fb26717d16f12bb90881cfeffe9822dc39f290456"
+    },
+    {
+      "path": "16-homepage-layout-prototype-v1.md",
+      "sha256": "1a43fa361cc50e80b452ea9d77a6320136185c57e61a8bfda129870a6da9eb51"
+    },
+    {
+      "path": "17-buyer-persuasion-and-moat-reframe-v1.md",
+      "sha256": "a659abaff6c90b5a42bb241baeb4699944ce835d4d0dbbf8b186f13929be4b00"
+    },
+    {
+      "path": "18-blog-agent-brand-evidence-audit-v1.md",
+      "sha256": "1402834b4916ea937f00e6e581b4dd3bb9906bfda18be557385b212995b812cc"
+    },
+    {
+      "path": "19-brand-strategy-review-framework-v1.md",
+      "sha256": "529eb914669ecc0d676e81562cca1a9e7e6db13620e408383358d9ba9fc08edb"
+    },
+    {
+      "path": "20-homepage-persuasion-blueprint-v1.md",
+      "sha256": "c9f5396839943ea95f595bda40b2e08fb98712ee52b1c2fb1ce730e126110215"
+    },
+    {
+      "path": "21-proof-led-first-three-scenes-prototype-v2.md",
+      "sha256": "38353c075b157b2e06e575b0f012a8d838ccdbfb3876d8b29ab9e703e36602f8"
+    },
+    {
+      "path": "22-homepage-architecture-planning-reset-v1.md",
+      "sha256": "d9978568ee3a4f3c51cf44f2fb611c961c5268b623d89d01033495e85bd860b8"
+    },
+    {
+      "path": "23-visual-first-homepage-architecture-v1.md",
+      "sha256": "262b2962d63b0295a78d01f7bad37c838c4c07dab251709b6d74dffd0d24f01a"
+    },
+    {
+      "path": "24-brand-platform-and-hero-message-exploration-v1.md",
+      "sha256": "113d7dcfe7c5f724fe3cc157b35d49d00a53ace484830af7f8f3b7bd9d05e42b"
+    },
+    {
+      "path": "25-brand-message-and-hero-copy-system-v1.md",
+      "sha256": "9346464782c3fd9d8c06b956b17f45f5dc428742c1453e05f81fcd547b817f22"
+    },
+    {
+      "path": "26-homepage-section-content-motion-and-media-plan-v1.md",
+      "sha256": "21b21f48c5059b2ebf0e750e03b124adef6cd8d026b0a991647f76421dc57e0d"
+    },
+    {
+      "path": "27-hero-brand-declaration-and-first-scroll-directors-brief-v1.md",
+      "sha256": "4bc28b0e8b35fa9dc97ad9d93623d466b25ca780ab3113fccfc1490522e046d5"
+    },
+    {
+      "path": "28-visual-directors-review-and-media-evidence-audit-v1.md",
+      "sha256": "0c8c1f836c06aaddfc9438e6953e3c7f6bd744d3b0ca85f7d6df718fe4d03ce1"
+    },
+    {
+      "path": "29-figma-design-lab-workflow-and-review-structure-v1.md",
+      "sha256": "c69b54b2b5565e12ed72b349cb1b92fe35d3a1a7f5edff052b0f514f6b2be380"
+    },
+    {
+      "path": "30-final-creative-direction-decision-board-v1.md",
+      "sha256": "e7344a13dc1bfd9319b0ddc20ca77b4907cb89f771b5114452a41e24798a2323"
+    },
+    {
+      "path": "31-figma-first-explorations-and-home-concept-v1.md",
+      "sha256": "d5dab4940af79902e078186bc1270ca0d1df4723a715330c390152df0a28121b"
+    },
+    {
+      "path": "31-figma-initial-hero-and-fabric-drafts-v1.md",
+      "sha256": "f0ff8e2a1ea33687154138651afb66bc0fd19dbd098d1547b094a306bf96fa4b"
+    },
+    {
+      "path": "32-figma-rev002-resume-brief-v1.md",
+      "sha256": "6bf2854164d3972a9e384cc4fb8cff4895ac845d021d839b259a80880dbfb10c"
+    },
+    {
+      "path": "33-desktop-resume-access-check-v1.md",
+      "sha256": "c913d0686fbb0de118f06955409f9f2865603e65349bed3675f350e763300117"
+    },
+    {
+      "path": "34-live-reference-review-browser-v1.md",
+      "sha256": "42af50db87d656c7f7773cabc9a7c8a63be031ced7cb80ef49ead93e71b63652"
+    },
+    {
+      "path": "NEXT-SESSION.md",
+      "sha256": "570c9cf9eab29ce576ca127ed573f9c6f5bcef8ecae3fccb4735ddf9c8caff67"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a61ba533fa7ece3fe559a72220436730556fc71bfd2dbb60f9cc6da92ecbf928"
+    },
+    {
+      "path": "decisions.md",
+      "sha256": "012f450012bc5bc0a33c55d49bb7d4ec73a06a580612ac9d18d0f3902d9af77e"
+    },
+    {
+      "path": "project-state.md",
+      "sha256": "7f8ac936fc122cc6ef8315fd2de55421232eaa754814d77117cdd9d7e21b2d87"
+    }
+  ]
+}
