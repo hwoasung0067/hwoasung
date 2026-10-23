@@ -3,7 +3,7 @@
 - 프로젝트: https://github.com/hwoasung0067/hwoasung
 - 설계 전용 브랜치: planning/website-renewal
 - 실제 운영 사이트: https://www.hwoasung.com/
-- 프로젝트 상태: **D-051 최신 — Figma 첫 실제 편집 가능한 시안 제작 완료.** R2/R1 히어로 PC·모바일 4개 + 5장면 전체 홈 PC·모바일 2개. [Figma Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP) / [31 제작·QA 로그](31-figma-first-explorations-and-home-concept-v1.md). H1은 임시 카피, 원단 제품 사진은 자리표시이며 원본 실사/사용자 시안 승인 전. 운영 구현/배포 X.
+- 프로젝트 상태: **D-052 최신 — 새 세션용 [00 통합 인계](00-CURRENT-HANDOFF.md) 마련.** D-050 브랜드·5장면·V1 방향 사용자 승인, D-051 초기 Figma **두 차례 제작 기록 총 9프레임(모두 DRAFT)**. [Figma Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP) / [첫 6개](31-figma-first-explorations-and-home-concept-v1.md) / [추가 3개](31-figma-initial-hero-and-fabric-drafts-v1.md) / [최신 REV-002 미제작·도구 한도](32-figma-rev002-resume-brief-v1.md). H1 문구·원단 실사·시안 최종 승인/운영 구현·배포 X.
 - **현재 문서는 승인된 구현 명세가 아니다. 소스코드 수정·배포 금지.**
 
 ## 새 세션은 이 문서부터 읽으세요 (2026-10-23 최신)
