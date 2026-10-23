@@ -89,3 +89,12 @@
 | D-051 | 연결된 Figma 파일에 히어로 2개 대안과 원단 갤러리 첫 스크롤 편집 시안 작성 (2026-10-23) | 사용자 '진행해'에 따라 D-050 기본 방향을 실제 Figma에서 편집 가능하게 시안 제작 | **완료:** Figma `01_DIRECTIONS · Hero`에 새 프레임 [R2 Light Hero](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=16-2), [R1 Dark Hero](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=16-28), [Fabrics first-scroll](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=16-54) 생성 및 각 프레임 editable text/레이어 수 검증. 이미지가 미검수 상태이므로 현장/제품 이미지는 **명확한 플레이스홀더/추상 안내 그래픽**으로만 표현; 실제 자사 사진인 것처럼 제시하지 않음. 같은 파일에서 이전/병렬 프레임 R1/R2 데스크톱·모바일 4개도 발견했으며 출처/시점 확인 없이 보존, 덮어쓰기 안 함. [31-figma-initial-hero-and-fabric-drafts-v1.md](31-figma-initial-hero-and-fabric-drafts-v1.md)에 프레임 노드 ID·목적·검증 상태 기록. **시안은 DRAFT이며 최종 슬로건·실사·화면/코드/배포 승인 아님.** |
 
 향후 변경은 승인 일자, 관련 파일, 대안 비교, 사용자 승인 여부, 관련 개발/커밋 링크를 추가한다. 미승인을 '구현 명세'로 오해하지 않는다.
+
+## 2026-10-23 Work 재개 접근 확인 — REV-002 미제작
+- 사용자 요청에 따라 기존 설계 문서 7개(상태/결정/인수인계/30/31 두 문서/32)를 읽고 D-050의 H1 작업 문구 + S1 5장면 + V1/R2 우선 방향을 유지했다. 새로운 기획·승인 요청 없음.
+- Figma MCP: 파일 세션 생성은 성공했으나 첫 파일 읽기 `get_metadata`에서 `You've reached the Figma MCP tool call limit on the Starter plan` 오류. 같은 읽기/쓰기 요청 반복 안 함.
+- 사용자 지정 Cloud Browser로 기존 파일 URL에 직접 접속했으나 `Site Unavailable / Unable to access this site.` 화면 표시. 한 차례 새로고침 후 동일. 로그인/권한 화면이나 Figma 캔버스에 도달하지 못했다. 이 화면만으로 계정 권한 문제, 봇 차단, Figma 장애, 정확한 네트워크 원인을 확정하지 않는다.
+- **이번 세션에서 기존 9개 프레임의 실제 캔버스 비교·레이어/렌더 재검증은 수행하지 못했다.** 프레임 ID와 이미지 검수 상태는 31/32의 이전 기록이며 이번에 새로 확인한 결과가 아니다.
+- **REV-002 PC 1440 / 모바일 390 미제작. 새 노드 ID/렌더/개선 완료 내역 없음.** 기존 프레임 삭제·복제·덮어쓰기 없음. 계정/새 파일 생성 없음. 운영 코드/main/ERP/DB/배포 변경 없음.
+- 다음 필요 조건: 현재 연결 계정의 Figma MCP 할당량이 복구되거나, 기존 파일에 접속·편집할 수 있는 브라우저 경로가 확보되어야 한다. 플랜 변경은 사용자가 별도 판단하며 이번에 실행하지 않았다. 로그인이나 공유 권한 변경이 해결책이라는 근거는 없다.
+- 접근 복구 후 32의 순서 그대로 기존 9개 프레임 직접 비교 → 기존 02_HOME 페이지에 REV-002 DRAFT PC/모바일 신규 레이어 제작 → 렌더 QA → 실제 노드 링크/차이·미승인 사항 기록. 최종 디자인/슬로건/컬러/폰트/실사·구현/배포 승인은 별개.
