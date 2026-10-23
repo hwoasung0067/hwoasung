@@ -1,5 +1,8 @@
 # 다음 세션 인계
 
+## 최신: D-056 / browser-04.1
+F-014에 따라 화면 크기·문구 위치·본문/제목 크기·행간/여백·버튼/모달을 개선. 현재 ?preview=renewal은 04.1, 실행 파일은 src/concepts/browser04의 3파일. output/concepts/browser-04-1/README.md와 output/reviews/browser-04-1.md 먼저 확인. 아래 04 기록은 이전 단계. 운영 승인/배포 아님.
+
 ## 최신: D-055 신규 browser-04 제작
 사용자가 이전 시안을 폐기하고 새로 제작 요청. browser-03은 채택 제외·반려 이력. browser-04 5장면 전체와 A/B Hero를 신규 제작, 실제 PC/모바일 및 동작 QA 완료. output/concepts/browser-04/README.md, output/reviews/browser-04.md 먼저 확인. 현재 ?preview=renewal은 04를 렌더한다. 다음은 사용자 화면 피드백 수집과 필요한 수정이며 또 신규 브랜드 설문부터 시작하지 않음. 아래 과거 03/04 계획 기록은 이전 상태다.
 갱신: 2026-10-23 KST
