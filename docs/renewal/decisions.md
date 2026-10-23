@@ -88,6 +88,8 @@
 
 | D-051 | 연결된 Figma 파일에 히어로 2개 대안과 원단 갤러리 첫 스크롤 편집 시안 작성 (2026-10-23) | 사용자 '진행해'에 따라 D-050 기본 방향을 실제 Figma에서 편집 가능하게 시안 제작 | **완료:** Figma `01_DIRECTIONS · Hero`에 새 프레임 [R2 Light Hero](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=16-2), [R1 Dark Hero](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=16-28), [Fabrics first-scroll](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=16-54) 생성 및 각 프레임 editable text/레이어 수 검증. 이미지가 미검수 상태이므로 현장/제품 이미지는 **명확한 플레이스홀더/추상 안내 그래픽**으로만 표현; 실제 자사 사진인 것처럼 제시하지 않음. 같은 파일에서 이전/병렬 프레임 R1/R2 데스크톱·모바일 4개도 발견했으며 출처/시점 확인 없이 보존, 덮어쓰기 안 함. [31-figma-initial-hero-and-fabric-drafts-v1.md](31-figma-initial-hero-and-fabric-drafts-v1.md)에 프레임 노드 ID·목적·검증 상태 기록. **시안은 DRAFT이며 최종 슬로건·실사·화면/코드/배포 승인 아님.** |
 
+| D-052 | 최신 단일 인계 문서/새 세션 재개 기준 통합 (2026-10-23) | 사용자 직접 요청 **“새로운 세션에서 진행하니까 지금까지 정하고 맞춰온걸 못따라오네. 일단 새로운 세션에서 진행하기 좋게 잘 정리해주고 그걸 새로운 세션에 어떻게 프롬프트 입력해서 학습시킬지 알려줘.”**. 과거 문서 23~32, 두 개의 31 Figma 기록, 9개 기존 디자인 프레임/Work Figma 접근 오류로 혼란 | **문서화 완료:** [00-CURRENT-HANDOFF.md](00-CURRENT-HANDOFF.md) 신설. D-043/044/046/050의 **실제 승인된 원칙**과 H1 최종 슬로건·Figma REV-001 DRAFT·제품 실사·구현 **미승인**을 명확하게 분리. Figma `rvui4wljLmXy0BJXTM7IXP` 기존 3페이지/9개 프레임(기존 6개+별도 추가 3개) 보존, **REV-002 미제작**, 2026-10-23 Starter MCP 도구 호출 한도와 Cloud Browser 불가가 새 세션 기준 최신 장애 기록임을 명시. README/project-state/NEXT-SESSION의 0순위 시작 링크 업데이트. 다른 세션은 **실제 GitHub 및 연결 Figma 상태를 직접 읽고 확인한 후 진행**, 이전 결정 재인터뷰/새 파일 생성·도구 오류를 무한 재시도/허위 성공 보고 금지. 별도 사용자 승인 없는 Figma 신규 완성 시안·운영 코드/배포 생성 X. |
+
 향후 변경은 승인 일자, 관련 파일, 대안 비교, 사용자 승인 여부, 관련 개발/커밋 링크를 추가한다. 미승인을 '구현 명세'로 오해하지 않는다.
 
 ## 2026-10-23 Work 재개 접근 확인 — REV-002 미제작
