@@ -16,6 +16,9 @@
 - **[31. R2/R1 첫 히어로 4안·PC/모바일 전체 5장면 편집 시안 제작/QA](31-figma-first-explorations-and-home-concept-v1.md)** — Figma 파일에 사용자가 실제로 볼 수 있는 레이어형 화면 6개 생성. 이미지 실사 검증 필요·원단 실물 사진은 자리표시. Figma Starter 3페이지 제한 적용.
 - [히어로 R2 PC](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=6-2) · [히어로 R1 PC](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=6-23) · [전체 홈 PC](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=7-2) · [전체 홈 모바일](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=8-2).
 
+## D-051 실제 Figma 첫 디자인 작업
+- **[31. 히어로 R2/R1 2안·원단 갤러리 첫 스크롤](31-figma-initial-hero-and-fabric-drafts-v1.md)**: 현재 파일에서 실제 편집 가능한 [밝은 에디토리얼 Hero](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=16-2), [제조 몰입 Hero](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=16-28), [원단 5군 갤러리](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=16-54) 세 프레임 신규 제작. 원본 화성섬유 현장/제품 사진 미검수로 사진 아닌 **명시적 그래픽 플레이스홀더** 사용, 모두 DRAFT. 기존/병렬 동일 페이지 PC/모바일 프레임도 별도 존재·보존함.
+
 ## D-050 기본 디자인 방향 승인 및 Figma 파일 생성
 - **사용자 '그렇게 해보자'로 H1 임시 문구+S1 5장면+V1 밝은 에디토리얼×제조 현장 대비 조합을 기본 시안 방향으로 채택**. H1 글자 자체 최종 슬로건 확정 아님.
 - **[HWOASUNG Website Renewal Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP)**: 생성된 Figma Design 파일. 현재 빈 작업 공간이며 향후 29 문서 규칙대로 EXP/REV/APP 버전 시안 누적 예정.
