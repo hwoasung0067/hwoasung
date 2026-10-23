@@ -3,7 +3,7 @@
 - 프로젝트: https://github.com/hwoasung0067/hwoasung
 - 설계 전용 브랜치: planning/website-renewal
 - 실제 운영 사이트: https://www.hwoasung.com/
-- 프로젝트 상태: **D-048 최신 — 메인 기획·브랜드 A형 히어로 방향·아트디렉션 자료 정리 중, Figma를 차기 디자인 시안 누적·검토 공간으로 예약.** D-041에 따라 사용자와 구조/문구/미디어 방향 합의 후에만 Figma PC/모바일 시안 제작. 16/21 불합격 UI 실험은 승인안이 아님.
+- 프로젝트 상태: **D-050 최신 — 5장면과 밝은 에디토리얼+실제 제조 현장 대비가 디자인 기본안으로 채택됨.** H1 ‘제조의 깊이를, 더 가깝게.’는 임시 시안 카피이며 최종 슬로건 아님. [Figma Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP) 파일 생성(아직 빈 파일). 원본 실사 검수·PC/모바일 시안 및 운영 구현은 이후 단계.
 - **현재 문서는 승인된 구현 명세가 아니다. 소스코드 수정·배포 금지.**
 
 ## 브랜딩을 다시 고민할 때 가장 먼저 볼 문서
@@ -11,6 +11,11 @@
 
 연결 문서: [17 설득/해자 재설계](17-buyer-persuasion-and-moat-reframe-v1.md) / [18 blog-agent 브랜드 자산 근거](18-blog-agent-brand-evidence-audit-v1.md) / [15 Arville·Tintex 레퍼런스](15-verified-website-design-references-v1.md).
 **참고:** 체크리스트 확정은 새로운 카피/해자 우월성/웹 시안·코드 구현 승인과 다르다.
+
+## D-050 기본 디자인 방향 승인 및 Figma 파일 생성
+- **사용자 '그렇게 해보자'로 H1 임시 문구+S1 5장면+V1 밝은 에디토리얼×제조 현장 대비 조합을 기본 시안 방향으로 채택**. H1 글자 자체 최종 슬로건 확정 아님.
+- **[HWOASUNG Website Renewal Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP)**: 생성된 Figma Design 파일. 현재 빈 작업 공간이며 향후 29 문서 규칙대로 EXP/REV/APP 버전 시안 누적 예정.
+- 자세한 승인 경계는 [30 문서](30-final-creative-direction-decision-board-v1.md)와 decisions D-050.
 
 ## 사용자 의사결정용 최종 추천안 — 대안·1순위·이유 (D-049)
 - **[30. 히어로 문구·메인 구성·톤앤무드 추천 순위와 의사결정 보드](30-final-creative-direction-decision-board-v1.md)**: 사용자 요청에 따라 매 선택마다 **대안과 기획자 1순위, 이전 대화 기반의 이유·단점**을 먼저 설명.
