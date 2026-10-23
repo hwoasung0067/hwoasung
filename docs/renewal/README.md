@@ -3,7 +3,7 @@
 - 프로젝트: https://github.com/hwoasung0067/hwoasung
 - 설계 전용 브랜치: planning/website-renewal
 - 실제 운영 사이트: https://www.hwoasung.com/
-- 프로젝트 상태: **D-050 최신 — 5장면과 밝은 에디토리얼+실제 제조 현장 대비가 디자인 기본안으로 채택됨.** H1 ‘제조의 깊이를, 더 가깝게.’는 임시 시안 카피이며 최종 슬로건 아님. [Figma Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP) 파일 생성(아직 빈 파일). 원본 실사 검수·PC/모바일 시안 및 운영 구현은 이후 단계.
+- 프로젝트 상태: **D-051 최신 — Figma 첫 실제 편집 가능한 시안 제작 완료.** R2/R1 히어로 PC·모바일 4개 + 5장면 전체 홈 PC·모바일 2개. [Figma Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP) / [31 제작·QA 로그](31-figma-first-explorations-and-home-concept-v1.md). H1은 임시 카피, 원단 제품 사진은 자리표시이며 원본 실사/사용자 시안 승인 전. 운영 구현/배포 X.
 - **현재 문서는 승인된 구현 명세가 아니다. 소스코드 수정·배포 금지.**
 
 ## 브랜딩을 다시 고민할 때 가장 먼저 볼 문서
@@ -11,6 +11,10 @@
 
 연결 문서: [17 설득/해자 재설계](17-buyer-persuasion-and-moat-reframe-v1.md) / [18 blog-agent 브랜드 자산 근거](18-blog-agent-brand-evidence-audit-v1.md) / [15 Arville·Tintex 레퍼런스](15-verified-website-design-references-v1.md).
 **참고:** 체크리스트 확정은 새로운 카피/해자 우월성/웹 시안·코드 구현 승인과 다르다.
+
+## D-051 Figma 첫 시안 및 실제 링크
+- **[31. R2/R1 첫 히어로 4안·PC/모바일 전체 5장면 편집 시안 제작/QA](31-figma-first-explorations-and-home-concept-v1.md)** — Figma 파일에 사용자가 실제로 볼 수 있는 레이어형 화면 6개 생성. 이미지 실사 검증 필요·원단 실물 사진은 자리표시. Figma Starter 3페이지 제한 적용.
+- [히어로 R2 PC](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=6-2) · [히어로 R1 PC](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=6-23) · [전체 홈 PC](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=7-2) · [전체 홈 모바일](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP?node-id=8-2).
 
 ## D-050 기본 디자인 방향 승인 및 Figma 파일 생성
 - **사용자 '그렇게 해보자'로 H1 임시 문구+S1 5장면+V1 밝은 에디토리얼×제조 현장 대비 조합을 기본 시안 방향으로 채택**. H1 글자 자체 최종 슬로건 확정 아님.
