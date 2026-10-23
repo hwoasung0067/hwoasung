@@ -1,7 +1,7 @@
 # 현재 프로젝트 상태 (START HERE)
 최종 갱신: 2026-10-23 KST
 작업 기준 브랜치: planning/website-renewal
-프로젝트 단계: **D-051 Figma 실제 편집 가능한 초기 시안 제작 완료**, 브랜드 D-050 기본 방향 유지. [31](31-figma-first-explorations-and-home-concept-v1.md) / [Figma Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP): 히어로 R2/R1 × PC/모바일 **4개**, 승인 5장면 전체 홈 PC/모바일 **2개**, Brief/기존 이미지 출처 보드. 실제 편직 이미지와 5종 원단 임시 그래픽 명확히 구분. **시안과 H1 최종 사용자 승인 전, 실물 제품 사진·고화질 원본 확인 전, 운영 코드/배포 X**.
+프로젝트 단계: **D-051 Figma 첫 편집 가능 시안 작업 시작**. [31](31-figma-initial-hero-and-fabric-drafts-v1.md) R2 PC Hero `16:2`/R1 PC Hero `16:28`/실물 원단 갤러리 첫 스크롤 `16:54` 디자인 초안. https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP. 같은 페이지에 R1/R2 PC/모바일 기존 프레임 별도 발견·보존. **사진은 검증 대기 플레이스홀더이며 완성 디자인·문구 확정·코드/배포 아님**.
 운영 사이트 및 main 브랜치 변경: 없음
 개발 착수: NO
 배포 승인: NO
