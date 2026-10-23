@@ -1,7 +1,7 @@
 # 현재 프로젝트 상태 (START HERE)
-최종 갱신: 2026-10-22 KST
+최종 갱신: 2026-10-23 KST
 작업 기준 브랜치: planning/website-renewal
-프로젝트 단계: **D-049 대안·1순위 추천·근거를 먼저 제시하는 결정 방식 확정**. [30](30-final-creative-direction-decision-board-v1.md)에서 H1 작업 문구 '제조의 깊이를, 더 가깝게.' + S1 5장면(Hero→Fabrics·사용처 간략 링크→Manufacturing→Field Notes→Closing) + V1 Tintex식 밝은 에디토리얼×Arville식 실사 현장 대비를 **기획자 1순위 조합으로 추천(사용자 승인 전)**. Figma 디자인 파일 생성·운영 코드/영상 제작 전.
+프로젝트 단계: **D-050 1순위 디자인 기본 방향 사용자 채택** — H1 `제조의 깊이를, 더 가깝게.` 임시 작업 카피 + S1 5장면 + V1 밝은 Tintex식 에디토리얼/Arville식 실제 제조 대비. **Figma Design Lab 생성:** https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP (아직 빈 파일, 시안 제작 전). H1은 최종 슬로건 미확정, 미디어/컬러/폰트/상세 디자인·개발/배포 미승인. [30](30-final-creative-direction-decision-board-v1.md) 확인.
 운영 사이트 및 main 브랜치 변경: 없음
 개발 착수: NO
 배포 승인: NO
