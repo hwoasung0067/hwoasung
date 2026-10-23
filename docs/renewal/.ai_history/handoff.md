@@ -14,6 +14,9 @@ START-HERE → context/current-direction → context/design-judgment. 이 문서
 ## 기존 시안 상태
 로컬 ?preview=renewal 검토용 코드. 03 빌드/모바일/메뉴/문의 제목·모달 키보드 QA는 이전 작업 기록. 현재 세션의 추가 렌더 검증이 아님. 촬영 원본/제품별 실사 미확인, 최종 카피·색·폰트 미승인. Figma 재접속은 선행 조건이 아님.
 
+## 실행 계획
+사용자 요청으로 `output/plans/website-delivery-plan-v1.md`에 디자인→상세 동선→운영 구현→QA→배포 계획을 작성했다. 권장 계획이며 운영 구현/배포 승인 아님.
+
 ## 다음 최우선 작업
 브라우저 03을 보존하고 browser-04 별도 버전에서 첫 화면 제조 사진과 타이포 통합·갤러리 밀도 변화·장면별 리듬을 실험. R-01~06과 qa/design-review에 따라 PC/모바일 검증. 승인된 5장면/사업 정체성은 유지. 새 슬로건 논의부터 시작하지 말 것.
 

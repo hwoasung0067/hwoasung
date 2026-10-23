@@ -11,6 +11,7 @@
 
 | 작업 | 추가로 읽을 문서 |
 |---|---|
+| 전체 제작 계획 | `output/plans/website-delivery-plan-v1.md` |
 | 새 피드백 반영 | `input/feedback/2026-10-23-user-feedback-excerpts.md`, `.ai_history/feedback-log.md`, `workflows/feedback-to-design.md` |
 | 시안 발전 | `context/references.md`, `context/page-plan.md`, `context/media-register.md`, `output/concepts/INDEX.md` |
 | 검토/선택 | `qa/design-review.md`, `.ai_history/decision-log.md` |
