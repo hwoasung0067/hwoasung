@@ -6,6 +6,11 @@
 - 프로젝트 상태: **D-051 최신 — Figma 첫 실제 편집 가능한 시안 제작 완료.** R2/R1 히어로 PC·모바일 4개 + 5장면 전체 홈 PC·모바일 2개. [Figma Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP) / [31 제작·QA 로그](31-figma-first-explorations-and-home-concept-v1.md). H1은 임시 카피, 원단 제품 사진은 자리표시이며 원본 실사/사용자 시안 승인 전. 운영 구현/배포 X.
 - **현재 문서는 승인된 구현 명세가 아니다. 소스코드 수정·배포 금지.**
 
+## 새 세션은 이 문서부터 읽으세요 (2026-10-23 최신)
+- **[00-CURRENT-HANDOFF.md — 최신 통합 인계 / 확정·미승인·실제 Figma 9프레임 / 최근 도구 접근 장애 / 다음 할 일](00-CURRENT-HANDOFF.md)** ← **새 세션의 첫 번째 읽기 문서**. `project-state.md` 첫머리, `decisions.md` 최신, `32-figma-rev002-resume-brief-v1.md`와 함께 최신 상태 판단.
+- 연결 Figma **[HWOASUNG Design Lab](https://www.figma.com/design/rvui4wljLmXy0BJXTM7IXP)** 파일에 실제 편집 가능한 초기 시안이 **2회에 걸쳐 9개 프레임 이력상 기록**됨. R2/R1 시안·REV-001 PC/모바일·원단 첫 스크롤; **REV-002 미제작**. Figma Starter MCP 호출 한도/Cloud Browser 접속 오류가 최근 재개 시도에서 발생한 상태. 시안 확정/원단 실사 검증/운영 구현은 아님.
+- **새 세션 진행법:** 먼저 00 handoff를 그대로 참조한 후 저장소의 최신 브랜치를 직접 읽고, 과거 결정 반복 질문 없이 기존 디자인의 검토/수정부터 진행. 사용자의 실제 결정이 필요할 때만 근거와 1순위 추천+대안 설명.
+
 ## 브랜딩을 다시 고민할 때 가장 먼저 볼 문서
 **[19. 브랜드 전략 고민 요소·점검 질문 기준서](19-brand-strategy-review-framework-v1.md)** — 사용자가 직접 중요하다고 밝힌 '브랜딩은 설득', 구매자 니즈·고민/거래처 변경 동기·화성섬유만의 선택 이유(해자)·스크롤에 따른 신뢰·증거·제품/상담까지를 **미래 재검토용 12개 질문과 10개 검사**로 보존. 일반 제조사 소개로 돌아가지 않도록 새 홈페이지 시안 전에 반드시 참조한다.
 
