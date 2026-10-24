@@ -1,5 +1,5 @@
 # 리뉴얼 작업 시작점
-갱신: 2026-10-24 KST · 구조 버전 1
+갱신: 2026-10-25 KST · 구조 버전 1
 
 이 프로젝트는 기존 리뉴얼의 연속이다. 새 브랜드 기획부터 다시 시작하지 않는다.
 
@@ -13,6 +13,7 @@
 |---|---|
 | 전체 제작 계획 | `output/plans/website-delivery-plan-v1.md` |
 | 새 피드백 반영 | `input/feedback/2026-10-23-user-feedback-excerpts.md`, `.ai_history/feedback-log.md`, `workflows/feedback-to-design.md` |
+| 레퍼런스 확장 비교 | `output/research/2026-10-24-reference-expansion/README.md` |
 | 시안 발전 | `context/references.md`, `context/page-plan.md`, `context/media-register.md`, `output/concepts/INDEX.md` |
 | 검토/선택 | `qa/design-review.md`, `.ai_history/decision-log.md` |
 | 이전 근거 추적 | `input/planning-snapshot/manifest.json`, `legacy-index.md`, 기존 번호 문서 |

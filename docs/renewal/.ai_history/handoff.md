@@ -1,5 +1,8 @@
 # 다음 세션 인계
 
+## 현재 대화 단계: F-017 레퍼런스 확장 (2026-10-25)
+사용자가 04.2의 느낌이 잘 오지 않는다고 하며 Arville/Tintex 기반 다양한 후보 조사 요청. output/research/2026-10-24-reference-expansion/README.md와 reference-board.jpg를 먼저 확인. 기준 두 사이트 재검토+추가 8곳 데스크톱 실제 화면/일부 스크롤 조사 완료. 새 디자인 제작/채택 없음. 다음은 후보에서 와닿는 시각적 요소를 기존 취향과 연결하고, 필요 시 같은 문구로 첫 두 장면의 소재 중심/사람 있는 제조/절제된 콜라주를 비교하는 것이라는 AI 제안. 기존 04.2와 승인된 다섯 장면 보존. 아래 D-057은 마지막 제작물/구조 동의 이력이다.
+
 ## 최신: D-057 / browser-04.2 / 2026-10-24 KST
 F-015/016으로 짧은 원단·사용처 확인 후 제조 현장으로 이어지는 방향에 동의. 현재 ?preview=renewal은 04.2. 실행 소스 src/concepts/browser04의 Browser04.jsx, browser04.css, detail.css, gateway.css. output/concepts/browser-04-2/README.md와 output/reviews/browser-04-2.md 확인. 04.1 소스/캡처 보존. 원단 구간 높이 1440px에서 1930→709px, 390px에서 1676→907px. 전환율 효과는 미검증. 제품 그래픽은 실물 사진 대기. 최종 디자인/운영 승인 아님.
 

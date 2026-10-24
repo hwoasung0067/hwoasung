@@ -27,3 +27,6 @@
 
 ## F-015/016 — 2026-10-24 초기 원단 노출의 역할
 원문: input/feedback/2026-10-24-material-sequence.md. 사용자는 상품이 Hero 바로 다음에 오는 이유와 타겟 설득 기여를 질문했다. AI는 세 선택지를 비교하고 간결한 원단·사용처 확인→제조 현장을 추천, 사용자가 동의했다. 반영: browser-04.2. 5장면 유지, 제품 구간 압축, 상세는 선택 시 열기. 전환 효과는 가설이며 구체 화면 채택은 미확정. 실제 QA: output/reviews/browser-04-2.md.
+
+## F-017 — 2026-10-24–25 레퍼런스 확장
+원문: input/feedback/2026-10-25-reference-expansion-request.md. 04.2의 느낌이 오지 않아 다양한 실제 레퍼런스를 요청. Arville/Tintex 재검토+추가 8곳 렌더를 확인하고 비교 캡처/보드/적용 가설을 output/research/2026-10-24-reference-expansion에 저장. AI 추천: Kvadrat 소재의 크기·여백, Burel 사람/현장, Albini 콜라주. 새 디자인 선택/브랜드 변경 승인 아님. 기존 04.2는 보존, 현재 대화 단계는 레퍼런스 비교다.

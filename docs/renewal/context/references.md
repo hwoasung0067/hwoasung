@@ -13,3 +13,6 @@
 보조: Camira의 첫인상/절제된 상호작용, Yitai의 실제 현장·사람·제품 사진. 디자인 스튜디오나 럭셔리 브랜드처럼 제조 실체가 사라지는 방향은 피한다.
 
 상세 근거: 기존 11, 15, 34번 문서. 실사/영상 자산을 복사하거나 무단 사용하지 않는다. 사이트의 현재 버전은 변할 수 있으므로 새 분석은 날짜/확인 범위를 기록한다.
+
+## 추가 탐색 (2026-10-24–25 / F-017)
+사용자가 현재 시안의 느낌이 잘 오지 않아 다양한 후보를 요청. [추가 8곳 실제 화면·적용 가설](../output/research/2026-10-24-reference-expansion/README.md)과 [비교 보드](../output/research/2026-10-24-reference-expansion/reference-board.jpg)를 확인한다. Kvadrat·Burel Factory·Albini Group·Dedar·rohi·FENIX·mafi·GF Smith를 직접 렌더 확인했다. 1순위 Kvadrat, Burel의 사람/현장과 Albini의 콜라주는 보조 비교 축이라는 AI 추천이며 새 레퍼런스 채택은 사용자 결정 전. Arville/Tintex의 기존 선호는 유지한다.
