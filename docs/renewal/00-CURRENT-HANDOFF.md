@@ -1,5 +1,7 @@
 # 화성섬유 홈페이지 리뉴얼 — 새 세션에서 반드시 먼저 읽는 최신 인계 문서
 
+> 2026-10-24 D-057 최신: 원단·사용처를 빠르게 확인하고 제조 현장으로 이어지는 browser-04.2 제작. [현재 상태](.ai_history/handoff.md)와 [시안/소스](output/concepts/browser-04-2/README.md), [실제 QA](output/reviews/browser-04-2.md) 확인. 아래 번호 문서 본문은 과거 단계 기록이다.
+
 > 2026-10-23 D-054: 사용자 요청에 따라 시맨틱 구조로 정리. 최신 시작점은 [START-HERE.md](START-HERE.md). 승인 방향은 [context/current-direction.md](context/current-direction.md), 원문 피드백/분석/검토는 분리 보존. Figma는 필수 경로에서 제외한 브라우저 제작 기준을 유지. 과거 본문은 아래에 보존.
 
 

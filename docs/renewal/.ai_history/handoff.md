@@ -1,9 +1,16 @@
 # 다음 세션 인계
 
-## 최신: D-056 / browser-04.1
+## 최신: D-057 / browser-04.2 / 2026-10-24 KST
+F-015/016으로 짧은 원단·사용처 확인 후 제조 현장으로 이어지는 방향에 동의. 현재 ?preview=renewal은 04.2. 실행 소스 src/concepts/browser04의 Browser04.jsx, browser04.css, detail.css, gateway.css. output/concepts/browser-04-2/README.md와 output/reviews/browser-04-2.md 확인. 04.1 소스/캡처 보존. 원단 구간 높이 1440px에서 1930→709px, 390px에서 1676→907px. 전환율 효과는 미검증. 제품 그래픽은 실물 사진 대기. 최종 디자인/운영 승인 아님.
+
+다음 작업: 사용자가 실제 새 흐름을 보고 느끼는 제조 장면 진입 속도와 제품 탐색 명료성에 대한 피드백을 수집하고 필요한 부분만 조정. 사진 원본 확인/제품별 실사 확보가 시각 완성도의 남은 의존성이다. Figma 재접속이나 브랜딩 재설문 불필요.
+
+아래는 과거 단계 기록이며 현행 버전 판단에는 위 최신 항목을 우선한다.
+
+## 이전: D-056 / browser-04.1
 F-014에 따라 화면 크기·문구 위치·본문/제목 크기·행간/여백·버튼/모달을 개선. 현재 ?preview=renewal은 04.1, 실행 파일은 src/concepts/browser04의 3파일. output/concepts/browser-04-1/README.md와 output/reviews/browser-04-1.md 먼저 확인. 아래 04 기록은 이전 단계. 운영 승인/배포 아님.
 
-## 최신: D-055 신규 browser-04 제작
+## 이전: D-055 신규 browser-04 제작
 사용자가 이전 시안을 폐기하고 새로 제작 요청. browser-03은 채택 제외·반려 이력. browser-04 5장면 전체와 A/B Hero를 신규 제작, 실제 PC/모바일 및 동작 QA 완료. output/concepts/browser-04/README.md, output/reviews/browser-04.md 먼저 확인. 현재 ?preview=renewal은 04를 렌더한다. 다음은 사용자 화면 피드백 수집과 필요한 수정이며 또 신규 브랜드 설문부터 시작하지 않음. 아래 과거 03/04 계획 기록은 이전 상태다.
 갱신: 2026-10-23 KST
 
