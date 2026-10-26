@@ -30,3 +30,6 @@
 
 ## F-017 — 2026-10-24–25 레퍼런스 확장
 원문: input/feedback/2026-10-25-reference-expansion-request.md. 04.2의 느낌이 오지 않아 다양한 실제 레퍼런스를 요청. Arville/Tintex 재검토+추가 8곳 렌더를 확인하고 비교 캡처/보드/적용 가설을 output/research/2026-10-24-reference-expansion에 저장. AI 추천: Kvadrat 소재의 크기·여백, Burel 사람/현장, Albini 콜라주. 새 디자인 선택/브랜드 변경 승인 아님. 기존 04.2는 보존, 현재 대화 단계는 레퍼런스 비교다.
+
+## F-018 — 2026-10-26 이전 시안 참조 없이 신규 세 안
+원문: input/feedback/2026-10-26-fresh-directions-request.md. 기존 화면을 계속 보면 비슷한 결과가 나오는 문제 제기, 카피 변경/다양한 형태 요청. 이전 소스·스타일·캡처를 사용하지 않고 신규 05-A 소재/05-B 현장/05-C 콜라주 전체 페이지와 비교 입구 제작. A 추천은 AI 판단이며 사용자 채택 전. 출처/QA: output/concepts/browser-05, output/reviews/browser-05.md.

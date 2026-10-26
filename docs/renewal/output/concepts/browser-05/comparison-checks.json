@@ -1,0 +1,46 @@
+[
+  {
+    "client": 305,
+    "clipped": [],
+    "content": 305,
+    "links": [
+      "./a.html",
+      "./b.html",
+      "./c.html"
+    ],
+    "width": 320
+  },
+  {
+    "client": 375,
+    "clipped": [],
+    "content": 375,
+    "links": [
+      "./a.html",
+      "./b.html",
+      "./c.html"
+    ],
+    "width": 390
+  },
+  {
+    "client": 753,
+    "clipped": [],
+    "content": 753,
+    "links": [
+      "./a.html",
+      "./b.html",
+      "./c.html"
+    ],
+    "width": 768
+  },
+  {
+    "client": 1425,
+    "clipped": [],
+    "content": 1425,
+    "links": [
+      "./a.html",
+      "./b.html",
+      "./c.html"
+    ],
+    "width": 1440
+  }
+]

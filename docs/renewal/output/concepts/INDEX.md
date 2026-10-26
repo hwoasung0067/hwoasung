@@ -8,5 +8,6 @@
 | browser-04 | `browser-04/README.md` | 신규 DRAFT / 사용자 검토 전 | 5장면 전체·Hero A/B·PC/모바일 QA |
 | browser-04.1 | `browser-04-1/README.md` | 디테일 개선 DRAFT | 반응형 8개 크기·읽기/위치/간격 QA |
 | browser-04.2 | `browser-04-2/README.md` | 원단 구간 압축 DRAFT / 현재 | 원단·사용처 후 제조 연결, 7개 너비·문의 맥락 QA |
+| browser-05 A/B/C | `browser-05/README.md` | 다양한 신규 DRAFT / 현재 | 이전 시안 참조 없는 세 전체 페이지·카피·비교 화면·반응형/문의 QA |
 
-최신은 browser-04.2. 초기 구조화 이후 생성한 화면을 버전별로 보존하며 이전 출력을 사용자 승인안으로 승격하지 않는다.
+최신은 browser-05 A/B/C. 초기 구조화 이후 생성한 화면을 버전별로 보존하며 이전 출력을 사용자 승인안으로 승격하지 않는다.

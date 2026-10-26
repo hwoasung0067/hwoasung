@@ -1,0 +1,202 @@
+{
+  "date": "2026-10-26",
+  "layout": [
+    {
+      "brokenImages": [],
+      "client": 305,
+      "clipped": [],
+      "content": 305,
+      "heading": "46px",
+      "page": "a",
+      "width": 320
+    },
+    {
+      "brokenImages": [],
+      "client": 375,
+      "clipped": [],
+      "content": 375,
+      "heading": "48px",
+      "page": "a",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "client": 753,
+      "clipped": [],
+      "content": 753,
+      "heading": "54px",
+      "page": "a",
+      "width": 768
+    },
+    {
+      "brokenImages": [],
+      "client": 1009,
+      "clipped": [],
+      "content": 1009,
+      "heading": "68.608px",
+      "page": "a",
+      "width": 1024
+    },
+    {
+      "brokenImages": [],
+      "client": 1425,
+      "clipped": [],
+      "content": 1425,
+      "heading": "96.48px",
+      "page": "a",
+      "width": 1440
+    },
+    {
+      "brokenImages": [],
+      "client": 1905,
+      "clipped": [],
+      "content": 1905,
+      "heading": "105px",
+      "page": "a",
+      "width": 1920
+    },
+    {
+      "brokenImages": [],
+      "client": 305,
+      "clipped": [],
+      "content": 305,
+      "heading": "30px",
+      "page": "b",
+      "width": 320
+    },
+    {
+      "brokenImages": [],
+      "client": 375,
+      "clipped": [],
+      "content": 375,
+      "heading": "32px",
+      "page": "b",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "client": 753,
+      "clipped": [],
+      "content": 753,
+      "heading": "44px",
+      "page": "b",
+      "width": 768
+    },
+    {
+      "brokenImages": [],
+      "client": 1009,
+      "clipped": [],
+      "content": 1009,
+      "heading": "55.296px",
+      "page": "b",
+      "width": 1024
+    },
+    {
+      "brokenImages": [],
+      "client": 1425,
+      "clipped": [],
+      "content": 1425,
+      "heading": "74.88px",
+      "page": "b",
+      "width": 1440
+    },
+    {
+      "brokenImages": [],
+      "client": 1905,
+      "clipped": [],
+      "content": 1905,
+      "heading": "80px",
+      "page": "b",
+      "width": 1920
+    },
+    {
+      "brokenImages": [],
+      "client": 305,
+      "clipped": [],
+      "content": 305,
+      "heading": "29px",
+      "page": "c",
+      "width": 320
+    },
+    {
+      "brokenImages": [],
+      "client": 375,
+      "clipped": [],
+      "content": 375,
+      "heading": "32px",
+      "page": "c",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "client": 753,
+      "clipped": [],
+      "content": 753,
+      "heading": "43px",
+      "page": "c",
+      "width": 768
+    },
+    {
+      "brokenImages": [],
+      "client": 1009,
+      "clipped": [],
+      "content": 1009,
+      "heading": "55.296px",
+      "page": "c",
+      "width": 1024
+    },
+    {
+      "brokenImages": [],
+      "client": 1425,
+      "clipped": [],
+      "content": 1425,
+      "heading": "73.44px",
+      "page": "c",
+      "width": 1440
+    },
+    {
+      "brokenImages": [],
+      "client": 1905,
+      "clipped": [],
+      "content": 1905,
+      "heading": "90px",
+      "page": "c",
+      "width": 1920
+    }
+  ],
+  "flows": [
+    {
+      "page": "a",
+      "menuClosed": "false",
+      "productMail": "mailto:hwoasung0068@gmail.com?subject=인타록 원단 문의",
+      "useMail": "mailto:hwoasung0068@gmail.com?subject=PU코팅 용도 원단 문의",
+      "dialog": {
+        "bodyScroll": "visible",
+        "focus": "보드레 원단 안내",
+        "open": false
+      }
+    },
+    {
+      "page": "b",
+      "menuClosed": "false",
+      "productMail": "mailto:hwoasung0068@gmail.com?subject=인타록 원단 문의",
+      "useMail": "mailto:hwoasung0068@gmail.com?subject=PU코팅 용도 원단 문의",
+      "dialog": {
+        "bodyScroll": "visible",
+        "focus": "보드레 원단 안내",
+        "open": false
+      }
+    },
+    {
+      "page": "c",
+      "menuClosed": "false",
+      "productMail": "mailto:hwoasung0068@gmail.com?subject=인타록 원단 문의",
+      "useMail": "mailto:hwoasung0068@gmail.com?subject=PU코팅 용도 원단 문의",
+      "dialog": {
+        "bodyScroll": "visible",
+        "focus": "보드레 원단 안내",
+        "open": false
+      }
+    }
+  ]
+}

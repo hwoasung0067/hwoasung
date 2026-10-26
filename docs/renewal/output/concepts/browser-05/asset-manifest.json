@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-26 KST",
+  "generation_mode": "built-in imagegen, not CLI",
+  "prompts": [
+    "Use case: product-mockup. Asset type: wide editorial textile art direction image for a B2B circular knit fabric manufacturer website design study. Create a striking tactile macro photograph of a single rich cobalt blue knitted textile arranged in generous sculptural flowing folds, edge-to-edge fabric. Extremely fine realistic knit loops visible in the foreground, soft grazing daylight, carefully controlled natural shadow, beautiful depth, calm and sophisticated, material itself the protagonist. Wide landscape 3:2 composition, no props, no room, no factory, no text, no branding, no watermark. This is an explicitly illustrative mood image, not documentation of any company's actual product. Premium material photography with physical weight and convincing textile structure, not glossy plastic, not satin.",
+    "Use case: product-mockup. Asset type: editorial still life for a B2B textile manufacturer design concept, portrait composition. Photograph one large ivory yarn cone on the left and a generous draped length of warm off-white knit fabric sweeping from middle to bottom right across a warm light stone studio backdrop. Very tactile visible knitted loops and natural cotton-like yarn, soft directional sunlight from upper left, sculptural grounded shadows, restrained warm neutrals, contemporary editorial art direction. Objects feel human scale and close, quiet confident craftsmanship, not rustic decoration. No plants, no furniture, no tools, no logo, no text, no watermark, no fake certificate. Illustrative art direction only, not an actual company's product."
+  ],
+  "assets": [
+    {
+      "file": "assets/cobalt-knit.png",
+      "workspace_path": "/Users/mins/Downloads/hwoasung/design-studies/renewal-05/assets/cobalt-knit.png",
+      "source": "Built-in imagegen; exec-d8ce3bde-2429-43f3-b549-7db37d114f1d.png",
+      "scope": "AI 소재 분위기 연출. 실제 제품/원사/조직/재고 사진이 아님.",
+      "sha256": "60f2c6b6039eef4b03d52c1f91a9be9bf74ad7b8c6b7bcfad459e4b884d8c6f0"
+    },
+    {
+      "file": "assets/ivory-yarn.png",
+      "workspace_path": "/Users/mins/Downloads/hwoasung/design-studies/renewal-05/assets/ivory-yarn.png",
+      "source": "Built-in imagegen; exec-c86ea4c7-f194-4ed5-8aaf-37a537def3c9.png",
+      "scope": "AI 원사/원단 정물 연출. 실제 화성섬유 제품이 아님.",
+      "sha256": "e27ced26ea73d26aa236154aad22d4d89144221a58d132a099ad4ff7c2e07c12"
+    },
+    {
+      "file": "assets/factory-wide.jpg",
+      "workspace_path": "/Users/mins/Downloads/hwoasung/design-studies/renewal-05/assets/factory-wide.jpg",
+      "source": "src/assets/company_intro.gif frame 89",
+      "scope": "기존 영상의 정지 컷. 원본 촬영/권리 확인 전, 기존 아카이브로 표시.",
+      "sha256": "cd11f70b66e2522bc40c3cbfeae41187b123e4ac2d0da332642568fd6fc7276a"
+    },
+    {
+      "file": "assets/machine-detail.jpg",
+      "workspace_path": "/Users/mins/Downloads/hwoasung/design-studies/renewal-05/assets/machine-detail.jpg",
+      "source": "src/assets/company_intro.gif frame 200",
+      "scope": "기존 편직기 세부 아카이브. 새 현장 촬영 아님.",
+      "sha256": "46b6cadf62b624302d32e7aa54a63e4e1cb8ed19500afef869b2d0818afa594d"
+    },
+    {
+      "file": "assets/yarn-archive.jpg",
+      "workspace_path": "/Users/mins/Downloads/hwoasung/design-studies/renewal-05/assets/yarn-archive.jpg",
+      "source": "src/assets/company_intro.gif frame 245",
+      "scope": "기존 원사 콘 아카이브. 실제 사용하는 원사 사양 증거 아님.",
+      "sha256": "1d5c9b6548aab6f0d1fa1c7b4db96cd52c2a67592cb71235531fca356f3124d5"
+    },
+    {
+      "file": "assets/building-archive.jpg",
+      "workspace_path": "/Users/mins/Downloads/hwoasung/design-studies/renewal-05/assets/building-archive.jpg",
+      "source": "src/assets/company_intro.gif frame 22",
+      "scope": "기존 건물 아카이브. 현재 화면에서 사용하지 않음.",
+      "sha256": "2fdae836956feffc42f1076686dcc07f8ada091c7290a442790dda5750dae281"
+    },
+    {
+      "file": "assets/knitting-archive.jpg",
+      "workspace_path": "/Users/mins/Downloads/hwoasung/design-studies/renewal-05/assets/knitting-archive.jpg",
+      "source": "src/assets/knitting_unit.jpg",
+      "scope": "기존 원본 사진 그대로 복사. 촬영 원본/권리 확인 전.",
+      "sha256": "5b738815b27d5f43ea6b2464abdcf2ad562f6edd0500169e87cb367d29c6e730"
+    }
+  ]
+}
