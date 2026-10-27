@@ -1,0 +1,18 @@
+[
+  {
+    "source": "design-studies/renewal-05/assets/cobalt-knit.png",
+    "source_bytes": 2923157,
+    "derivative_bytes": 374914,
+    "reduction_percent": 87.2,
+    "semantic_change": "none; format/encoding only",
+    "quality": "WebP 88; visual review pending; not deployed"
+  },
+  {
+    "source": "design-studies/renewal-05/assets/ivory-yarn.png",
+    "source_bytes": 2837030,
+    "derivative_bytes": 288728,
+    "reduction_percent": 89.8,
+    "semantic_change": "none; format/encoding only",
+    "quality": "WebP 88; visual review pending; not deployed"
+  }
+]

@@ -33,3 +33,6 @@
 
 ## F-018 — 2026-10-26 이전 시안 참조 없이 신규 세 안
 원문: input/feedback/2026-10-26-fresh-directions-request.md. 기존 화면을 계속 보면 비슷한 결과가 나오는 문제 제기, 카피 변경/다양한 형태 요청. 이전 소스·스타일·캡처를 사용하지 않고 신규 05-A 소재/05-B 현장/05-C 콜라주 전체 페이지와 비교 입구 제작. A 추천은 AI 판단이며 사용자 채택 전. 출처/QA: output/concepts/browser-05, output/reviews/browser-05.md.
+
+## F-019/020 — 2026-10-27 AI Hero 영상과 초기 로딩
+원문 input/feedback/2026-10-27-hero-video-and-loading.md. 12초/3장면/실제 소재 기반 영상과 poster 우선 재생을 추천한 기획을 output/plans/hero-video-plan-v1.md에 저장. 코드+라이브 DOM에서 Spline/GIF/동기 외부 스크립트 구조 확인, GIF 8.27초/47.7MB를 측정. 원인 기여율/전송 타이밍은 미검증. output/reviews/initial-load-audit-v1.md. 영상 미제작, 운영/시안 코드 수정·배포 없음.

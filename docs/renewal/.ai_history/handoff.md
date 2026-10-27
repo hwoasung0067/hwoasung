@@ -1,5 +1,8 @@
 # 다음 세션 인계
 
+## 최신 질문: Hero 영상 기획/초반 로딩 점검 (F-019/020 / 2026-10-27)
+output/plans/hero-video-plan-v1.md 및 output/reviews/initial-load-audit-v1.md 먼저 확인. 12초/3장면/소재 중심과 poster 우선·압축 video를 제안. 저장소 GIF 8.27초/47.7MB, 운영 DOM Spline·GIF·동기 외부 스크립트 확인. Performance API 제한으로 실제 LCP/FPS/워터폴 미측정, 원인 순위 확정 아님. PNG→WebP 인코딩 시험만 수행, UI/운영 변경 없음. 영상 자체 미제작/유료 생성 미실행. 마지막 실제 디자인은 아래 browser-05 세 안이며 채택은 미확정이다.
+
 ## 현재: D-058 / browser-05 A/B/C / 2026-10-26
 F-018 신규 독립 시안 제작 완료. 이전 시안 코드/스타일/캡처 참조 없이 브랜드/사업 사실과 실제 레퍼런스 조사에서 시작했다. 현재 로컬 비교 URL http://127.0.0.1:5174/, 개별 a.html/b.html/c.html. 작업 폴더 /Users/mins/Downloads/hwoasung/design-studies/renewal-05. 정적 서버가 꺼졌으면 README의 python http.server 명령으로 재실행. 이 서버/소스는 운영 앱과 분리했다. 이전 :5173 브라우저 04.2는 소스 보존, 이번 제작에 참조하지 않음.
 
