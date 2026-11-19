@@ -12,6 +12,9 @@
   const locale={"consult": "상담할 때 함께 살펴봅니다", "help": "원단명이나 샘플만 있어도 괜찮습니다. 필요한 사양과 공급 가능성을 함께 확인합니다.", "back": "다른 원단 보기", "ask": "이 원단 문의하기", "photos": "소재 참고 이미지", "one": "소재 참고 이미지", "alt": "소재 참고 이미지"}, conditions={"polar": "사용 용도 · 기모 방향 · 중량과 폭", "interlock": "사용 용도 · 원단 상태 · 중량과 폭", "tr": "사용 용도 · 원사 조합 · 중량과 폭", "dty": "사용 용도 · 원사 · 원하는 촉감", "bodre": "사용 용도 · 원단 상태 · 가공 조건"};
   const sheet=dialog.querySelector('.modal-sheet'),art=dialog.querySelector('.modal-art'),body=dialog.querySelector('.modal-body');
   const legacy=[...body.children];
+  const mobileTitle=dialog.querySelector('.modal-mobile-title');
+  const mobileInquiry=dialog.querySelector('.modal-mobile-actions .modal-inquiry');
+  mobileInquiry.querySelector('.inquiry-label').textContent=locale.ask;
   const gallery=document.createElement('div'); gallery.className='interlock-gallery';
   gallery.innerHTML='<span class="gallery-label"></span><div class="gallery-controls"></div>'; art.append(gallery);
   const detail=document.createElement('div'); detail.className='interlock-detail';
@@ -30,15 +33,17 @@
     sheet.classList.add('interlock-study');legacy.forEach(node=>node.hidden=true);
     dialog.setAttribute('aria-labelledby','fabric-study-title');dialog.setAttribute('aria-describedby','fabric-study-description');
     detail.querySelector('.detail-number').textContent=String(keys.indexOf(key)+1).padStart(2,'0')+' / 05';
+    mobileTitle.textContent=item.name;
     detail.querySelector('.detail-name').textContent=item.name;detail.querySelector('.detail-en').textContent=item.en.toUpperCase();
     detail.querySelector('.interlock-description').textContent=item.description;
     item.facts.slice(0,2).forEach(([label,value],i)=>{detail.querySelector('.fact-label-'+i).textContent=label;detail.querySelector('.fact-value-'+i).textContent=value;});
     detail.querySelector('.consult-conditions').textContent=conditions[key];
     detail.querySelector('.modal-inquiry').href='inquiry.html?'+(false ? 'lang=en&':'')+'fabric='+encodeURIComponent(item.name);
+    mobileInquiry.href=detail.querySelector('.modal-inquiry').href;
     const controls=gallery.querySelector('.gallery-controls');controls.replaceChildren();
     function view(index){photo.src=photos[index];photo.alt=item.name+' '+locale.alt+' '+(index+1);gallery.querySelector('.gallery-label').textContent=photos.length>1?locale.photos+'  '+String(index+1).padStart(2,'0')+' / '+String(photos.length).padStart(2,'0'):locale.one;controls.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
     if(photos.length>1)photos.forEach((_,i)=>{const button=document.createElement('button');button.type='button';button.textContent=String(i+1).padStart(2,'0');button.setAttribute('aria-label',locale.photos+' '+(i+1));button.addEventListener('click',()=>view(i));controls.append(button);});view(0);
-    if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');}dialog.scrollTop=0;
+    if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');}dialog.scrollTop=0;sheet.scrollTop=0;
     if(addHistory)history.pushState({fabricModal:true},'','#fabric-'+key);
   }
   function closeDialog(){if(!dialog.open)return;dialog.close();if(history.state&&history.state.fabricModal)history.back();else if(location.hash.startsWith('#fabric-'))history.replaceState(null,'',location.pathname+location.search)}

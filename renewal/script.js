@@ -3,7 +3,7 @@ const toggle=document.querySelector('.menu-toggle');const menu=document.querySel
 
 const intro=document.querySelector('.hero-video');
 // 모바일에서는 세로 화면에 맞춰 별도로 편집한 영상을 사용합니다.
-if (window.matchMedia('(max-width: 800px)').matches) intro.src='assets/hero-user-mobile.mp4';
+if (window.matchMedia('(max-width: 800px)').matches) intro.src='assets/mobile/hero-720.mp4';
 const ending=document.querySelector('.hero-ending');
 const control=document.querySelector('.hero-control');
 const hero=document.querySelector('.hero');

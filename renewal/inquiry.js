@@ -4,6 +4,7 @@
   const selected = new URLSearchParams(window.location.search).get('fabric');
   const preferredLanguage = new URLSearchParams(window.location.search).get('lang');
   if (preferredLanguage === 'en') {
+    document.body.dataset.language = 'en';
     document.querySelectorAll('.back, .return-home').forEach(link => link.href = 'en-index.html#contact');
     const brand = document.querySelector('.page-header .brand');
     if (brand) brand.href = 'en-index.html';

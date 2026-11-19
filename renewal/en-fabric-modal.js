@@ -12,6 +12,9 @@
   const locale={"consult": "For your inquiry", "help": "A fabric name or sample is enough to get started. We will discuss specifications and availability.", "back": "View other fabrics", "ask": "Inquire about this fabric", "photos": "Reference images", "one": "Reference image", "alt": "reference image"}, conditions={"polar": "Application · brushing · weight and width", "interlock": "Application · fabric state · weight and width", "tr": "Application · yarn blend · weight and width", "dty": "Application · yarn · desired feel", "bodre": "Application · fabric state · finishing"};
   const sheet=dialog.querySelector('.modal-sheet'),art=dialog.querySelector('.modal-art'),body=dialog.querySelector('.modal-body');
   const legacy=[...body.children];
+  const mobileTitle=dialog.querySelector('.modal-mobile-title');
+  const mobileInquiry=dialog.querySelector('.modal-mobile-actions .modal-inquiry');
+  mobileInquiry.querySelector('.inquiry-label').textContent=locale.ask;
   const gallery=document.createElement('div'); gallery.className='interlock-gallery';
   gallery.innerHTML='<span class="gallery-label"></span><div class="gallery-controls"></div>'; art.append(gallery);
   const detail=document.createElement('div'); detail.className='interlock-detail';
@@ -30,15 +33,17 @@
     sheet.classList.add('interlock-study');legacy.forEach(node=>node.hidden=true);
     dialog.setAttribute('aria-labelledby','fabric-study-title');dialog.setAttribute('aria-describedby','fabric-study-description');
     detail.querySelector('.detail-number').textContent=String(keys.indexOf(key)+1).padStart(2,'0')+' / 05';
+    mobileTitle.textContent=item.name;
     detail.querySelector('.detail-name').textContent=item.name;detail.querySelector('.detail-en').textContent=item.en.toUpperCase();
     detail.querySelector('.interlock-description').textContent=item.description;
     item.facts.slice(0,2).forEach(([label,value],i)=>{detail.querySelector('.fact-label-'+i).textContent=label;detail.querySelector('.fact-value-'+i).textContent=value;});
     detail.querySelector('.consult-conditions').textContent=conditions[key];
     detail.querySelector('.modal-inquiry').href='inquiry.html?'+(true ? 'lang=en&':'')+'fabric='+encodeURIComponent(item.name);
+    mobileInquiry.href=detail.querySelector('.modal-inquiry').href;
     const controls=gallery.querySelector('.gallery-controls');controls.replaceChildren();
     function view(index){photo.src=photos[index];photo.alt=item.name+' '+locale.alt+' '+(index+1);gallery.querySelector('.gallery-label').textContent=photos.length>1?locale.photos+'  '+String(index+1).padStart(2,'0')+' / '+String(photos.length).padStart(2,'0'):locale.one;controls.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
     if(photos.length>1)photos.forEach((_,i)=>{const button=document.createElement('button');button.type='button';button.textContent=String(i+1).padStart(2,'0');button.setAttribute('aria-label',locale.photos+' '+(i+1));button.addEventListener('click',()=>view(i));controls.append(button);});view(0);
-    if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');}dialog.scrollTop=0;
+    if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');}dialog.scrollTop=0;sheet.scrollTop=0;
     if(addHistory)history.pushState({fabricModal:true},'','#fabric-'+key);
   }
   function closeDialog(){if(!dialog.open)return;dialog.close();if(history.state&&history.state.fabricModal)history.back();else if(location.hash.startsWith('#fabric-'))history.replaceState(null,'',location.pathname+location.search)}
