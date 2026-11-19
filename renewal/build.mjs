@@ -15,6 +15,7 @@ const pages={
 };
 await rm(out, {recursive:true, force:true});await mkdir(out,{recursive:true});
 for(const name of await readdir('.')) if(name==='assets'||/\.(html|css|js)$/.test(name)) await cp(name,join(out,name),{recursive:true});
+await cp(new URL('../public/logo.png', import.meta.url), join(out, 'logo.png'));
 if(release){
  for(const name of (await readdir(out)).filter(x=>x.endsWith('.html'))){
   let html=await readFile(join(out,name),'utf8');
@@ -31,6 +32,7 @@ if(release){
   if (name !== 'en-inquiry.html') {
    html=html.replace('</head>','<link href="analytics.css" rel="stylesheet"><script defer src="analytics.js"></script></head>');
   }
+  html=html.replace('</head>','<link rel="icon" type="image/png" href="/logo.png"></head>');
   await writeFile(join(out,name),html);
  }
  await writeFile(join(out,'release.css'),'.header{top:0}@media(max-width:800px){.header{top:0}body.palette-a .mobile-nav:not([hidden]){top:70px}}\n');
