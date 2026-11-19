@@ -1,0 +1,5 @@
+/* 확정한 메인 레이아웃을 보존하면서 상세 페이지의 진입만 추가합니다. */
+.shelf-actions { display:flex; align-items:center; gap:28px; }
+.fabric-page-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; margin-top:24px; }
+.fabric-page-actions .fabric-help { margin-top:0; }
+@media (max-width: 460px) { .fabric-page-actions { align-items:flex-start; flex-direction:column; gap:14px; } }

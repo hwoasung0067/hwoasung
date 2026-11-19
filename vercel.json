@@ -1,0 +1,10 @@
+{
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/blog-latest.py": {
+      "excludeFiles": "{renewal/**,dist/**,src/**,dist_v2/**,dist_v3/**,public/**}"
+    }
+  }
+}

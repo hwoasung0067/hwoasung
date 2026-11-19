@@ -1,0 +1,16 @@
+/* 핵심 문구가 먼저 보이도록 상단 간격을 압축한다. */
+.v5-specialty{padding-top:clamp(46px,5vw,76px)}
+.v5-production{padding-top:clamp(48px,5vw,76px);background:#edf0ec;position:relative}
+.v5-production::before{content:"";display:block;position:absolute;left:5.2%;right:5.2%;top:0;height:1px;background:rgba(65,88,90,.22)}
+/* 이어지는 실의 흐름을 추상적으로 표현한 비전 장면 */
+.v6-vision{position:relative;overflow:hidden;isolation:isolate;background:#233741;color:#f0f4f1;padding:clamp(90px,10vw,150px) 0}
+.v6-vision::before{content:"";position:absolute;z-index:-1;inset:-35% -20%;background:repeating-radial-gradient(ellipse at 50% 115%,transparent 0 22px,rgba(194,214,209,.085) 23px,transparent 24px 41px);transform:rotate(-7deg);pointer-events:none}
+.v6-vision::after{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(33,53,63,.96) 0%,rgba(33,53,63,.73) 35%,rgba(33,53,63,.22) 78%),linear-gradient(125deg,rgba(15,29,37,.56),transparent 65%);pointer-events:none}
+.v6-vision-inner{display:flex;flex-direction:column;align-items:center;gap:25px;text-align:center}
+.v6-vision .v5-kicker{color:#aebfbd}
+.v6-vision h2{color:#f4f6f3}
+.v6-vision p{color:#c7d4d1;margin-top:26px}
+@media(max-width:700px){.v5-specialty{padding-top:48px}.v5-production{padding-top:48px}.v5-production::before{left:6%;right:6%}.v6-vision{padding:90px 0}.v6-vision-inner{gap:23px}.v6-vision::before{inset:-25% -110%;transform:rotate(-9deg)}.v6-vision p{margin-top:22px}}
+/* 연혁의 사진 장면과 비전 장면 사이에 짧은 시각적 호흡을 둔다. */
+.v6-vision{border-top:16px solid #edf0ec}
+@media(max-width:700px){.v6-vision{border-top-width:10px}}

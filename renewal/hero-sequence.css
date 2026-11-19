@@ -1,0 +1,4 @@
+/* Video plays first; copy joins the final still as it resolves. */
+.hero .hero-content{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .85s ease,transform .85s ease,visibility 0s}
+.hero.intro-playing .hero-content{opacity:0;visibility:hidden;transform:translateY(12px);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.hero .hero-content{transition:none}}

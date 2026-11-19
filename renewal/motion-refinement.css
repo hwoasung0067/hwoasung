@@ -1,0 +1,47 @@
+/* 장면에서 메시지로 이어지는 히어로 */
+.hero .hero-content{transition:opacity .15s linear,visibility 0s;transform:none}
+.hero .hero-content h1,.hero .hero-content .hero-sub,.hero .hero-content .hero-actions{opacity:1;transform:translateY(0);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.65,.2,1)}
+.hero .hero-content .hero-sub{transition-delay:.12s}.hero .hero-content .hero-actions{transition-delay:.22s}
+.hero.intro-playing .hero-content h1,.hero.intro-playing .hero-content .hero-sub,.hero.intro-playing .hero-content .hero-actions{opacity:0;transform:translateY(10px);transition-delay:0s}
+/* 원단을 살펴볼 수 있다는 반응 */
+@media(hover:hover){.fabric-card-link:hover .fabric-picture img,.fabric-card-link:focus-visible .fabric-picture img{filter:brightness(1.05)}.fabric-card-link:hover .fabric-more,.fabric-card-link:focus-visible .fabric-more{color:#fff;border-color:#eaf1ed}.fabric-card-link .fabric-more{transition:color .25s,border-color .25s}.fabric-tile:hover .fabric-tile-photo{filter:brightness(1.09)}}
+/* 정지된 문구를 두고 사진만 서서히 교차 */
+.manufacture-v24 .factory-slide{visibility:visible;opacity:0;transition:opacity 1.05s ease;pointer-events:none}
+.manufacture-v24 .factory-slide.is-current{opacity:1}
+/* 생산 기반: 실제 남은 시간과 동기화되는 진행선 */
+.v9-strength{position:relative;overflow:hidden}
+.v9-strength::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:#aaccc5;transform:scaleX(var(--motion-progress,0));transform-origin:left;opacity:0;pointer-events:none}
+.v9-strength.is-active[data-motion-progress]::after{opacity:.85}
+/* 상세 팝업과 마지막 행동 */
+@keyframes fabric-dialog-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fabric-dialog[open]{animation:fabric-dialog-enter .24s ease-out both}
+.contact-v17-button:hover,.contact-v17-button:focus-visible{transition-duration:.25s}
+@media(prefers-reduced-motion:reduce){.hero .hero-content,.hero .hero-content h1,.hero .hero-content .hero-sub,.hero .hero-content .hero-actions,.manufacture-v24 .factory-slide,.fabric-card-link .fabric-more{transition:none!important;transform:none!important}.v9-strength::after{display:none}.fabric-dialog[open]{animation:none}.contact-v17-button:hover{transform:none!important}}
+
+/* 영상 제어는 히어로 하단 가운데에 두고 배경 위에서 조용하게 구분합니다. */
+.hero-bottom{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;bottom:clamp(20px,3vw,32px)}
+.hero-bottom .hero-control{grid-column:2;justify-self:center;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:42px;padding:0 16px;border:1px solid rgba(238,245,242,.62);background:rgba(15,28,35,.56);color:#f5f7f5;font-size:12px;font-weight:600;letter-spacing:0;white-space:nowrap;cursor:pointer;transition:background .22s,border-color .22s}
+.hero-bottom .hero-control span{margin:0;font-size:15px;line-height:1}
+.hero-bottom .hero-control:hover,.hero-bottom .hero-control:focus-visible{background:rgba(35,55,61,.88);border-color:#f3f7f4;text-decoration:none}
+.hero-bottom>span{grid-column:3;justify-self:end}
+@media(max-width:600px){.hero-bottom{left:5%;right:5%;bottom:18px}.hero-bottom .hero-control{min-height:44px;padding:0 16px}.hero-bottom>span{display:none}}
+@media(prefers-reduced-motion:reduce){.hero-bottom .hero-control{transition:none}}
+/* 영상 종료 후 다시 보기는 이전처럼 왼쪽 아래의 보조 기능으로 돌아갑니다. */
+.hero-bottom .hero-control[data-state="replay"]{grid-column:1;justify-self:start;min-height:36px;padding:8px 3px;border:0;background:transparent;color:#fff;font-size:10px;letter-spacing:.03em}
+.hero-bottom .hero-control[data-state="replay"]:hover,.hero-bottom .hero-control[data-state="replay"]:focus-visible{background:transparent;text-decoration:underline;text-underline-offset:4px}
+
+/* 히어로: 문의가 주 행동, 원단 탐색은 보조 행동 */
+.hero-actions{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap}
+.hero-actions .button{margin:0;min-height:52px;display:inline-flex;align-items:center;justify-content:space-between;gap:28px}
+.hero-actions .hero-primary{background:#eef2ef;border:1px solid #eef2ef;color:#182b32;transition:background .22s,border-color .22s}
+.hero-actions .hero-primary:hover,.hero-actions .hero-primary:focus-visible{background:#d5e4df;border-color:#d5e4df;color:#142a30}
+@media(max-width:480px){.hero-actions{gap:8px}.hero-actions .button{min-height:48px;padding-left:14px;padding-right:14px;gap:16px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){.hero-actions .hero-primary{transition:none}}
+/* 선택한 원단의 짧은 소개와 상세 진입 */
+.shelf-status{align-items:center;gap:18px}.shelf-status>span{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;line-height:1.6}.shelf-status strong{font-size:15px}.shelf-description{color:#c5d2d0;font-size:13px}.shelf-status .fabric-detail-link{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-height:42px;padding:0 14px;border:1px solid rgba(226,239,234,.7);color:#edf4f0;font-size:12px;white-space:nowrap;transition:background .2s,border-color .2s}.shelf-status .fabric-detail-link:hover,.shelf-status .fabric-detail-link:focus-visible{background:rgba(232,242,237,.13);border-color:#edf4f0}.fabric-selection p{line-height:1.7}.fabric-selection #mobile-fabric-description{color:#536966}@media(max-width:600px){.shelf-status{align-items:flex-start;flex-direction:column}.shelf-status>span{gap:4px;flex-direction:column}.shelf-status .fabric-detail-link{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.shelf-status .fabric-detail-link{transition:none}}
+/* 선택 원단 상세 버튼을 섹션 가운데에 배치 */
+@media(min-width:801px){.shelf-status{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}.shelf-status[hidden]{display:none}.shelf-status .fabric-detail-link{grid-column:2;justify-self:center}}
+@media(max-width:800px){.shelf-status .fabric-detail-link{align-self:center}}
+
+@media(max-width:800px){.hero-video{object-position:center center}}

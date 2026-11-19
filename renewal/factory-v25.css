@@ -1,0 +1,16 @@
+/* V25: enlarge the existing slideshow without stretching or hiding source width. */
+@media (min-width: 1101px){
+ .manufacture-v24 .factory-gallery{grid-template-columns:78% 22%}
+ .manufacture-v24 .factory-stage{aspect-ratio:16/9;height:auto}
+ .manufacture-v24 .factory-v23-panel{padding:40px clamp(22px,2.1vw,36px) 30px}
+ .manufacture-v24 .factory-v23-copy h2{font-size:clamp(30px,2.8vw,44px)}
+ .manufacture-v24 .factory-v23-more{font-size:12px;gap:14px}
+}
+@media (min-width:801px) and (max-width:1100px){
+ .manufacture-v24 .factory-gallery{grid-template-columns:74% 26%}
+ .manufacture-v24 .factory-v23-panel{padding:22px 20px}
+ .manufacture-v24 .factory-v23-copy h2{font-size:clamp(24px,2.6vw,29px)}
+}
+@media(max-width:800px){
+ .manufacture-v24 .factory-v23-panel{min-height:270px;justify-content:center}
+}

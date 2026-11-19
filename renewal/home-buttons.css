@@ -1,0 +1,17 @@
+/* Shared CTA proportions, with contrast adjusted to each background. */
+body.palette-a .manufacture-v24 .factory-v23-more,body.palette-a .readiness26-link,body.palette-a .fabric-shelf .shelf-more,body.palette-a .fabric-editorial .fabric-page-actions .fabric-help{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:50px;max-width:100%;padding:13px 16px;border:1px solid #ecf2ef;background:#ecf2ef;color:#1a3037;font-size:13px;font-weight:650;line-height:1.35;text-align:left;text-decoration:none;white-space:normal;transition:background .2s,border-color .2s,color .2s}
+body.palette-a .manufacture-v24 .factory-v23-more,body.palette-a .fabric-editorial .fabric-page-actions .fabric-help{background:#223740;border-color:#223740;color:#f5f7f4}
+body.palette-a .manufacture-v24 .factory-v23-more:hover,body.palette-a .fabric-editorial .fabric-page-actions .fabric-help:hover{background:#3a555d;border-color:#3a555d;color:white}
+body.palette-a .readiness26-link:hover,body.palette-a .fabric-shelf .shelf-more:hover{background:#c7d9d4;border-color:#c7d9d4;color:#172d33}
+body.palette-a .fabric-shelf .shelf-more span,body.palette-a .manufacture-v24 .factory-v23-more span,body.palette-a .readiness26-link span,body.palette-a .fabric-editorial .fabric-page-actions .fabric-help span{font-size:18px;line-height:1;margin:0;transition:transform .2s}
+body.palette-a .fabric-shelf .shelf-more:hover span,body.palette-a .manufacture-v24 .factory-v23-more:hover span,body.palette-a .readiness26-link:hover span,body.palette-a .fabric-editorial .fabric-page-actions .fabric-help:hover span{transform:translate(3px,-3px)}
+@media(max-width:800px){body.palette-a .fabric-page-actions .fabric-help{width:min(100%,280px)}body.palette-a .manufacture-v24 .factory-v23-more{min-height:48px}body.palette-a .readiness26-link{min-height:48px}}
+@media(prefers-reduced-motion:reduce){body.palette-a .fabric-shelf .shelf-more,body.palette-a .manufacture-v24 .factory-v23-more,body.palette-a .readiness26-link,body.palette-a .fabric-editorial .fabric-page-actions .fabric-help,body.palette-a .fabric-shelf .shelf-more span,body.palette-a .manufacture-v24 .factory-v23-more span,body.palette-a .readiness26-link span{transition:none}}
+/* Fabric CTAs: quieter outlines keep the photographs as the focal point. */
+body.palette-a .shelf-actions{align-items:center;gap:10px}
+body.palette-a .fabric-shelf .shelf-more{min-height:48px;background:transparent;color:#eef3ef;border-color:rgba(232,241,236,.8);font-weight:600}
+body.palette-a .fabric-shelf .shelf-more:nth-child(2){border-color:rgba(205,221,216,.4);color:#d6e2dd}
+body.palette-a .fabric-shelf .shelf-more:hover,body.palette-a .fabric-shelf .shelf-more:focus-visible,body.palette-a .fabric-shelf .shelf-more:nth-child(2):hover,body.palette-a .fabric-shelf .shelf-more:nth-child(2):focus-visible{background:rgba(236,244,239,.13);border-color:#e5f0ea;color:#fff}
+body.palette-a .fabric-editorial .fabric-page-actions .fabric-help{background:transparent;color:#223740;border-color:#536d6f;font-weight:600}
+body.palette-a .fabric-editorial .fabric-page-actions .fabric-help:nth-child(2){border-color:#a0b1ac;color:#365053}
+body.palette-a .fabric-editorial .fabric-page-actions .fabric-help:hover,body.palette-a .fabric-editorial .fabric-page-actions .fabric-help:focus-visible{background:#d6e2dc;border-color:#536d6f;color:#172d33}

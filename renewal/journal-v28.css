@@ -1,0 +1,41 @@
+/* Article imagery and titles form one link; the site keeps the original blog as the source. */
+body.palette-a .journal-v28{background:#eceeea;color:#182329;padding:90px 0 94px}
+.journal-v28-head{display:flex;align-items:end;justify-content:space-between;gap:30px}
+.journal-v28-head h2{font-size:clamp(31px,3.2vw,47px);line-height:1.35;letter-spacing:-.045em;font-weight:630;margin:0}
+.journal-v28-head h2 span{color:#577c7b}
+.journal-v28-head p{font-size:14px;line-height:1.8;color:#60716e;margin:15px 0 0}
+.journal-v28-head>a{display:inline-flex;align-items:center;gap:24px;padding-bottom:9px;border-bottom:1px solid #849793;font-size:13px;font-weight:650;color:#243d3c;white-space:nowrap}
+.journal-v28-head>a span{font-size:19px;line-height:1}
+.journal-v28-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:45px}
+.journal-v28-story{min-width:0;display:flex;flex-direction:column;color:#182329}
+.journal-v28-image{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#dce2de;display:flex;align-items:center;justify-content:center}
+.journal-v28-image img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .35s ease}
+.journal-v28-story:hover .journal-v28-image img{transform:scale(1.025)}
+.journal-v28-type{font-size:11px;color:#607975;margin-top:18px;letter-spacing:.03em}
+.journal-v28-story h3{font-size:clamp(19px,1.65vw,24px);line-height:1.48;letter-spacing:-.045em;font-weight:630;margin:10px 0 18px;overflow-wrap:anywhere}
+.journal-v28-read{margin-top:auto;font-size:12px;font-weight:600;color:#526c68}
+.journal-v28-read span{display:inline-block;margin-left:6px;transition:transform .2s ease}
+.journal-v28-story:hover .journal-v28-read span{transform:translate(3px,-3px)}
+body.palette-a .journal-v28 .journal-feed-status{font-size:11px;color:#667e79;margin-top:18px}
+.journal-v28-image.is-empty:after{content:'이미지 준비 중';font-size:12px;color:#66807a}
+.journal-v28-image img[hidden]{display:none}
+@media(max-width:800px){
+ body.palette-a .journal-v28{padding:67px 0 70px}
+ .journal-v28-head{align-items:start;flex-direction:column;gap:17px}
+ .journal-v28-head h2{font-size:34px}
+ .journal-v28-head p{font-size:13px}
+ .journal-v28-grid{grid-template-columns:1fr;gap:35px;margin-top:32px}
+ .journal-v28-image{aspect-ratio:4/3}
+ .journal-v28-story h3{font-size:20px;margin-bottom:12px}
+ .journal-v28-type{margin-top:14px}
+}
+@media(prefers-reduced-motion:reduce){.journal-v28-image img,.journal-v28-read span{transition:none}}
+@media(max-width:800px){
+ .journal-v28-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-8.15%;padding:0 7% 10px 0;scrollbar-width:thin;scrollbar-color:#8ba09a transparent}
+ .journal-v28-story{scroll-snap-align:start}
+ .journal-v28-grid::-webkit-scrollbar{height:3px}
+ .journal-v28-grid::-webkit-scrollbar-thumb{background:#8ba09a;border-radius:4px}
+}
+
+/* Equal-width image cards, overriding the older featured-column inset. */
+body.palette-a .journal-v28 .journal-featured{padding:0}

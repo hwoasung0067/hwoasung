@@ -1,0 +1,30 @@
+/* 회사의 관점: 사진과 짧은 설명을 하나의 편집 장면으로 구성 */
+.intro{padding:clamp(75px,8vw,120px) 0;background:#eef0ed}
+.intro-grid{grid-template-columns:1fr .84fr;gap:10%;align-items:center}
+.intro-main{max-width:650px}
+.intro-lead{font-size:clamp(20px,2vw,28px);line-height:1.55;letter-spacing:-.035em;font-weight:600;color:#27363e;margin:34px 0 20px}
+.intro-text{max-width:495px;font-size:16px;line-height:1.95;color:#53656a;margin:0}
+.intro-visual{position:relative;margin:0;height:clamp(340px,33vw,500px);background:#1d292f;overflow:hidden}
+.intro-visual:after{content:"";position:absolute;inset:48% 0 0;background:linear-gradient(transparent,rgba(15,24,30,.74));pointer-events:none}
+.intro-visual img{width:100%;height:100%;object-fit:cover;filter:saturate(.55) brightness(1.12);transition:transform .8s ease}
+.intro-visual:hover img{transform:scale(1.035)}
+.intro-visual figcaption{position:absolute;left:23px;right:23px;bottom:20px;z-index:1;color:#e0e7e3;display:flex;justify-content:space-between;gap:10px;font-size:10px;letter-spacing:.1em}
+.intro-visual figcaption span:last-child{letter-spacing:0;color:#c2cfcd}
+.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:6%;margin-top:70px}
+.principle{display:flex;align-items:flex-start;gap:22px;border-top:1px solid #bac4c1;padding-top:25px}
+.principle-icon{width:48px;height:48px;flex:0 0 48px;color:#536f74}
+.principle-icon svg,.location-symbol svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.principle strong{font-size:18px;letter-spacing:-.03em;font-weight:650;color:#203039}
+.principle p{margin:8px 0 0;color:#667478;font-size:14px;line-height:1.75}
+.notes{background:#1c2a32;color:#eef1ed;padding:clamp(80px,8vw,120px) 0}
+.notes-inner{display:block}.notes-heading{display:grid;grid-template-columns:1.15fr 1fr;column-gap:10%;align-items:end}
+.notes-heading .section-label{grid-column:1/-1;margin-bottom:25px}.notes-heading h2{grid-row:2/4}.notes-heading .notes-intro{grid-column:2;grid-row:2;margin:0}.notes-heading .text-link{grid-column:2;grid-row:3;justify-self:start;margin-top:25px}
+.notes-cards{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:55px}
+.note-card{display:block;border-bottom:1px solid rgba(255,255,255,.23);padding-bottom:22px;min-width:0}
+.note-image{height:clamp(190px,19vw,300px);background:#34454d;overflow:hidden}
+.note-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.55) brightness(.82);transition:transform .6s ease,filter .4s ease}
+.note-card:hover img,.note-card:focus-visible img{transform:scale(1.035);filter:saturate(.65) brightness(.95)}
+.note-copy{position:relative;padding:18px 36px 0 0}.note-copy>span:first-child{font-size:11px;color:#aabbb8}.note-copy h3{font-size:clamp(19px,1.65vw,24px);letter-spacing:-.035em;line-height:1.5;margin:10px 0 0;font-weight:600}.note-arrow{position:absolute;right:2px;top:22px;font-size:22px;transition:transform .2s}.note-card:hover .note-arrow{transform:translate(3px,-3px)}
+.location-symbol{width:58px;height:58px;color:#71898a;margin-top:30px}
+@media(max-width:700px){.intro-grid{grid-template-columns:1fr;gap:42px}.intro-lead{margin-top:23px;font-size:20px}.intro-text{font-size:15px}.intro-visual{height:auto;aspect-ratio:5/4}.intro-visual figcaption{left:16px;right:16px;bottom:15px}.principles{grid-template-columns:1fr;gap:27px;margin-top:45px}.principle{padding-top:20px}.principle-icon{width:40px;height:40px;flex-basis:40px}.notes-heading{display:block}.notes-heading .section-label{margin-bottom:22px}.notes-heading .notes-intro{margin-top:20px}.notes-heading .text-link{margin-top:24px}.notes-cards{grid-template-columns:1fr;gap:30px;margin-top:40px}.note-image{height:auto;aspect-ratio:16/9}.note-copy h3{font-size:19px}.location-symbol{width:48px;height:48px;margin-top:20px}}
+@media(prefers-reduced-motion:reduce){.intro-visual img,.note-image img,.note-arrow{transition:none!important}.intro-visual:hover img,.note-card:hover img{transform:none}}

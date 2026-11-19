@@ -1,0 +1,21 @@
+/* A quiet light pause frames the dark production scene. */
+.chapter-break{height:72px;background:#eceeea}
+/* A light journal restores the transition from navy and preserves its editorial columns. */
+body.palette-a .journal-v13{background:#eceeea;color:#182329;border-bottom:1px solid #d2d9d4}
+body.palette-a .journal-v13-head p,
+body.palette-a .journal-v13-story p,
+body.palette-a .journal-v13-link,
+body.palette-a .journal-feed-status{color:#435552}
+body.palette-a .journal-v13-head a,
+body.palette-a .journal-v14 .journal-v13-head a{color:#182d30;border-color:#728682}
+body.palette-a .journal-v13-meta,
+body.palette-a .journal-v14 .journal-featured .journal-v13-meta{color:#526f6d}
+body.palette-a .journal-v13-meta span:last-child{color:#253e3e}
+body.palette-a .journal-v13-grid{border-color:#abbab3}
+body.palette-a .journal-v13-story+.journal-v13-story{border-color:#c2ccc5}
+body.palette-a .journal-v14 .journal-date{color:#536b68}
+@media(max-width:800px){
+ .chapter-break{height:42px}
+ body.palette-a .journal-v13-story,
+ body.palette-a .journal-v13-story+.journal-v13-story{border-color:#c2ccc5}
+}

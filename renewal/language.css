@@ -1,0 +1,41 @@
+html[lang="ko"] header a.brand{font-size:20px;font-weight:700;letter-spacing:-.03em;white-space:nowrap}
+.desktop-nav .language-choice,.mobile-nav .language-choice,.page-header .language-choice{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:36px;padding:6px 9px;border:1px solid rgba(234,241,237,.48);font-size:12px;line-height:1;letter-spacing:.02em;white-space:nowrap;opacity:1}
+.desktop-nav .language-choice:hover,.mobile-nav .language-choice:hover,.page-header .language-choice:hover{background:rgba(234,241,237,.13);color:#fff}
+.page-header .language-choice{margin-left:20px}
+.english-form-notice{color:#344b4d;font-size:15px;line-height:1.7;max-width:620px;margin:0 0 12px}
+.english-mail{display:inline-block;margin:0 0 22px;padding:11px 14px;background:#263c43;color:#fff;text-decoration:none}
+@media(max-width:1100px){.desktop-nav{gap:20px}}
+@media(max-width:800px){.mobile-nav .language-choice{align-self:flex-start;margin-top:15px;border:1px solid rgba(234,241,237,.48);padding:10px 12px}}
+.blog-language-note{font-size:12px!important;opacity:.75;margin-top:6px!important}
+/* Compact language switch with a clearly marked current language. */
+html[lang="ko"] header a.brand{font-size:17px;font-weight:750;letter-spacing:.18em;white-space:nowrap}
+.language-switch{display:inline-flex;align-items:center;gap:2px;white-space:nowrap;border:1px solid rgba(234,241,237,.3);border-radius:2px;padding:2px;line-height:1}
+.desktop-nav .language-switch a,.mobile-nav .language-switch a{display:inline-flex;align-items:center;justify-content:center;padding:5px 7px;min-height:26px;border:0;font-size:11px;line-height:1;color:#c3d1ce;opacity:1;letter-spacing:0}
+.desktop-nav .language-switch a[aria-current="true"],.mobile-nav .language-switch a[aria-current="true"]{background:#e5ede8;color:#1a3037;font-weight:700}
+.desktop-nav .language-switch a:hover,.mobile-nav .language-switch a:hover{color:#fff}
+.desktop-nav .language-switch a[aria-current="true"]:hover,.mobile-nav .language-switch a[aria-current="true"]:hover{color:#1a3037}
+@media(min-width:801px){.header,.site-header{height:68px}.desktop-nav{gap:clamp(15px,2.3vw,34px)}}
+@media(max-width:800px){.mobile-nav .language-switch{align-self:flex-start;margin-top:15px}.mobile-nav .language-switch a{padding:9px 12px}}
+.hero{height:calc(100svh - 26px);max-height:none;min-height:0}
+.hero-sub .hero-brand-name{font-size:1.2em;font-weight:750;color:#fff;letter-spacing:-.03em;margin-left:.12em}
+body.palette-a .fabric-shelf{padding-bottom:52px}
+@media(max-width:800px){.hero{height:calc(100svh - 25px);max-height:none;min-height:0}body.palette-a .fabric-shelf{padding-bottom:50px}}
+.inquiry-en-title{font-size:17px!important;font-weight:600;color:#344e53!important;line-height:1.5!important;margin:-12px 0 20px}
+.inquiry-en-desc{font-size:13px!important;color:#5e7373!important;line-height:1.6!important}
+.bilingual-form-guide{margin:0 0 24px;padding:16px 18px;background:#edf2ef;font-size:12px;line-height:1.7;color:#3e595a}
+.bilingual-form-guide strong{font-size:13px;color:#20383c}.bilingual-form-guide strong span{font-weight:500}.bilingual-form-guide p{margin:9px 0}.bilingual-form-guide a{display:inline-block;border-bottom:1px solid #7f9995;padding-bottom:2px;color:#214a4c;font-weight:600}
+/* The hero fills the viewport when the Home link positions it at the top. */
+.hero{height:100svh;min-height:0;max-height:none}
+@media(max-width:800px){.hero{height:100svh;min-height:0;max-height:none}}
+/* Keep navigation labels and language choices on the same centre line. */
+@media(min-width:801px){
+ .header .desktop-nav,.site-header .desktop-nav{align-items:center}
+ .header .desktop-nav>a,.site-header .desktop-nav>a{display:inline-flex;align-items:center;min-height:36px;line-height:1.2}
+ .site-header .desktop-nav>a[aria-current="page"]{padding-bottom:0;border-bottom:0;box-shadow:inset 0 -1px rgba(213,222,219,.9)}
+ .desktop-nav .language-switch a{font-size:13px;min-height:30px}
+}
+/* A slimmer desktop language switch, shifted toward the header edge. */
+@media(min-width:801px){
+ .desktop-nav .language-switch{padding:0;gap:1px;transform:translateX(clamp(10px,1.5vw,22px))}
+ .desktop-nav .language-switch a{min-height:21px;padding:2px 6px;font-size:13px}
+}

@@ -1,0 +1,74 @@
+/* A shared 24 baseline: remove repeated section labels and focus the fabric shelf. */
+.palette-a .fabric-shelf{padding:28px 0 30px}
+.fabric-shelf-inner{padding-left:2.5%;padding-right:2.5%;max-width:1800px}
+.shelf-heading{align-items:center}
+.shelf-heading h2{margin:0;font-size:clamp(28px,2.7vw,40px)}
+.fabric-shelf-grid{gap:10px;margin-top:21px}
+.fabric-tile-photo{max-height:none;aspect-ratio:.78}
+.fabric-tile-name{margin-top:12px}
+.fabric-tile-line{margin-top:10px}
+.bridge21-copy,.bridge21-line{grid-column:2}
+.hero-bottom{justify-content:space-between}
+.contact-v17-label{gap:0}
+.supply21-facts h3{margin-top:0}
+/* Two compositions share the same large, wide section and single headline. */
+.palette-a .manufacture-v24{padding:0;background:#dce0dd;color:#182329}
+.manufacture-v24 .factory-gallery{grid-template-columns:70% 30%;max-width:none;align-items:stretch}
+.manufacture-v24 .factory-stage{height:auto;min-height:0;aspect-ratio:16/9;background:#202d35}
+.manufacture-v24 .factory-slide>img{object-fit:cover;object-position:center}
+.factory-v24-pair{display:grid;grid-template-rows:1fr 1fr;gap:3px}
+.factory-v24-pair figure{min-height:0;min-width:0;margin:0;overflow:hidden;background:#202d35}
+.factory-v24-pair img{width:100%;height:100%;display:block;object-fit:cover;object-position:center;filter:saturate(.88) brightness(.96)}
+.factory-v24-pair figure:first-child img{object-position:center 52%}
+.factory-v24-pair figure:last-child img{object-position:center 50%}
+.manufacture-v24 .factory-v23-panel{padding:40px clamp(25px,3.3vw,55px) 30px}
+.manufacture-v24 .factory-v23-copy{width:100%;margin:auto 0}
+.manufacture-v24 .factory-v23-copy h2{font-size:clamp(32px,3.2vw,46px);line-height:1.36;letter-spacing:-.055em;margin:0}
+.manufacture-v24 .factory-v23-more{margin-top:35px;gap:20px;font-size:13px}
+.manufacture-v24 .factory-controls{margin-top:25px}
+.manufacture-v24 .factory-caption{display:none}
+.manufacture-v24 .factory-counter{white-space:nowrap}
+.manufacture-v24 .factory-control-buttons{gap:4px}
+.manufacture-v24 .factory-control-buttons button{min-width:31px;min-height:34px}
+.manufacture-v24 .factory-control-buttons .factory-pause{font-size:10px;padding:0 7px}
+@media(min-width:801px) and (max-width:1100px){.manufacture-v24 .factory-gallery{grid-template-columns:68% 32%}.manufacture-v24 .factory-v23-panel{padding:22px 25px}.manufacture-v24 .factory-v23-copy h2{font-size:28px}.manufacture-v24 .factory-v23-more{margin-top:22px}}
+@media(max-width:800px){
+ .fabric-editorial-copy{padding-top:42px;padding-bottom:32px}
+ .fabric-editorial h2{margin:0 0 24px}
+ .bridge21-copy,.bridge21-line{grid-column:1}
+ .manufacture-v24 .factory-gallery{grid-template-columns:1fr}
+ .manufacture-v24 .factory-stage{aspect-ratio:16/9}
+ .manufacture-v24 .factory-v23-panel{min-height:0;padding:42px 7% 32px}
+ .manufacture-v24 .factory-v23-copy h2{font-size:clamp(29px,7vw,38px)}
+ .manufacture-v24 .factory-v23-more{margin-top:22px}
+ .manufacture-v24 .factory-controls{margin-top:25px}
+}
+
+/* Fabric names sit inside large, uncluttered photographs. */
+.fabric-tile{position:relative;display:block;overflow:hidden}
+.fabric-tile-photo{position:relative;aspect-ratio:.72;max-height:none}
+.fabric-tile-photo:after{content:"";position:absolute;inset:42% 0 0;background:linear-gradient(0deg,rgba(10,19,23,.78),rgba(10,19,23,.25) 40%,transparent 100%);pointer-events:none}
+.fabric-tile-name{position:absolute;left:clamp(13px,1.4vw,22px);right:10px;bottom:clamp(16px,1.7vw,25px);z-index:1;margin:0;color:#fff;font-size:clamp(16px,1.5vw,22px);font-weight:600;letter-spacing:-.035em;text-shadow:0 1px 5px rgba(0,0,0,.3)}
+.fabric-tile-line{display:none}
+.fabric-tile[aria-pressed="true"]{outline:2px solid #d6e9e4;outline-offset:-2px}
+.fabric-tile:focus-visible{outline-offset:-4px}
+@media(max-width:800px){
+ .palette-a .fabric-shelf{display:block;padding:38px 0 38px}
+ .fabric-editorial{display:none!important}
+ .fabric-shelf-inner{padding:0 7%}
+ .shelf-heading{gap:15px;align-items:end}
+ .shelf-heading h2{font-size:27px;white-space:nowrap}
+ .shelf-more{font-size:11px;white-space:normal;text-align:right}
+ .shelf-more span{margin-left:3px}
+ .fabric-shelf-grid{display:flex;gap:9px;overflow-x:auto;scroll-snap-type:x mandatory;margin:20px -8.15% 0 0;padding:0 7% 8px 0;scrollbar-width:thin;scrollbar-color:#6f8481 transparent}
+ .fabric-tile{flex:0 0 45%;scroll-snap-align:start}
+ .fabric-tile-photo{aspect-ratio:.8}
+ .fabric-tile-name{font-size:16px;left:14px;bottom:16px}
+ .shelf-status{font-size:12px;align-items:start;flex-direction:column}
+}
+
+@media(max-width:800px){
+ .manufacture-v24 .factory-v24-static .factory-stage{aspect-ratio:1/1}
+ .fabric-shelf-grid::-webkit-scrollbar{height:3px}
+ .fabric-shelf-grid::-webkit-scrollbar-thumb{background:#637976;border-radius:4px}
+}
