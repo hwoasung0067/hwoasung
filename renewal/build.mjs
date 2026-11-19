@@ -28,6 +28,9 @@ if(release){
   }
   if(name==='index.html'||name==='en-index.html') html=html.replace('</head>','<link href="release.css" rel="stylesheet"></head>');
   html=html.replace('원단 이미지는 시안용 참고 이미지입니다.','원단 이미지는 이해를 돕기 위한 참고 이미지입니다.');
+  if (name !== 'en-inquiry.html') {
+   html=html.replace('</head>','<link href="analytics.css" rel="stylesheet"><script defer src="analytics.js"></script></head>');
+  }
   await writeFile(join(out,name),html);
  }
  await writeFile(join(out,'release.css'),'.header{top:0}@media(max-width:800px){.header{top:0}body.palette-a .mobile-nav:not([hidden]){top:70px}}\n');
