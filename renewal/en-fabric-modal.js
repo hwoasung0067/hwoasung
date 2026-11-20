@@ -24,8 +24,9 @@
     <div class="interlock-info"><div><span class="fact-label-0"></span><p class="fact-value-0"></p></div><div><span class="fact-label-1"></span><p class="fact-value-1"></p></div></div>
     <div class="interlock-consult"><span class="consult-title"></span><p class="consult-conditions"></p><small class="consult-help"></small></div>
     <div class="interlock-actions"><a class="modal-inquiry" href="#"><span class="inquiry-label"></span><span aria-hidden="true">↗</span></a><button class="interlock-back" type="button"><span class="back-label"></span> <span aria-hidden="true">→</span></button></div>`;
-  body.append(detail); detail.querySelector('.consult-title').textContent=locale.consult; detail.querySelector('.consult-help').textContent=locale.help; detail.querySelector('.back-label').textContent=locale.back; detail.querySelector('.inquiry-label').textContent=locale.ask;
-  detail.querySelector('.interlock-back').addEventListener('click',()=>closeDialog());
+  const actions=detail.querySelector('.interlock-actions');
+  body.append(detail, actions); detail.querySelector('.consult-title').textContent=locale.consult; detail.querySelector('.consult-help').textContent=locale.help; actions.querySelector('.back-label').textContent=locale.back; actions.querySelector('.inquiry-label').textContent=locale.ask;
+  actions.querySelector('.interlock-back').addEventListener('click',()=>closeDialog());
   let previousFocus=null;
   function show(key,addHistory){
     const item=data[key];if(!item)return;if(!dialog.open)previousFocus=document.activeElement;
@@ -38,12 +39,12 @@
     detail.querySelector('.interlock-description').textContent=item.description;
     item.facts.slice(0,2).forEach(([label,value],i)=>{detail.querySelector('.fact-label-'+i).textContent=label;detail.querySelector('.fact-value-'+i).textContent=value;});
     detail.querySelector('.consult-conditions').textContent=conditions[key];
-    detail.querySelector('.modal-inquiry').href='inquiry.html?'+(true ? 'lang=en&':'')+'fabric='+encodeURIComponent(item.name);
-    mobileInquiry.href=detail.querySelector('.modal-inquiry').href;
+    actions.querySelector('.modal-inquiry').href='inquiry.html?'+(true ? 'lang=en&':'')+'fabric='+encodeURIComponent(item.name);
+    mobileInquiry.href=actions.querySelector('.modal-inquiry').href;
     const controls=gallery.querySelector('.gallery-controls');controls.replaceChildren();
     function view(index){photo.src=photos[index];photo.alt=item.name+' '+locale.alt+' '+(index+1);gallery.querySelector('.gallery-label').textContent=photos.length>1?locale.photos+'  '+String(index+1).padStart(2,'0')+' / '+String(photos.length).padStart(2,'0'):locale.one;controls.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
     if(photos.length>1)photos.forEach((_,i)=>{const button=document.createElement('button');button.type='button';button.textContent=String(i+1).padStart(2,'0');button.setAttribute('aria-label',locale.photos+' '+(i+1));button.addEventListener('click',()=>view(i));controls.append(button);});view(0);
-    if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');}dialog.scrollTop=0;sheet.scrollTop=0;
+    if(!dialog.open){dialog.showModal();document.body.classList.add('modal-open');}dialog.scrollTop=0;sheet.scrollTop=0;detail.scrollTop=0;
     if(addHistory)history.pushState({fabricModal:true},'','#fabric-'+key);
   }
   function closeDialog(){if(!dialog.open)return;dialog.close();if(history.state&&history.state.fabricModal)history.back();else if(location.hash.startsWith('#fabric-'))history.replaceState(null,'',location.pathname+location.search)}

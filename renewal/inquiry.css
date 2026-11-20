@@ -3,3 +3,30 @@
 #tally-inquiry{display:block;width:100%;border:0}.tally-fallback{font-size:12px;color:#657777;line-height:1.7;margin:16px 0 0}.tally-fallback a{color:#24454C;border-bottom:1px solid #879c9a}
 
 .return-home{display:inline-flex;min-height:52px;align-items:center;justify-content:center;gap:14px;padding:0 22px;border:1px solid #879999;color:#243d42;font-size:14px;font-weight:650;transition:background .2s,color .2s}.return-home:hover{background:#eaf0ed;color:#142b30}.return-home span{font-size:20px;line-height:1}@media(max-width:800px){.return-home{display:flex;width:100%;min-height:52px}}@media(prefers-reduced-motion:reduce){.return-home{transition:none}}
+
+.form-utilities{display:flex;align-items:center;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin:0 0 12px}
+.form-utilities .form-privacy,.form-utilities .tally-fallback{margin:0;font-size:13px;line-height:1.6}
+.form-utilities a{display:inline-flex;align-items:center;min-height:36px}
+.form-embed{position:relative}
+.form-loading{
+  position:absolute;
+  inset:0 0 auto;
+  margin:0;
+  padding:24px 12px;
+  background:#f4f6f3;
+  color:#425a5d;
+  border-top:1px solid #dee4e1;
+  font-size:14px;
+  line-height:1.7;
+  text-align:center;
+  pointer-events:none;
+}
+.form-loading[hidden],.form-loading .loading-en,.form-utilities .form-link-en{display:none}
+body[data-language="en"] .form-loading .loading-ko,
+body[data-language="en"] .form-utilities .form-link-ko{display:none}
+body[data-language="en"] .form-loading .loading-en,
+body[data-language="en"] .form-utilities .form-link-en{display:inline}
+@media (max-width:800px){
+  .form-utilities{margin:0 8px 3px}
+  .page-main .form-utilities .form-privacy,.form-utilities .tally-fallback{margin:0;font-size:12px}
+}

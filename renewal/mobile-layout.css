@@ -13,11 +13,6 @@
   body.palette-a .shelf-sample-mobile{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-top:12px;padding:0 12px;border:1px solid #9aabaa;color:#edf4ef;font-size:13px}
   body.palette-a .shelf-status:not([hidden]){display:flex;align-items:stretch;gap:10px}
   body.palette-a .shelf-status .fabric-detail-link{align-self:center}
-  .fabric-tile-photo-1{background-image:url('assets/mobile/fabric-user-1.webp')}
-  .fabric-tile-photo-2{background-image:url('assets/mobile/fabric-user-2.webp')}
-  .fabric-tile-photo-3{background-image:url('assets/mobile/fabric-user-3.webp')}
-  .fabric-tile-photo-4{background-image:url('assets/mobile/fabric-user-4.webp')}
-  .fabric-tile-photo-5{background-image:url('assets/mobile/fabric-user-5.webp')}
 
   .fabric-card .fabric-picture{aspect-ratio:4/3;display:block;background:#d7d7d4}
   .fabric-card .fabric-picture img{display:block;width:100%;height:100%;object-fit:cover}
